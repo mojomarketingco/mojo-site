@@ -1,0 +1,4 @@
+# Old Netlify site paths, so anything already shared keeps working
+/index.html   /            301
+/work.html    /services    301
+/work         /services    301

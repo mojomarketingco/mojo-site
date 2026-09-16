@@ -1,0 +1,26 @@
+# Cloudflare Pages — caching and basic security headers
+
+# Images and video never change once published.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# CSS and JS are requested with a ?v=<content hash> that changes whenever the
+# file changes, so the URL itself is the cache key. Safe to cache forever.
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Pages must always be revalidated, otherwise a browser holding an old page
+# would keep requesting the old ?v= and never see a new deploy.
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Frame-Options: SAMEORIGIN
