@@ -122,28 +122,34 @@
 
   /* --- 6. The listing that builds itself --- */
   var lcard = $('#lcard');
+  if (lcard && reduce) {
+    $('#ltitle').textContent = '3 rooms, 60 m², Even Yisrael, Jerusalem';
+    $('#ldesc').textContent = 'Furnished and bright, a short walk from Jaffa Street and the light rail.';
+    $('#lcount').textContent = '₪3,600,000';
+    lcard.classList.add('is-good'); $('#lbadge').classList.add('is-on');
+  }
   if (lcard && !reduce) {
     var ltitle = $('#ltitle'), ldesc = $('#ldesc'), lbadge = $('#lbadge'),
-        lcount = $('#lcount'), chips = $$('.chip', $('#lchips'));
-    // Illustrative listings for the demo card. The descriptions describe what
-    // is actually in each photograph; the room/size/area line is placeholder
-    // copy — swap in the real figures when Mojo supplies them.
-    // Illustrative listings for the demo card. The descriptions describe what
-    // is actually in each photograph; the room/size/area line is placeholder
-    // copy — swap in the real figures when Mojo supplies them.
+        lcount = $('#lcount'), chips = $$('.chip', $('#lchips')),
+        lfootLab = $('#lfootLab');
+    // Mojo's current campaigns. Only real properties with the owner's own
+    // details and our own photos go in here. To add one, put a photo in
+    // assets/campaigns/ and copy an entry; to take one down, delete its entry.
     var LISTINGS = [
-      { img:'assets/photos/photo02.jpg', t:'5 rooms, 118 m², Ramat Beit Shemesh',
-        d:'Open kitchen with a terrazzo breakfast table, bright throughout.' },
-      { img:'assets/photos/photo03.jpg', t:'5 rooms, 134 m², Old Katamon',
-        d:'Marble island, veined splashback, integrated ovens.' },
-      { img:'assets/photos/photo04.jpg', t:'4 rooms, 102 m², Rechavia',
-        d:'Traditional living room, dark wood and a brick feature wall.' },
-      { img:'assets/photos/photo05.jpg', t:'3 rooms, 60 m², Jerusalem',
-        d:'Newly renovated. Bright living space opening onto a balcony.' },
-      { img:'assets/photos/photo06.jpg', t:'4 rooms, 88 m², Neve Shamir',
-        d:'Covered balcony, glass balustrade, courtyard and hills beyond.' }
+      { img:'assets/campaigns/even-yisrael.jpg', kind:'apartment for sale', deal:'For sale', price:'₪3,600,000',
+        t:'3 rooms, 60 m², Even Yisrael, Jerusalem',
+        d:'Furnished and bright, a short walk from Jaffa Street and the light rail.' },
+      { img:'assets/campaigns/givat-sharet.jpg', kind:'apartment for sale', deal:'For sale', price:'₪2,790,000',
+        t:'5 rooms, 130 m², Givat Sharet, Beit Shemesh',
+        d:'Upgraded kitchen, parents\u2019 suite, mamad and a Shabbat elevator.' },
+      { img:'assets/campaigns/abu-tor.jpg', kind:'penthouse for rent', deal:'For rent', price:'₪20,000 / month',
+        t:'6 rooms, 150 m², Abu Tor, Jerusalem',
+        d:'Fully furnished, with a 50 m² roof terrace and sunset views.' },
+      { img:'assets/campaigns/king-george.jpg', kind:'apartment for rent', deal:'For rent', price:'₪9,800 / month',
+        t:'3 rooms, 90 m², City Center, Jerusalem',
+        d:'On King George, with a Shabbat elevator and central AC.' }
     ];
-    var li = -1, cur = LISTINGS[0];
+    var li = -1, lcur = LISTINGS[0];
     var timers = [], visible = true, running = false;
     function clearAll() { timers.forEach(clearTimeout); timers = []; }
     function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
@@ -159,19 +165,11 @@
     function reset() {
       lcard.classList.remove('is-good'); lbadge.classList.remove('is-on');
       chips.forEach(function (c) { c.classList.remove('is-on'); });
-      ltitle.textContent = 'apartment for sale'; ltitle.style.color = '#7d7d78';
-      ldesc.textContent = ''; lcount.textContent = '0';
-      li = (li + 1) % LISTINGS.length; cur = LISTINGS[li];
-      var im = $('#limg'); if (im) im.src = cur.img;
-    }
-    function countTo(n, ms) {
-      var t0 = null;
-      (function step(ts) {
-        if (!t0) t0 = ts;
-        var p = Math.min(1, (ts - t0) / ms);
-        lcount.textContent = Math.round(n * (1 - Math.pow(1 - p, 3)));
-        if (p < 1) requestAnimationFrame(step);
-      })(performance.now());
+      li = (li + 1) % LISTINGS.length; lcur = LISTINGS[li];
+      ltitle.textContent = lcur.kind; ltitle.style.color = '#7d7d78';
+      ldesc.textContent = ''; lcount.textContent = '';
+      if (lfootLab) lfootLab.textContent = lcur.deal;
+      var im = $('#limg'); if (im) im.src = lcur.img;
     }
     function run() {
       if (running) return;
@@ -180,10 +178,10 @@
       at(2300, function () { lbadge.classList.add('is-on'); });
       at(3000, function () {
         ltitle.style.color = '';
-        type(ltitle, cur.t, 34, function () { at(250, function () { type(ldesc, cur.d, 18); }); });
+        type(ltitle, lcur.t, 34, function () { at(250, function () { type(ldesc, lcur.d, 18); }); });
       });
       at(6400, function () { chips.forEach(function (c, i) { at(i * 320, function () { c.classList.add('is-on'); }); }); });
-      at(8000, function () { countTo(14, 1600); });
+      at(8000, function () { lcount.textContent = lcur.price; });
       at(11000, function () { running = false; if (visible) run(); });
     }
     if ('IntersectionObserver' in window) {
@@ -226,7 +224,7 @@
   var slider = $('#calcSlider');
   if (slider) {
     var calcVal = $('#calcVal'), outAgent = $('#outAgent'), outKept = $('#outKept');
-    var MOJO = 6500, RATE = 0.02, VAT = 1.18;
+    var MOJO = 12000, RATE = 0.02, VAT = 1.18;
     var cur = { agent: +slider.value * RATE * VAT, kept: Math.max(0, +slider.value * RATE * VAT - MOJO) };
     function tween(key, to, el) {
       var from = cur[key], t0 = null, dur = reduce ? 0 : 420;
