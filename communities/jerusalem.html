@@ -6,12 +6,18 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com; img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com; media-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://api.web3forms.com; form-action 'self' https://api.web3forms.com; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC"></script>
 <script>
+  /* Google Analytics loads only after the visitor accepts cookies (see the banner in js/site.js). */
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9Y913H0LKC');
+  window.mjLoadGA = function () {
+    if (window.__mjGA) return; window.__mjGA = 1;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC';
+    document.head.appendChild(s);
+    gtag('js', new Date()); gtag('config', 'G-9Y913H0LKC');
+  };
+  try { if (localStorage.getItem('mj_consent') === 'yes') window.mjLoadGA(); } catch (e) {}
 </script>
 
 <title>Selling property in Jerusalem — Mojo Marketing</title>
@@ -32,7 +38,7 @@
 <meta name="twitter:description" content="A guide to the Jerusalem neighborhoods English speakers actually live in, and what moves a property here.">
 <meta name="twitter:image" content="https://themojomarketing.com/assets/hero-poster.jpg">
 <link rel="icon" href="../assets/logo/monogram-teal.png">
-<link rel="stylesheet" href="../css/site.css?v=1a3717b2">
+<link rel="stylesheet" href="../css/site.css?v=20261121c">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body><header class="header" id="header">
@@ -43,6 +49,7 @@
     <nav class="nav" id="nav">
       <a href="../index.html">Home</a>
       <a href="../services.html">What We Do</a>
+      <a href="../featured.html">Featured Properties</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../about.html">About</a>
       <div class="drop" id="drop">
@@ -58,10 +65,10 @@
           <a href="../faq.html" role="menuitem">FAQ</a>
         </div>
       </div>
-      <a href="../index.html#book" class="btn btn--primary nav__cta">Book A Free Consultation</a>
+      <a href="../index.html#book" class="btn btn--primary nav__cta">Book a free consultation</a>
     </nav>
     <div class="header__actions">
-      <a href="../index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book A Free Consultation</a>
+      <a href="../index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book a free consultation</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18" stroke-linecap="round"/></svg>
       </button>
@@ -70,14 +77,14 @@
 </header>
 <main>
   <section class="chero">
-    <div class="chero__map" aria-hidden="true"><svg class="cmap" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" role="presentation"><rect width="1440" height="640" fill="#0a1512"/><polyline points="-40,226 90,259 220,258 350,267 480,269 610,249 740,246 870,226 1000,256 1130,232 1260,244 1390,252" fill="none" stroke="#f4f2ed" stroke-width="1" opacity="0.05"/><polyline points="-40,273 90,274 220,295 350,313 480,292 610,273 740,316 870,300 1000,279 1130,322 1260,299 1390,277" fill="none" stroke="#f4f2ed" stroke-width="1" opacity="0.06"/><polyline points="-40,338 90,346 220,334 350,345 480,327 610,328 740,362 870,344 1000,316 1130,334 1260,362 1390,338" fill="none" stroke="#f4f2ed" stroke-width="1" opacity="0.07"/><polyline points="-40,396 90,368 220,392 350,385 480,413 610,413 740,413 870,395 1000,381 1130,396 1260,395 1390,390" fill="none" stroke="#f4f2ed" stroke-width="1" opacity="0.09"/><polyline points="-40,460 90,425 220,448 350,422 480,413 610,418 740,414 870,452 1000,418 1130,421 1260,432 1390,425" fill="none" stroke="#f4f2ed" stroke-width="1" opacity="0.10"/><polyline points="-40,466 90,506 220,473 350,502 480,479 610,500 740,468 870,478 1000,478 1130,480 1260,472 1390,489" fill="none" stroke="#f4f2ed" stroke-width="1" opacity="0.11"/><path d="M100 526 Q 284 454 469 427" fill="none" stroke="#f4f2ed" stroke-width="1.2" opacity="0.16"/><path d="M960 383 Q 1264 295 1569 332" fill="none" stroke="#f4f2ed" stroke-width="1.2" opacity="0.16"/><path d="M480 507 Q 693 500 907 513" fill="none" stroke="#f4f2ed" stroke-width="1.2" opacity="0.16"/><path d="M197 285 Q 384 239 571 282" fill="none" stroke="#f4f2ed" stroke-width="1.2" opacity="0.16"/><path d="M1042 245 Q 1322 291 1603 345" fill="none" stroke="#f4f2ed" stroke-width="1.2" opacity="0.16"/><path d="M784 554 Q 942 480 1100 450" fill="none" stroke="#f4f2ed" stroke-width="1.2" opacity="0.16"/><path d="M374 168 Q 546 193 718 151" fill="none" stroke="#f4f2ed" stroke-width="1.2" opacity="0.16"/><rect x="1069" y="436" width="26" height="26" rx="2" fill="#f4f2ed" opacity="0.12"/><rect x="933" y="381" width="15" height="26" rx="2" fill="#f4f2ed" opacity="0.10"/><rect x="1180" y="255" width="43" height="25" rx="2" fill="#f4f2ed" opacity="0.11"/><rect x="482" y="434" width="40" height="15" rx="2" fill="#f4f2ed" opacity="0.13"/><rect x="1160" y="204" width="36" height="20" rx="2" fill="#f4f2ed" opacity="0.05"/><rect x="707" y="288" width="15" height="19" rx="2" fill="#f4f2ed" opacity="0.08"/><rect x="1327" y="244" width="15" height="13" rx="2" fill="#f4f2ed" opacity="0.06"/><rect x="380" y="393" width="25" height="11" rx="2" fill="#f4f2ed" opacity="0.08"/><rect x="760" y="184" width="23" height="11" rx="2" fill="#f4f2ed" opacity="0.07"/><rect x="636" y="170" width="22" height="15" rx="2" fill="#f4f2ed" opacity="0.09"/><rect x="858" y="301" width="30" height="11" rx="2" fill="#f4f2ed" opacity="0.11"/><rect x="1219" y="344" width="41" height="21" rx="2" fill="#f4f2ed" opacity="0.06"/><rect x="698" y="375" width="15" height="22" rx="2" fill="#f4f2ed" opacity="0.10"/><rect x="454" y="462" width="41" height="20" rx="2" fill="#f4f2ed" opacity="0.08"/><rect x="1087" y="428" width="38" height="24" rx="2" fill="#f4f2ed" opacity="0.05"/><rect x="887" y="440" width="34" height="16" rx="2" fill="#f4f2ed" opacity="0.06"/><rect x="1112" y="458" width="40" height="17" rx="2" fill="#f4f2ed" opacity="0.12"/><rect x="327" y="381" width="41" height="16" rx="2" fill="#f4f2ed" opacity="0.08"/><rect x="629" y="277" width="25" height="19" rx="2" fill="#f4f2ed" opacity="0.07"/><rect x="1103" y="165" width="28" height="23" rx="2" fill="#f4f2ed" opacity="0.09"/><rect x="235" y="403" width="14" height="24" rx="2" fill="#f4f2ed" opacity="0.13"/><rect x="228" y="420" width="15" height="19" rx="2" fill="#f4f2ed" opacity="0.09"/><rect x="608" y="193" width="19" height="20" rx="2" fill="#f4f2ed" opacity="0.07"/><rect x="646" y="382" width="20" height="15" rx="2" fill="#f4f2ed" opacity="0.06"/><rect x="899" y="334" width="32" height="15" rx="2" fill="#f4f2ed" opacity="0.12"/><rect x="293" y="358" width="39" height="19" rx="2" fill="#f4f2ed" opacity="0.06"/><rect x="650" y="448" width="43" height="26" rx="2" fill="#f4f2ed" opacity="0.11"/><rect x="926" y="299" width="17" height="20" rx="2" fill="#f4f2ed" opacity="0.08"/><rect x="420" y="174" width="33" height="13" rx="2" fill="#f4f2ed" opacity="0.08"/><rect x="410" y="338" width="42" height="13" rx="2" fill="#f4f2ed" opacity="0.08"/><rect x="775" y="351" width="21" height="12" rx="2" fill="#f4f2ed" opacity="0.09"/><rect x="327" y="292" width="42" height="14" rx="2" fill="#f4f2ed" opacity="0.07"/><rect x="836" y="313" width="43" height="12" rx="2" fill="#f4f2ed" opacity="0.11"/><rect x="133" y="413" width="27" height="26" rx="2" fill="#f4f2ed" opacity="0.06"/><rect x="731" y="175" width="31" height="11" rx="2" fill="#f4f2ed" opacity="0.10"/><rect x="1249" y="191" width="17" height="16" rx="2" fill="#f4f2ed" opacity="0.07"/><rect x="731" y="181" width="41" height="14" rx="2" fill="#f4f2ed" opacity="0.11"/><rect x="208" y="193" width="26" height="20" rx="2" fill="#f4f2ed" opacity="0.05"/><rect x="538" y="489" width="27" height="24" rx="2" fill="#f4f2ed" opacity="0.12"/><rect x="69" y="225" width="35" height="16" rx="2" fill="#f4f2ed" opacity="0.05"/><rect x="432" y="355" width="44" height="14" rx="2" fill="#f4f2ed" opacity="0.11"/><rect x="973" y="298" width="38" height="25" rx="2" fill="#f4f2ed" opacity="0.09"/><rect x="646" y="445" width="23" height="20" rx="2" fill="#f4f2ed" opacity="0.05"/><rect x="1234" y="367" width="34" height="19" rx="2" fill="#f4f2ed" opacity="0.07"/><rect x="1275" y="189" width="22" height="15" rx="2" fill="#f4f2ed" opacity="0.08"/><rect x="131" y="164" width="38" height="13" rx="2" fill="#f4f2ed" opacity="0.05"/><ellipse cx="652" cy="339" rx="180" ry="110" fill="#1f5a4c" opacity="0.20"/></svg></div>
-    <div class="hero__scrim" aria-hidden="true"></div>
+    <div class="chero__map" aria-hidden="true"><img class="chero__img chero__img--jlm" src="../assets/heroes/hero-jerusalem.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async"></div>
+    <div class="hero__scrim hero__scrim--sunset" aria-hidden="true"></div>
     <div class="container chero__in">
       <div class="chero__text">
         <span class="eyebrow">Communities</span>
         <h1 class="display chero__title">Jerusalem</h1>
         <p class="chero__sub">Where the English-speaking communities are, what each area is actually like, and what it takes to sell one here.</p>
-        <div class="btns"><a href="../index.html#book" class="btn btn--onDark">Book A Free Consultation</a></div>
+        <div class="btns"><a href="../index.html#book" class="btn btn--onDark">Book a free consultation</a></div>
       </div>
       <div class="chero__loc"><svg class="loc" viewBox="0 0 274.0 830.7" role="img" aria-label="Where Jerusalem sits in Israel">
       <path class="loc__land" d="M161.1 69.3 L155.8 105.0 L141.5 123.9 L125.3 151.2 L120.0 193.2 L111.0 228.9 L103.9 281.4 L89.5 319.2 L75.2 350.7 L62.7 382.2 L48.3 403.2 L26.9 424.2 L9.0 445.2 L17.9 470.4 L44.8 508.2 L89.5 592.2 L116.4 686.7 L128.9 760.2 L134.3 812.7 L152.2 789.6 L179.1 676.2 L205.9 550.2 L223.8 455.7 L227.4 403.2 L236.4 350.7 L241.7 277.2 L245.3 214.2 L254.3 151.2 L250.7 119.7 L256.0 77.7 L247.1 29.4 L223.8 35.7 L197.0 67.2 Z"/>
@@ -142,6 +149,7 @@
     </div>
     <div><h4>Company</h4><ul>
       <li><a href="../services.html">What we do</a></li>
+      <li><a href="../featured.html">Featured properties</a></li>
       <li><a href="../pricing.html">Pricing</a></li>
       <li><a href="../about.html">About us</a></li>
     </ul></div>
@@ -166,5 +174,5 @@
 <a class="wa" href="https://wa.me/972506875631" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.43 1.32 4.92L2 22l5.37-1.4a9.8 9.8 0 004.67 1.19h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.47 2 12.04 2zm5.75 14.05c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.5-.75-2.94-1.22-4.83-4.2-4.98-4.4-.14-.2-1.19-1.58-1.19-3.02s.75-2.14 1.02-2.44c.27-.3.59-.37.78-.37l.56.01c.18 0 .42-.07.66.5.24.58.83 2.02.9 2.17.07.15.12.32.02.52-.1.2-.15.32-.3.5l-.44.51c-.15.15-.3.32-.13.62.17.3.75 1.24 1.62 2.01 1.11 1 2.05 1.3 2.34 1.45.3.15.47.13.64-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.7.8 1.99.95.3.15.49.22.56.35.07.12.07.72-.17 1.4z"/></svg></a>
 <div class="stickybar" id="stickybar"><a href="../index.html#book" class="btn btn--primary">Book a free consultation</a></div>
 <div class="mscroll" id="mscroll" aria-hidden="true"><img class="mscroll__bg" src="../assets/logo/monogram-teal.png" alt=""><span class="mscroll__fill" id="mfill"><img src="../assets/logo/monogram-teal.png" alt=""></span></div>
-<script src="../js/site.js?v=aab55509" defer></script>
+<script src="../js/site.js?v=20261121c" defer></script>
 </body></html>
