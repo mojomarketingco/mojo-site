@@ -85,9 +85,9 @@
     video.addEventListener('error', function () { video.style.display = 'none'; });
     video.load();
   }
-  // Spec: static image only on mobile, where the video costs more than it gives.
-  var wantsHeroVideo = window.matchMedia('(min-width: 861px)').matches && !reduce;
-  if (wantsHeroVideo) useVideoWhenReady($('#heroVideo'), null);
+  // Hero video plays on every screen size; phones get a lighter 960px file.
+  // Only skipped for people who have asked their device to reduce motion.
+  if (!reduce) useVideoWhenReady($('#heroVideo'), null);
   useVideoWhenReady($('#lvideo'), $('#limg'));
 
   /* --- 4. Stat counters --- */
@@ -145,7 +145,7 @@
       { img:'assets/campaigns/abu-tor.jpg', kind:'penthouse for rent', deal:'For rent', price:'₪20,000 / month',
         t:'6 rooms, 150 m², Abu Tor, Jerusalem',
         d:'Fully furnished, with a 50 m² roof terrace and sunset views.' },
-      { img:'assets/campaigns/king-george.jpg', kind:'apartment for rent', deal:'For rent', price:'₪9,800 / month',
+      { img:'assets/campaigns/king-george-kitchen.jpg', kind:'apartment for rent', deal:'For rent', price:'₪9,800 / month',
         t:'3 rooms, 90 m², City Center, Jerusalem',
         d:'On King George, with a Shabbat elevator and central AC.' }
     ];
@@ -166,7 +166,7 @@
       lcard.classList.remove('is-good'); lbadge.classList.remove('is-on');
       chips.forEach(function (c) { c.classList.remove('is-on'); });
       li = (li + 1) % LISTINGS.length; lcur = LISTINGS[li];
-      ltitle.textContent = lcur.kind; ltitle.style.color = '#7d7d78';
+      ltitle.textContent = lcur.kind; ltitle.style.color = '#4f5c57';
       ldesc.textContent = ''; lcount.textContent = '';
       if (lfootLab) lfootLab.textContent = lcur.deal;
       var im = $('#limg'); if (im) im.src = lcur.img;
@@ -239,6 +239,8 @@
     function update() {
       var v = +slider.value, agent = v * RATE * VAT;
       calcVal.textContent = shekel(v);
+      var bA = $('#barAgent'), bM = $('#barMojo');
+      if (bA && bM) { bA.style.width = '100%'; bM.style.width = Math.max(3, Math.min(100, MOJO / agent * 100)).toFixed(1) + '%'; }
       tween('agent', agent, outAgent);
       tween('kept', Math.max(0, agent - MOJO), outKept);
     }
@@ -296,4 +298,38 @@
   }
 
   var yr = $('#yr'); if (yr) yr.textContent = new Date().getFullYear();
+})();
+
+/* --- Cookie consent. Analytics only runs after "Accept". Choice is remembered. --- */
+(function () {
+  var KEY = 'mj_consent';
+  function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+  var priv = location.pathname.indexOf('/communities/') > -1 ? '../privacy.html' : 'privacy.html';
+  var box;
+  function close() { if (box) { box.classList.remove('is-on'); setTimeout(function () { if (box) { box.remove(); box = null; } }, 300); } }
+  function open() {
+    if (box) return;
+    box = document.createElement('div');
+    box.className = 'consent'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Cookie settings');
+    box.innerHTML = '<p><strong>Cookies</strong> We use Google Analytics cookies to count visits and see which pages are read. Nothing for ads, nothing sold. <a href="' + priv + '#cookies">Privacy policy</a></p>' +
+      '<div class="consent__btns"><button type="button" class="btn btn--primary" data-c="yes">Accept</button><button type="button" class="btn btn--secondary" data-c="no">No thanks</button></div>';
+    document.body.appendChild(box);
+    requestAnimationFrame(function () { box.classList.add('is-on'); });
+    box.addEventListener('click', function (e) {
+      var b = e.target.closest('[data-c]'); if (!b) return;
+      var v = b.getAttribute('data-c'); set(v);
+      if (v === 'yes' && window.mjLoadGA) window.mjLoadGA();
+      if (v === 'no') { document.cookie.split(';').forEach(function (c) { var n = c.split('=')[0].trim(); if (/^_ga/.test(n)) { document.cookie = n + '=; Max-Age=0; path=/; domain=.' + location.hostname.replace(/^www\./, ''); document.cookie = n + '=; Max-Age=0; path=/'; } }); }
+      close();
+    });
+  }
+  /* "Cookie settings" link in the footer reopens the choice */
+  var fb = document.querySelector('.footer__bottom span');
+  if (fb) {
+    var a = document.createElement('button'); a.type = 'button'; a.className = 'linklike'; a.textContent = 'Cookie settings';
+    a.addEventListener('click', open);
+    fb.appendChild(document.createTextNode(' · ')); fb.appendChild(a);
+  }
+  if (!get()) open();
 })();
