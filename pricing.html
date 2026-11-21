@@ -6,33 +6,39 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com; img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com; media-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://api.web3forms.com; form-action 'self' https://api.web3forms.com; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC"></script>
 <script>
+  /* Google Analytics loads only after the visitor accepts cookies (see the banner in js/site.js). */
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9Y913H0LKC');
+  window.mjLoadGA = function () {
+    if (window.__mjGA) return; window.__mjGA = 1;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC';
+    document.head.appendChild(s);
+    gtag('js', new Date()); gtag('config', 'G-9Y913H0LKC');
+  };
+  try { if (localStorage.getItem('mj_consent') === 'yes') window.mjLoadGA(); } catch (e) {}
 </script>
 
 <title>Pricing — Mojo Marketing</title>
 <link rel="canonical" href="https://themojomarketing.com/pricing">
-<meta name="description" content="Nothing to pay until it sells. 12,000 NIS when a sale goes through, 3,000 NIS when a rental is let, or pay upfront for less. A fixed fee, never a percentage.">
+<meta name="description" content="A flat fee, not 2% of your sale. 12,000 NIS when a sale goes through, 3,000 NIS when a rental is let, a smaller fee if it does not, or pay upfront for less.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mojo Marketing">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://themojomarketing.com/pricing">
 <meta property="og:title" content="Pricing — Mojo Marketing">
-<meta property="og:description" content="Nothing to pay until it sells. 12,000 NIS when a sale goes through, 3,000 NIS when a rental is let, or pay upfront for less. A fixed fee, never a percentage.">
+<meta property="og:description" content="A flat fee, not 2% of your sale. 12,000 NIS when a sale goes through, 3,000 NIS when a rental is let, a smaller fee if it does not, or pay upfront for less.">
 <meta property="og:image" content="https://themojomarketing.com/assets/hero-poster.jpg">
 <meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
 <meta property="og:image:alt" content="Mojo Marketing &mdash; property marketing across Israel">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Pricing — Mojo Marketing">
-<meta name="twitter:description" content="Nothing to pay until it sells. A fixed fee, never a percentage.">
+<meta name="twitter:description" content="A flat fee, not 2% of your sale. No percentage, ever.">
 <meta name="twitter:image" content="https://themojomarketing.com/assets/hero-poster.jpg">
 <link rel="icon" href="assets/logo/monogram-teal.png">
-<link rel="stylesheet" href="css/site.css?v=1a3717b2">
+<link rel="stylesheet" href="css/site.css?v=20261121c">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body><header class="header" id="header">
@@ -43,6 +49,7 @@
     <nav class="nav" id="nav">
       <a href="index.html">Home</a>
       <a href="services.html">What We Do</a>
+      <a href="featured.html">Featured Properties</a>
       <a href="pricing.html" aria-current="page">Pricing</a>
       <a href="about.html">About</a>
       <div class="drop" id="drop">
@@ -58,10 +65,10 @@
           <a href="faq.html" role="menuitem">FAQ</a>
         </div>
       </div>
-      <a href="index.html#book" class="btn btn--primary nav__cta">Book A Free Consultation</a>
+      <a href="index.html#book" class="btn btn--primary nav__cta">Book a free consultation</a>
     </nav>
     <div class="header__actions">
-      <a href="index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book A Free Consultation</a>
+      <a href="index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book a free consultation</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18" stroke-linecap="round"/></svg>
       </button>
@@ -69,11 +76,13 @@
   </div>
 </header>
 <main>
-<section class="band band--dark" style="padding-block:96px 84px">
+<section class="band band--dark phero" style="padding-block:112px 100px">
+  <img class="phero__img" src="assets/heroes/hero-pricing.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+  <div class="hero__scrim" aria-hidden="true"></div>
   <div class="container">
     <span class="eyebrow">Pricing</span>
-    <h1 class="tt" style="max-width:16ch"><span>Nothing to pay until it sells.</span><span class="teal">No percentage, ever.</span></h1>
-    <p class="lead" style="max-width:56ch;margin-top:20px">We do the work first. You see the photos, the video and the campaign live, and you pay once it sells. Prefer to pay upfront? That option costs less.</p>
+    <h1 class="tt" style="max-width:16ch"><span>A flat fee.</span><span class="teal">Not 2% of your sale.</span></h1>
+    <p class="lead" style="max-width:56ch;margin-top:20px">We do the work first. You see the photos, the video and the campaign live, and the fee is due when it sells. If it has not sold after six months, it is ₪2,000 and nothing more. Prefer to pay upfront? That costs less.</p>
   </div>
 </section>
 
@@ -82,31 +91,31 @@
     <div class="price-grid">
       <div class="price-card rv">
         <h3>Sales</h3><p class="kicker">Apartments, houses and commercial property.</p>
-        <div class="price-big">12,000&nbsp;₪</div>
-        <p class="price-unit">when it sells. Nothing upfront.</p>
+        <div class="price-big">₪12,000</div>
+        <p class="price-unit">when it sells. Nothing at signing.</p>
         <ul class="price-inc">
-          <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Everything on the <a href="services.html">what we do</a> page — all ten</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full CMA, photography and walkthrough video</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Live across every relevant channel</span></li>
-          <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Showings, if you want them</span></li><li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every lead handled, weekly reporting</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Everything on the <a href="services.html">what we do</a> page, all twelve</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Full CMA, photography, walkthrough video and a floor plan</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Premium listing placement, our exclusive network and a sign</span></li>
+          <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Showings, if you want them</span></li><li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Active buyer search and negotiation</span></li><li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>One person, weekly reports, up to six months</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No exclusive agreement</span></li>
         </ul>
-        <p class="price-note"><strong style="color:var(--ink);font-weight:600">Not sold after 6 months? 2,000&nbsp;₪,</strong> and nothing more. Or pay 6,500&nbsp;₪ upfront and nothing when it sells.</p>
+        <p class="price-note"><strong style="color:var(--ink);font-weight:600">Not sold after 6 months? ₪2,000,</strong> and nothing more. Or pay ₪6,500 upfront and nothing when it sells.</p>
       </div>
       <div class="price-card rv">
         <h3>Rentals</h3><p class="kicker">The same approach, built for rentals.</p>
-        <div class="price-big">3,000&nbsp;₪</div>
-        <p class="price-unit">when it rents. Nothing upfront.</p>
+        <div class="price-big">₪3,000</div>
+        <p class="price-unit">when it rents. Nothing at signing.</p>
         <ul class="price-inc">
           <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Same CMA, same photography, same video</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Same channels, same lead handling</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Showings, if you want them</span></li><li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Same weekly reporting</span></li>
           <li><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M6 10.3l2.5 2.5L14 7.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>No exclusive agreement</span></li>
         </ul>
-        <p class="price-note"><strong style="color:var(--ink);font-weight:600">Not rented within 60 days? 750&nbsp;₪,</strong> and nothing more. Or pay 2,500&nbsp;₪ upfront and nothing when it rents.</p>
+        <p class="price-note"><strong style="color:var(--ink);font-weight:600">Not rented within 60 days? ₪750,</strong> and nothing more. Or pay ₪2,500 upfront and nothing when it rents.</p>
       </div>
     </div>
-    <p class="lead rv mt-l" style="max-width:60ch">That is the whole price list. Multiple properties and individual services are in the <a href="faq.html">FAQ</a>.</p>
+    <p class="lead rv mt-l" style="max-width:60ch">That is the whole price list. <a href="services.html#add-ons">Add-ons</a> like paid social ads and drone footage are priced separately, and multiple properties and individual services are in the <a href="faq.html">FAQ</a>.</p>
   </div>
 </section>
 
@@ -115,38 +124,34 @@
     <div class="split-4060">
       <div class="rv">
         <span class="eyebrow">The marketing fee</span>
-        <h2 class="tt"><span>A fixed amount,</span><span>not a percentage.</span></h2>
-        <p class="lead">It is 12,000&nbsp;₪ whether your property sells for 1.5 million or 10 million, and you only pay it once it sells. You know the figure on day one. That is the whole difference between a fee and a commission.</p>
+        <h2 class="tt"><span>No percentage.</span><span>Ever.</span></h2>
+        <p class="lead">It is ₪12,000 whether your property sells for 1.5 million or 10 million, due when it sells. You know the figure on day one. That is the whole difference between a fee and a commission.</p>
       </div>
       <div class="rv">
         <table>
           <thead><tr><th>Sale price</th><th>Agent, 2% + VAT</th><th>Mojo, when it sells</th></tr></thead>
           <tbody>
-            <tr><td>1,500,000 ₪</td><td class="t-climb num">35,400</td><td class="t-flat num">12,000</td></tr>
-            <tr><td>3,000,000 ₪</td><td class="t-climb num">70,800</td><td class="t-flat num">12,000</td></tr>
-            <tr><td>5,000,000 ₪</td><td class="t-climb num">118,000</td><td class="t-flat num">12,000</td></tr>
-            <tr><td>8,000,000 ₪</td><td class="t-climb num">188,800</td><td class="t-flat num">12,000</td></tr>
+            <tr><td>₪1,500,000</td><td class="t-climb num">₪35,400</td><td class="t-flat num">₪12,000</td></tr>
+            <tr><td>₪3,000,000</td><td class="t-climb num">₪70,800</td><td class="t-flat num">₪12,000</td></tr>
+            <tr><td>₪5,000,000</td><td class="t-climb num">₪118,000</td><td class="t-flat num">₪12,000</td></tr>
+            <tr><td>₪8,000,000</td><td class="t-climb num">₪188,800</td><td class="t-flat num">₪12,000</td></tr>
           </tbody>
         </table>
         <p class="small" style="margin-top:14px">One column climbs. The other does not move.</p>
       </div>
     </div>
-    <div style="margin-top:72px"><div class="calc rv">
-      <span class="eyebrow" style="color:var(--paper-soft)">Work it out</span>
-      <h3>What would a commission cost on your property?</h3>
-      <div class="calc__val num" id="calcVal">₪2,000,000</div>
-      <input type="range" id="calcSlider" min="800000" max="15000000" step="50000" value="2000000" aria-label="Property value in shekels">
-      <div class="calc__ends"><span>₪800,000</span><span>₪15,000,000</span></div>
-      <div class="calc__out">
-        <div class="calc__cell"><span class="lab">Agent commission</span><div class="calc-fig num" id="outAgent">₪47,200</div><p class="calc__note">2% plus 18% VAT — climbs with your price</p></div>
-        <div class="calc__cell"><span class="lab">Mojo, all in</span><div class="calc-fig num">₪12,000</div><p class="calc__note">Only once it sells — never changes</p></div>
-        <div class="calc__cell calc__cell--kept"><span class="lab">You keep</span><div class="calc-fig num" id="outKept">₪35,200</div><p class="calc__note">The difference, at this price</p></div>
+    <div style="margin-top:72px"><div class="cm-card rv">
+      <div class="cm-price">
+        <span class="cm-lab">Your property price</span>
+        <div class="cm-val num" id="calcVal">₪3,000,000</div>
+        <input type="range" id="calcSlider" min="800000" max="15000000" step="50000" value="3000000" aria-label="Property price in shekels">
+        <div class="calc__ends"><span>₪800K</span><span>₪15M</span></div>
       </div>
-      <div class="presets">
-        <button class="preset" data-v="3590000" type="button">Baka, 3.59M</button>
-        <button class="preset" data-v="3150000" type="button">Beit Shemesh, 3.15M</button>
-        <button class="preset" data-v="2930000" type="button">Modiin, 2.93M</button>
+      <div class="cm-bars">
+        <div class="cm-bar cm-bar--agent"><span class="cm-bar__lab">Agent, 2% plus VAT</span><div class="cm-bar__track"><div class="cm-bar__fill" id="barAgent" style="width:100%"><span class="num" id="outAgent">₪70,800</span></div></div></div>
+        <div class="cm-bar cm-bar--mojo"><span class="cm-bar__lab">Mojo, flat fee</span><div class="cm-bar__track"><div class="cm-bar__fill" id="barMojo" style="width:17%"></div><span class="num cm-bar__out">₪12,000</span></div></div>
       </div>
+      <div class="cm-keep"><span>You keep</span><strong class="num" id="outKept">₪58,800</strong></div>
     </div></div>
   </div>
 </section>
@@ -172,11 +177,11 @@
           <input type="hidden" name="redirect" value="https://themojomarketing.com/thank-you.html">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
-          <div class="field field--full"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Your name"></div>
-          <div class="field field--full"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="The best number to reach you on"></div>
-          <div class="field field--full"><label for="f-email">Email <span class="opt">optional</span></label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
-          <div class="field field--full"><label for="f-note">Anything else <span class="opt">optional</span></label><textarea id="f-note" name="message" rows="3" placeholder="Where the property is, whether you are selling or renting, anything you want us to know."></textarea></div>
-          <div class="field field--full"><button class="btn btn--primary" type="submit" style="width:100%">Book A Free Consultation</button></div>
+          <div class="field field--full"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" required maxlength="120" autocomplete="name" placeholder="Your name"></div>
+          <div class="field field--full"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" required maxlength="40" autocomplete="tel" placeholder="The best number to reach you on"></div>
+          <div class="field field--full"><label for="f-email">Email <span class="opt">optional</span></label><input id="f-email" name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com"></div>
+          <div class="field field--full"><label for="f-note">Anything else <span class="opt">optional</span></label><textarea id="f-note" name="message" rows="3" maxlength="2000" placeholder="Where the property is, whether you are selling or renting, anything you want us to know."></textarea></div>
+          <div class="field field--full"><button class="btn btn--primary" type="submit" style="width:100%">Book a free consultation</button></div>
         </form></div>
     </div>
   </div>
@@ -207,6 +212,7 @@
     </div>
     <div><h4>Company</h4><ul>
       <li><a href="services.html">What we do</a></li>
+      <li><a href="featured.html">Featured properties</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="about.html">About us</a></li>
     </ul></div>
@@ -231,5 +237,5 @@
 <a class="wa" href="https://wa.me/972506875631" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.43 1.32 4.92L2 22l5.37-1.4a9.8 9.8 0 004.67 1.19h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.47 2 12.04 2zm5.75 14.05c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.5-.75-2.94-1.22-4.83-4.2-4.98-4.4-.14-.2-1.19-1.58-1.19-3.02s.75-2.14 1.02-2.44c.27-.3.59-.37.78-.37l.56.01c.18 0 .42-.07.66.5.24.58.83 2.02.9 2.17.07.15.12.32.02.52-.1.2-.15.32-.3.5l-.44.51c-.15.15-.3.32-.13.62.17.3.75 1.24 1.62 2.01 1.11 1 2.05 1.3 2.34 1.45.3.15.47.13.64-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.7.8 1.99.95.3.15.49.22.56.35.07.12.07.72-.17 1.4z"/></svg></a>
 <div class="stickybar" id="stickybar"><a href="index.html#book" class="btn btn--primary">Book a free consultation</a></div>
 <div class="mscroll" id="mscroll" aria-hidden="true"><img src="assets/logo/monogram-teal.png" alt="" id="mimg"></div>
-<script src="js/site.js?v=aab55509" defer></script>
+<script src="js/site.js?v=20261121c" defer></script>
 </body></html>

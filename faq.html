@@ -6,71 +6,51 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com; img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com; media-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://api.web3forms.com; form-action 'self' https://api.web3forms.com; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC"></script>
 <script>
+  /* Google Analytics loads only after the visitor accepts cookies (see the banner in js/site.js). */
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9Y913H0LKC');
+  window.mjLoadGA = function () {
+    if (window.__mjGA) return; window.__mjGA = 1;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC';
+    document.head.appendChild(s);
+    gtag('js', new Date()); gtag('config', 'G-9Y913H0LKC');
+  };
+  try { if (localStorage.getItem('mj_consent') === 'yes') window.mjLoadGA(); } catch (e) {}
 </script>
 
 <title>Frequently asked questions — Mojo Marketing</title>
 <link rel="canonical" href="https://themojomarketing.com/faq">
-<meta name="description" content="Paying nothing upfront, the marketing fee, showings, lead handling, working from abroad, service areas and property types.">
+<meta name="description" content="The marketing fee, what happens if it does not sell, negotiation, finding buyers, add-ons, showings, working from abroad and service areas.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mojo Marketing">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://themojomarketing.com/faq">
 <meta property="og:title" content="Frequently asked questions — Mojo Marketing">
-<meta property="og:description" content="Paying nothing upfront, the marketing fee, showings, lead handling, working from abroad, service areas and property types.">
+<meta property="og:description" content="The marketing fee, what happens if it does not sell, negotiation, finding buyers, add-ons, showings, working from abroad and service areas.">
 <meta property="og:image" content="https://themojomarketing.com/assets/hero-poster.jpg">
 <meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
 <meta property="og:image:alt" content="Mojo Marketing &mdash; property marketing across Israel">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Frequently asked questions — Mojo Marketing">
-<meta name="twitter:description" content="Paying nothing upfront, the marketing fee, showings, lead handling, working from abroad, service areas and property types.">
+<meta name="twitter:description" content="The marketing fee, what happens if it does not sell, negotiation, finding buyers, add-ons, showings, working from abroad and service areas.">
 <meta name="twitter:image" content="https://themojomarketing.com/assets/hero-poster.jpg">
 <link rel="icon" href="assets/logo/monogram-teal.png">
-<link rel="stylesheet" href="css/site.css?v=1a3717b2">
+<link rel="stylesheet" href="css/site.css?v=20261121c">
 <script>document.documentElement.classList.remove('no-js');</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "@id": "https://themojomarketing.com/faq#faq",
-  "url": "https://themojomarketing.com/faq",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Why would I not just use an agent?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "An agent handles showings, negotiation, and paperwork, and takes a percentage of your sale for all of it, marketing included. We handle the marketing, properly, for a flat fee. Many of our clients sell without an agent. Some use us alongside one and get far better marketing than the agent would have produced."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are you a real estate agency?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. We are a property marketing company. Not an agency, not a listing service. We never take commission."
-      }
-    },
     {
       "@type": "Question",
       "name": "Is the marketing fee just a commission?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. A commission is a percentage of your sale price, so it rises with the value of your property and you do not know the figure until you sell. Our marketing fee is fixed: 12,000 ₪ when a sale goes through, 3,000 ₪ when a rental is let, whatever the property goes for, and you only pay it once it sells or rents."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What if it does not sell?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "If a sale has not sold after six months, you pay 2,000 ₪ for the marketing you received, and nothing more. If a rental has not been let within 60 days, it is 750 ₪. If you paid upfront, there is nothing more to pay."
+        "text": "No. A commission is a percentage of your sale price, so it rises with the value of your property and you do not know the figure until you sell. Our marketing fee is fixed: ₪12,000 when a sale goes through, ₪3,000 when a rental is let, whatever the property goes for."
       }
     },
     {
@@ -78,15 +58,23 @@
       "name": "Do I have to pay anything upfront?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. The CMA, photography, video and the whole campaign happen before you pay anything. If you prefer, you can pay upfront instead and pay less: 6,500 ₪ for a sale or 2,500 ₪ for a rental, at signing, and nothing when it sells or rents."
+        "text": "No. The CMA, photography, video and the whole campaign happen before you pay anything. If you prefer, you can pay upfront instead and pay less: ₪6,500 for a sale or ₪2,500 for a rental, at signing, and nothing when it sells or rents."
       }
     },
     {
       "@type": "Question",
-      "name": "How long does a campaign run?",
+      "name": "What if it does not sell?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A sale campaign runs until it sells, for up to six months. A rental campaign runs for 60 days."
+        "text": "If a sale has not sold after six months, you pay ₪2,000 for the marketing you received, and nothing more. If a rental has not been let within 60 days, it is ₪750. If you paid upfront, there is nothing more to pay."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I find a buyer myself?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Then you do not pay the ₪12,000. The sale fee is only for a buyer who came through our marketing. If you sell to a buyer you found yourself, you pay ₪2,000 for the marketing you received, the same as if it had not sold, and nothing more."
       }
     },
     {
@@ -94,39 +82,47 @@
       "name": "Do I have to sign an exclusive agreement?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. You are never locked into an exclusive agreement with Mojo."
+        "text": "No. We do not ask for an exclusive agreement."
       }
     },
     {
       "@type": "Question",
-      "name": "What does handling leads actually mean?",
+      "name": "What add-ons are there?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Enquiries come to us instead of to you. We speak to everyone who calls, filter out the people who are not serious, and pass on only the buyers worth your time. It also protects your position. Sellers taking their own calls tend to give things away without realising — how long it has been listed, when they need to move, whether they would take less. We know which questions to answer and which to leave alone. We are not negotiating for you; we are making sure you start the negotiation with everything still in your hand."
+        "text": "Paid social ad campaigns (you set and pay the ad budget directly), drone footage, top-tier listing placement, an open house day, and listings in more languages. They are priced when we quote, and none of them are required. See the add-ons."
       }
     },
     {
       "@type": "Question",
-      "name": "Do you run the showings?",
+      "name": "I have more than one property.",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We can. Showings are included in both packages, and it is your call — run them yourself, or hand them to us."
+        "text": "We do package pricing for multiple properties. Get in touch and we will put something together."
       }
     },
     {
       "@type": "Question",
-      "name": "Where do you advertise?",
+      "name": "Can I buy services individually?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Local WhatsApp groups in your area, Yad2, Madlan, Facebook, Instagram, paid social campaigns, and direct distribution into curated buyer and investor networks."
+        "text": "Yes. Individual services are available on request, priced per project."
       }
     },
     {
       "@type": "Question",
-      "name": "How do you keep me updated?",
+      "name": "What is a CMA?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Weekly reporting. You get clear updates on reach, interest, and next steps every week, plus every enquiry forwarded to you as it comes in."
+        "text": "A comparative market analysis: what your property is really worth, worked out before anything goes live. We look at what actually sold nearby, from the Israel Tax Authority’s real estate database, and at what is listed and sitting unsold, and why. Price it wrong and nothing after that can fix it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does a campaign run?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A sale campaign runs until it sells, for up to six months, with a report every week. A rental campaign runs for 60 days."
       }
     },
     {
@@ -135,6 +131,94 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Within 48 hours of your property visit and content creation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who will I be dealing with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One named person, from the first call to the sale, with a direct number. You will not be passed between people."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do you advertise?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "On the main property sites and social media, through our exclusive network of community WhatsApp groups and contacts, with a sign at the property, and to our own buyers list. Paid social ad campaigns are available as an add-on."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you pay for premium listings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. We pay for premium packages on the property sites we use, so your listing gets better placement than a free private listing, at no extra cost to you. If you want it at the very top, we can upgrade it to the portal’s highest tier as an add-on, at the portal’s own price."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you go looking for buyers, or wait for them?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. Beyond the listings, we scan social media, listing sites and the community groups for people looking for a property like yours, and call them. We also keep our own list of buyers who have told us what they want, and check every new property against it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does handling leads actually mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Enquiries come to us instead of to you. We speak to everyone who calls, filter out the people who are not serious, and pass on the buyers worth your time with our notes. You can still see every enquiry if you want to. It also protects your position. Sellers taking their own calls tend to give things away without realising: how long it has been listed, when they need to move, whether they would take less. We know which questions to answer and which to leave alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you run the showings?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We can. Showings are included in both packages, and it is your call: run them yourself, or hand them to us."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you help with the negotiation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. When offers arrive we work out your answer with you, what to hold, what to give and when, and we can handle the back-and-forth with the buyer. The final decision is always yours. The contract itself is drawn up by your lawyer, as with any sale."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you keep me updated?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A weekly report on reach, enquiries, viewings, offers and what we would do next, plus the serious enquiries as they come in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I see your work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Our current campaigns are on the featured properties page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why would I not just use an agent?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "An agent takes a percentage of your sale. We do the marketing, find and filter the buyers, run the showings if you want us to, and negotiate with you, for a flat fee. The contract is drawn up by your lawyer either way, as it is with any agent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you a real estate agency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We are a property marketing company. Not an agency, not a listing service. We never take commission."
       }
     },
     {
@@ -163,18 +247,26 @@
     },
     {
       "@type": "Question",
-      "name": "Can I buy services individually?",
+      "name": "I am looking to buy or rent. Can you help?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Individual services are available on request, priced per project."
+        "text": "Yes. Tell us what you are looking for on the featured properties page and we add you to our buyers list. When one of our properties matches, we call you."
       }
     },
     {
       "@type": "Question",
-      "name": "I have more than one property.",
+      "name": "Do buyers pay anything?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We do package pricing for multiple properties. Get in touch and we will put something together."
+        "text": "No. Buyers and tenants never pay us anything, whether you join the buyers list or buy or rent one of our properties."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do you do with my details?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We use them to tell you about properties that match, and if you ask about a specific property we pass your name to its owner. Nothing is sold or shared beyond that. Our privacy policy has the details."
       }
     }
   ]
@@ -189,6 +281,7 @@
     <nav class="nav" id="nav">
       <a href="index.html">Home</a>
       <a href="services.html">What We Do</a>
+      <a href="featured.html">Featured Properties</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
       <div class="drop" id="drop">
@@ -204,10 +297,10 @@
           <a href="faq.html" role="menuitem">FAQ</a>
         </div>
       </div>
-      <a href="index.html#book" class="btn btn--primary nav__cta">Book A Free Consultation</a>
+      <a href="index.html#book" class="btn btn--primary nav__cta">Book a free consultation</a>
     </nav>
     <div class="header__actions">
-      <a href="index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book A Free Consultation</a>
+      <a href="index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book a free consultation</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18" stroke-linecap="round"/></svg>
       </button>
@@ -215,7 +308,9 @@
   </div>
 </header>
 <main>
-<section class="band band--dark" style="padding-block:96px 84px">
+<section class="band band--dark phero" style="padding-block:112px 100px">
+  <img class="phero__img" src="assets/heroes/hero-faq.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+  <div class="hero__scrim" aria-hidden="true"></div>
   <div class="container">
     <span class="eyebrow">FAQ</span>
     <h1 class="tt" style="max-width:16ch"><span>The things</span><span class="teal">people actually ask.</span></h1>
@@ -224,23 +319,31 @@
 </section>
 <section class="band section">
   <div class="container" style="max-width:900px">
-    <div class="faq rv"><details><summary>Why would I not just use an agent?</summary><div class="ans"><p>An agent handles showings, negotiation, and paperwork, and takes a percentage of your sale for all of it, marketing included. We handle the marketing, properly, for a flat fee. Many of our clients sell without an agent. Some use us alongside one and get far better marketing than the agent would have produced.</p></div></details>
-<details><summary>Are you a real estate agency?</summary><div class="ans"><p>No. We are a property marketing company. Not an agency, not a listing service. We never take commission.</p></div></details>
-<details><summary>Is the marketing fee just a commission?</summary><div class="ans"><p>No. A commission is a percentage of your sale price, so it rises with the value of your property and you do not know the figure until you sell. Our marketing fee is fixed: 12,000&nbsp;₪ when a sale goes through, 3,000&nbsp;₪ when a rental is let, whatever the property goes for, and you only pay it once it sells or rents.</p></div></details>
-<details><summary>What if it does not sell?</summary><div class="ans"><p>If a sale has not sold after six months, you pay 2,000&nbsp;₪ for the marketing you received, and nothing more. If a rental has not been let within 60 days, it is 750&nbsp;₪. If you paid upfront, there is nothing more to pay.</p></div></details>
-<details><summary>Do I have to pay anything upfront?</summary><div class="ans"><p>No. The CMA, photography, video and the whole campaign happen before you pay anything. If you prefer, you can pay upfront instead and pay less: 6,500&nbsp;₪ for a sale or 2,500&nbsp;₪ for a rental, at signing, and nothing when it sells or rents.</p></div></details>
-<details><summary>How long does a campaign run?</summary><div class="ans"><p>A sale campaign runs until it sells, for up to six months. A rental campaign runs for 60 days.</p></div></details>
-<details><summary>Do I have to sign an exclusive agreement?</summary><div class="ans"><p>No. You are never locked into an exclusive agreement with Mojo.</p></div></details>
-<details><summary>What does handling leads actually mean?</summary><div class="ans"><p>Enquiries come to us instead of to you. We speak to everyone who calls, filter out the people who are not serious, and pass on only the buyers worth your time.</p><p>It also protects your position. Sellers taking their own calls tend to give things away without realising — how long it has been listed, when they need to move, whether they would take less. We know which questions to answer and which to leave alone. We are not negotiating for you; we are making sure you start the negotiation with everything still in your hand.</p></div></details>
-<details><summary>Do you run the showings?</summary><div class="ans"><p>We can. Showings are included in both packages, and it is your call — run them yourself, or hand them to us.</p></div></details>
-<details><summary>Where do you advertise?</summary><div class="ans"><p>Local WhatsApp groups in your area, Yad2, Madlan, Facebook, Instagram, paid social campaigns, and direct distribution into curated buyer and investor networks.</p></div></details>
-<details><summary>How do you keep me updated?</summary><div class="ans"><p>Weekly reporting. You get clear updates on reach, interest, and next steps every week, plus every enquiry forwarded to you as it comes in.</p></div></details>
+    <nav class="faq-jump rv" aria-label="FAQ sections"><a href="#fees-and-payment">Fees and payment</a><a href="#how-a-campaign-works">How a campaign works</a><a href="#about-us">About us</a><a href="#buying-or-renting">Buying or renting</a></nav><h2 class="faq-grp rv" id="fees-and-payment">Fees and payment</h2><div class="faq rv"><details><summary>Is the marketing fee just a commission?</summary><div class="ans"><p>No. A commission is a percentage of your sale price, so it rises with the value of your property and you do not know the figure until you sell. Our marketing fee is fixed: ₪12,000 when a sale goes through, ₪3,000 when a rental is let, whatever the property goes for.</p></div></details>
+<details><summary>Do I have to pay anything upfront?</summary><div class="ans"><p>No. The CMA, photography, video and the whole campaign happen before you pay anything. If you prefer, you can pay upfront instead and pay less: ₪6,500 for a sale or ₪2,500 for a rental, at signing, and nothing when it sells or rents.</p></div></details>
+<details><summary>What if it does not sell?</summary><div class="ans"><p>If a sale has not sold after six months, you pay ₪2,000 for the marketing you received, and nothing more. If a rental has not been let within 60 days, it is ₪750. If you paid upfront, there is nothing more to pay.</p></div></details>
+<details><summary>What if I find a buyer myself?</summary><div class="ans"><p>Then you do not pay the ₪12,000. The sale fee is only for a buyer who came through our marketing. If you sell to a buyer you found yourself, you pay ₪2,000 for the marketing you received, the same as if it had not sold, and nothing more.</p></div></details>
+<details><summary>Do I have to sign an exclusive agreement?</summary><div class="ans"><p>No. We do not ask for an exclusive agreement.</p></div></details>
+<details><summary>What add-ons are there?</summary><div class="ans"><p>Paid social ad campaigns (you set and pay the ad budget directly), drone footage, top-tier listing placement, an open house day, and listings in more languages. They are priced when we quote, and none of them are required. <a href="services.html#add-ons">See the add-ons</a>.</p></div></details>
+<details><summary>I have more than one property.</summary><div class="ans"><p>We do package pricing for multiple properties. Get in touch and we will put something together.</p></div></details>
+<details><summary>Can I buy services individually?</summary><div class="ans"><p>Yes. Individual services are available on request, priced per project.</p></div></details></div><h2 class="faq-grp rv" id="how-a-campaign-works">How a campaign works</h2><div class="faq rv"><details><summary>What is a CMA?</summary><div class="ans"><p>A comparative market analysis: what your property is really worth, worked out before anything goes live. We look at what actually sold nearby, from the Israel Tax Authority’s real estate database, and at what is listed and sitting unsold, and why. Price it wrong and nothing after that can fix it.</p></div></details>
+<details><summary>How long does a campaign run?</summary><div class="ans"><p>A sale campaign runs until it sells, for up to six months, with a report every week. A rental campaign runs for 60 days.</p></div></details>
 <details><summary>How fast can you launch?</summary><div class="ans"><p>Within 48 hours of your property visit and content creation.</p></div></details>
+<details><summary>Who will I be dealing with?</summary><div class="ans"><p>One named person, from the first call to the sale, with a direct number. You will not be passed between people.</p></div></details>
+<details><summary>Where do you advertise?</summary><div class="ans"><p>On the main property sites and social media, through our exclusive network of community WhatsApp groups and contacts, with a sign at the property, and to our own buyers list. Paid social ad campaigns are available as an add-on.</p></div></details>
+<details><summary>Do you pay for premium listings?</summary><div class="ans"><p>Yes. We pay for premium packages on the property sites we use, so your listing gets better placement than a free private listing, at no extra cost to you. If you want it at the very top, we can upgrade it to the portal’s highest tier as an add-on, at the portal’s own price.</p></div></details>
+<details><summary>Do you go looking for buyers, or wait for them?</summary><div class="ans"><p>Both. Beyond the listings, we scan social media, listing sites and the community groups for people looking for a property like yours, and call them. We also keep our own list of buyers who have told us what they want, and check every new property against it.</p></div></details>
+<details><summary>What does handling leads actually mean?</summary><div class="ans"><p>Enquiries come to us instead of to you. We speak to everyone who calls, filter out the people who are not serious, and pass on the buyers worth your time with our notes. You can still see every enquiry if you want to.</p><p>It also protects your position. Sellers taking their own calls tend to give things away without realising: how long it has been listed, when they need to move, whether they would take less. We know which questions to answer and which to leave alone.</p></div></details>
+<details><summary>Do you run the showings?</summary><div class="ans"><p>We can. Showings are included in both packages, and it is your call: run them yourself, or hand them to us.</p></div></details>
+<details><summary>Do you help with the negotiation?</summary><div class="ans"><p>Yes. When offers arrive we work out your answer with you, what to hold, what to give and when, and we can handle the back-and-forth with the buyer. The final decision is always yours. The contract itself is drawn up by your lawyer, as with any sale.</p></div></details>
+<details><summary>How do you keep me updated?</summary><div class="ans"><p>A weekly report on reach, enquiries, viewings, offers and what we would do next, plus the serious enquiries as they come in.</p></div></details>
+<details><summary>Can I see your work?</summary><div class="ans"><p>Yes. Our current campaigns are on the <a href="featured.html">featured properties page</a>.</p></div></details></div><h2 class="faq-grp rv" id="about-us">About us</h2><div class="faq rv"><details><summary>Why would I not just use an agent?</summary><div class="ans"><p>An agent takes a percentage of your sale. We do the marketing, find and filter the buyers, run the showings if you want us to, and negotiate with you, for a flat fee. The contract is drawn up by your lawyer either way, as it is with any agent.</p></div></details>
+<details><summary>Are you a real estate agency?</summary><div class="ans"><p>No. We are a property marketing company. Not an agency, not a listing service. We never take commission.</p></div></details>
 <details><summary>I live abroad. Can you still work with me?</summary><div class="ans"><p>Yes, and a large part of our client base is in exactly that position. We handle the photography, the listings, and the campaign on the ground, and you get weekly updates wherever you are.</p></div></details>
 <details><summary>Which areas do you serve?</summary><div class="ans"><p>All over Israel. Jerusalem, Tel Aviv, Beit Shemesh, Modiin, Netanya, Ra'anana, Haifa, Ashdod, Herzliya, and everywhere in between.</p></div></details>
-<details><summary>What property types do you work with?</summary><div class="ans"><p>Apartments, houses, and commercial properties across all price points, for both sale and rental.</p></div></details>
-<details><summary>Can I buy services individually?</summary><div class="ans"><p>Yes. Individual services are available on request, priced per project.</p></div></details>
-<details><summary>I have more than one property.</summary><div class="ans"><p>We do package pricing for multiple properties. Get in touch and we will put something together.</p></div></details></div>
+<details><summary>What property types do you work with?</summary><div class="ans"><p>Apartments, houses, and commercial properties across all price points, for both sale and rental.</p></div></details></div><h2 class="faq-grp rv" id="buying-or-renting">Buying or renting</h2><div class="faq rv"><details><summary>I am looking to buy or rent. Can you help?</summary><div class="ans"><p>Yes. Tell us what you are looking for on the <a href="featured.html#looking">featured properties page</a> and we add you to our buyers list. When one of our properties matches, we call you.</p></div></details>
+<details><summary>Do buyers pay anything?</summary><div class="ans"><p>No. Buyers and tenants never pay us anything, whether you join the buyers list or buy or rent one of our properties.</p></div></details>
+<details><summary>What do you do with my details?</summary><div class="ans"><p>We use them to tell you about properties that match, and if you ask about a specific property we pass your name to its owner. Nothing is sold or shared beyond that. <a href="privacy.html">Our privacy policy</a> has the details.</p></div></details></div>
   </div>
 </section>
 </main>
@@ -269,6 +372,7 @@
     </div>
     <div><h4>Company</h4><ul>
       <li><a href="services.html">What we do</a></li>
+      <li><a href="featured.html">Featured properties</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="about.html">About us</a></li>
     </ul></div>
@@ -293,5 +397,5 @@
 <a class="wa" href="https://wa.me/972506875631" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.43 1.32 4.92L2 22l5.37-1.4a9.8 9.8 0 004.67 1.19h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.47 2 12.04 2zm5.75 14.05c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.5-.75-2.94-1.22-4.83-4.2-4.98-4.4-.14-.2-1.19-1.58-1.19-3.02s.75-2.14 1.02-2.44c.27-.3.59-.37.78-.37l.56.01c.18 0 .42-.07.66.5.24.58.83 2.02.9 2.17.07.15.12.32.02.52-.1.2-.15.32-.3.5l-.44.51c-.15.15-.3.32-.13.62.17.3.75 1.24 1.62 2.01 1.11 1 2.05 1.3 2.34 1.45.3.15.47.13.64-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.7.8 1.99.95.3.15.49.22.56.35.07.12.07.72-.17 1.4z"/></svg></a>
 <div class="stickybar" id="stickybar"><a href="index.html#book" class="btn btn--primary">Book a free consultation</a></div>
 <div class="mscroll" id="mscroll" aria-hidden="true"><img src="assets/logo/monogram-teal.png" alt="" id="mimg"></div>
-<script src="js/site.js?v=aab55509" defer></script>
+<script src="js/site.js?v=20261121c" defer></script>
 </body></html>

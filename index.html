@@ -6,33 +6,39 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com; img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com; media-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://api.web3forms.com; form-action 'self' https://api.web3forms.com; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC"></script>
 <script>
+  /* Google Analytics loads only after the visitor accepts cookies (see the banner in js/site.js). */
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9Y913H0LKC');
+  window.mjLoadGA = function () {
+    if (window.__mjGA) return; window.__mjGA = 1;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC';
+    document.head.appendChild(s);
+    gtag('js', new Date()); gtag('config', 'G-9Y913H0LKC');
+  };
+  try { if (localStorage.getItem('mj_consent') === 'yes') window.mjLoadGA(); } catch (e) {}
 </script>
 
 <title>Mojo Marketing — Sell your property. Keep your commission.</title>
 <link rel="canonical" href="https://themojomarketing.com/">
-<meta name="description" content="Professional property marketing across Israel for a flat fee. Full CMA, photography and video, advertising everywhere your buyer is, and every lead handled. Nothing to pay until it sells.">
+<meta name="description" content="Property marketing across Israel for one flat fee: pricing, professional photos and video, a floor plan, listings on the main property sites and social media, and every call handled. Never a percentage.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mojo Marketing">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://themojomarketing.com/">
 <meta property="og:title" content="Mojo Marketing — Sell your property. Keep your commission.">
-<meta property="og:description" content="Professional property marketing across Israel for a flat fee. Full CMA, photography and video, advertising everywhere your buyer is, and every lead handled. Nothing to pay until it sells.">
+<meta property="og:description" content="Property marketing across Israel for one flat fee: pricing, professional photos and video, a floor plan, listings on the main property sites and social media, and every call handled. Never a percentage.">
 <meta property="og:image" content="https://themojomarketing.com/assets/hero-poster.jpg">
 <meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
 <meta property="og:image:alt" content="Mojo Marketing &mdash; property marketing across Israel">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mojo Marketing — Sell your property. Keep your commission.">
-<meta name="twitter:description" content="Professional property marketing across Israel for a flat fee. Nothing to pay until it sells.">
+<meta name="twitter:description" content="Professional property marketing across Israel. A flat fee, never a percentage.">
 <meta name="twitter:image" content="https://themojomarketing.com/assets/hero-poster.jpg">
 <link rel="icon" href="assets/logo/monogram-teal.png">
-<link rel="stylesheet" href="css/site.css?v=1a3717b2">
+<link rel="stylesheet" href="css/site.css?v=20261121c">
 <script>document.documentElement.classList.remove('no-js');</script>
 <script type="application/ld+json">
 {
@@ -40,7 +46,7 @@
   "@type": "ProfessionalService",
   "name": "Mojo Marketing",
   "url": "https://themojomarketing.com/",
-  "description": "Property marketing across Israel for a flat fee. Full CMA, professional photography and video, advertising across every relevant channel, and every lead handled. Nothing to pay until it sells, then one fixed fee, never a commission.",
+  "description": "Property marketing across Israel for one flat fee: pricing, professional photos and video, a floor plan, listings on the main property sites and social media, and every call handled. Never a percentage.",
   "email": "mojomarketingco@gmail.com",
   "telephone": "+972-50-687-5631",
   "priceRange": "\u20aa2,500-\u20aa12,000",
@@ -70,6 +76,7 @@
     <nav class="nav" id="nav">
       <a href="index.html" aria-current="page">Home</a>
       <a href="services.html">What We Do</a>
+      <a href="featured.html">Featured Properties</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
       <div class="drop" id="drop">
@@ -85,10 +92,10 @@
           <a href="faq.html" role="menuitem">FAQ</a>
         </div>
       </div>
-      <a href="index.html#book" class="btn btn--primary nav__cta">Book A Free Consultation</a>
+      <a href="index.html#book" class="btn btn--primary nav__cta">Book a free consultation</a>
     </nav>
     <div class="header__actions">
-      <a href="index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book A Free Consultation</a>
+      <a href="index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book a free consultation</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18" stroke-linecap="round"/></svg>
       </button>
@@ -113,8 +120,9 @@
       </svg>
     </div>
     <!-- Drop hero.mp4 (+ hero-poster.jpg) into assets/ and this plays automatically. -->
-    <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="metadata"
+    <video class="hero__video" id="heroVideo" autoplay muted loop playsinline preload="auto"
            poster="assets/hero-poster.jpg" style="display:none">
+      <source src="assets/hero-mobile.mp4" type="video/mp4" media="(max-width: 860px)">
       <source src="assets/hero.mp4" type="video/mp4">
     </video>
   </div>
@@ -127,10 +135,10 @@
           Sell your <span class="rot" id="rot" aria-hidden="true"><span class="is-on">property.</span><span>apartment.</span><span>villa.</span><span>penthouse.</span></span><span class="visually-hidden">property.</span><br>
           <span class="teal">Keep your commission.</span>
         </h1>
-        <p class="hero__sub">Full CMA, professional photography and video, advertising everywhere your buyer actually is, and every lead handled. Nothing to pay until it sells.</p>
+        <p class="hero__sub"><strong class="hero__punch">One flat fee.<br>Never a percentage of your sale.</strong> We price it, shoot it, market it and find your buyer.</p>
         <div class="btns">
           <a href="#book" class="btn btn--onDark">Book a free consultation</a>
-          <a href="pricing.html" class="btn btn--ghostDark">See Pricing</a>
+          <a href="pricing.html" class="btn btn--ghostDark">See pricing</a>
         </div>
       </div>
       <div>
@@ -146,7 +154,7 @@
           <div class="lcard__body">
             <p class="lcard__title" id="ltitle"></p>
             <p class="lcard__desc" id="ldesc"></p>
-            <div class="chips" id="lchips"><span class="chip">Yad2</span><span class="chip">Madlan</span><span class="chip">Facebook</span><span class="chip">Instagram</span><span class="chip">Neighborhood WhatsApp</span><span class="chip">Community boards</span><span class="chip">Shul lists</span></div>
+            <div class="chips" id="lchips"><span class="chip">Property sites</span><span class="chip">Social media</span><span class="chip">Neighborhood WhatsApp</span><span class="chip">Community boards</span><span class="chip">Shul lists</span></div>
             <div class="lcard__foot"><span id="lfootLab">For sale</span><span class="lcard__count num" id="lcount"></span></div>
             <p class="lcard__note">Marketed by Mojo</p>
           </div>
@@ -164,163 +172,83 @@
   </div></div>
 </section>
 
-<section class="band section" id="what-we-do">
+<section class="band section wwd" id="what-we-do">
   <div class="container">
-    <div class="shead rv">
+    <div class="shead rv" style="text-align:center;margin-inline:auto">
       <span class="eyebrow">What we do</span>
-      <h2 class="tt"><span>Nine things, all included,</span><span>for one fixed price.</span></h2>
-      <p class="lead">There is no tier where the CMA disappears. Every campaign gets all of it.</p>
+      <h2 class="tt"><span>Everything it takes to sell.</span><span>One flat fee.</span></h2>
+      <p class="lead" style="margin-inline:auto">Twelve things, all included, for up to six months. One person runs it all.</p>
     </div>
-
-    <div class="flow">
-      <div class="flow__rail" aria-hidden="true">
-        <svg viewBox="0 0 1000 24" preserveAspectRatio="none">
-          <line class="flow__line" x1="166" y1="12" x2="834" y2="12" vector-effect="non-scaling-stroke"/>
-        </svg>
-        <span class="flow__node" style="left:16.67%"></span>
-        <span class="flow__node" style="left:50%"></span>
-        <span class="flow__node" style="left:83.33%"></span>
-      </div>
-        <article class="flow__step rv">
-          <span class="flow__num" aria-hidden="true">01</span>
-          <span class="flow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20h16M7 20V9M12 20V4M17 20v-7" stroke-linecap="round"/></svg></span>
-          <h3>We prepare it</h3>
-          <ul class="flow__list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.4l3.4 3.4L14 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A full CMA before anything else</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.4l3.4 3.4L14 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Professional photography</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.4l3.4 3.4L14 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A walkthrough video</span></li></ul>
-        </article>
-        <article class="flow__step rv">
-          <span class="flow__num" aria-hidden="true">02</span>
-          <span class="flow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/></svg></span>
-          <h3>We put it everywhere</h3>
-          <ul class="flow__list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.4l3.4 3.4L14 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every channel your buyer uses</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.4l3.4 3.4L14 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>The closed groups you cannot join</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.4l3.4 3.4L14 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Aimed at the buyer you want</span></li></ul>
-        </article>
-        <article class="flow__step rv">
-          <span class="flow__num" aria-hidden="true">03</span>
-          <span class="flow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <h3>We handle the rest</h3>
-          <ul class="flow__list"><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.4l3.4 3.4L14 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every enquiry handled and forwarded</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.4l3.4 3.4L14 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your position protected on every call</span></li><li><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8.4l3.4 3.4L14 3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A weekly report with a recommendation</span></li></ul>
-        </article>
-    </div>
-
-    <div class="btns rv" style="margin-top:36px"><a href="services.html" class="btn btn--secondary">See How Each One Works</a></div>
+    <div class="wp-row"><article class="wp wp--prep rv"><span class="wp__n">1</span><div class="wp__art"><svg viewBox="0 0 240 170" aria-hidden="true">
+ <rect x="22" y="130" width="196" height="12" rx="6" fill="#1b2622" opacity=".12"/>
+ <rect x="30" y="34" width="96" height="104" rx="10" fill="#fffdf8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <rect x="56" y="26" width="44" height="16" rx="6" fill="#e7ad4b" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <rect x="44" y="96" width="14" height="28" rx="3" fill="#7fc4b1" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="64" y="80" width="14" height="44" rx="3" fill="#7fc4b1" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="84" y="66" width="14" height="58" rx="3" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <path d="M42 62h40M42 72h26" stroke="#c9d0cc" stroke-width="5" stroke-linecap="round"/>
+ <g class="hv"><rect x="122" y="70" width="92" height="62" rx="12" fill="#2c3a35" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="150" y="60" width="30" height="14" rx="4" fill="#2c3a35" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <circle cx="168" cy="101" r="21" fill="#2c4a42" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="168" cy="101" r="11" fill="#1b2622"/><circle cx="162" cy="95" r="4" fill="#fffdf8" opacity=".85"/>
+ <rect x="194" y="78" width="12" height="7" rx="2" fill="#e7ad4b"/></g>
+ <path d="M206 44l4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg></div><h3>We prepare it</h3><ul class="wp__chips"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 19h16M7 19V9M12 19V5M17 19v-8" stroke-linecap="round"/></svg>Price analysis</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="3.2"/><path d="M8 7l1.4-2h5.2L16 7"/></svg>Pro photos</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3z" stroke-linejoin="round"/></svg>Walkthrough video</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M3.5 11h7v9.5M10.5 3.5V8M14 11h6.5M14 11v4" stroke-linecap="round"/></svg>Floor plan</li></ul></article><article class="wp wp--find rv"><span class="wp__n">2</span><div class="wp__art"><svg viewBox="0 0 240 170" aria-hidden="true">
+ <rect x="22" y="138" width="196" height="12" rx="6" fill="#1b2622" opacity=".12"/>
+ <rect x="84" y="22" width="72" height="122" rx="14" fill="#1b2622"/><rect x="90" y="28" width="60" height="110" rx="9" fill="#fffdf8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <rect x="96" y="36" width="48" height="36" rx="5" fill="#cfe5df" stroke="#1b2622" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><path d="M96 72l14-12 10 7 10-9 14 14z" fill="#9fcbb9"/>
+ <rect x="96" y="80" width="36" height="6" rx="3" fill="#1b2622"/><rect x="96" y="92" width="44" height="5" rx="2.5" fill="#c9d0cc"/>
+ <rect x="96" y="112" width="48" height="16" rx="8" fill="#356b5e"/>
+ <g class="hv"><circle cx="186" cy="58" r="24" fill="#fffdf8" fill-opacity=".55" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M203 75l20 20" stroke="#1b2622" stroke-width="9" stroke-linecap="round"/></g>
+ <g><circle cx="40" cy="50" r="14" fill="#fffdf8" stroke="#1b2622" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="40" cy="46" r="5.5" fill="#f0c9a4" stroke="#1b2622" stroke-width="1.8"/><path d="M31 59c2-5 5-7 9-7s7 2 9 7" fill="#e7ad4b" stroke="#1b2622" stroke-width="1.8"/></g>
+ <g><circle cx="50" cy="104" r="14" fill="#fffdf8" stroke="#1b2622" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/><circle cx="50" cy="100" r="5.5" fill="#c99470" stroke="#1b2622" stroke-width="1.8"/><path d="M41 113c2-5 5-7 9-7s7 2 9 7" fill="#7fc4b1" stroke="#1b2622" stroke-width="1.8"/></g>
+ <path d="M56 54c14 4 22 10 30 18M66 102c8-2 14-4 20-8" stroke="#356b5e" stroke-width="2.6" stroke-dasharray="3 6" fill="none" stroke-linecap="round"/>
+</svg></div><h3>We find your buyer</h3><ul class="wp__chips"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/></svg>Property sites</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17" r="2.6"/><path d="M7.6 8.9l3 5.4M16.4 8.9l-3 5.4M8.6 7h6.8"/></svg>WhatsApp groups</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M5 21V3M5 5h13v8H5" stroke-linecap="round" stroke-linejoin="round"/></svg>A sign outside</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21" stroke-linecap="round"/></svg>We call buyers</li></ul></article><article class="wp wp--thru rv"><span class="wp__n">3</span><div class="wp__art"><svg viewBox="0 0 240 170" aria-hidden="true">
+ <rect x="22" y="138" width="196" height="12" rx="6" fill="#1b2622" opacity=".12"/>
+ <path d="M60 140v-60l50-38 50 38v60z" fill="#eadfc8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M50 86l60-46 60 46" fill="none" stroke="#1b2622" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+ <rect x="98" y="100" width="24" height="40" rx="3" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="72" y="92" width="18" height="18" rx="2" fill="#cfe5df" stroke="#1b2622" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><rect x="130" y="92" width="18" height="18" rx="2" fill="#cfe5df" stroke="#1b2622" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+ <g class="hv"><rect x="150" y="34" width="70" height="30" rx="7" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><text x="185" y="55" font-family="var(--font)" font-size="15" font-weight="700" fill="#fffdf8" text-anchor="middle">SOLD</text><path d="M160 64v40" stroke="#1b2622" stroke-width="3"/></g>
+ <g><circle cx="38" cy="70" r="10" fill="none" stroke="#e7ad4b" stroke-width="4"/><path d="M45 63l16-16M55 53l5 5M58 50l4 4" stroke="#e7ad4b" stroke-width="4" stroke-linecap="round"/></g>
+ <path d="M196 116l4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+</svg></div><h3>We see it through</h3><ul class="wp__chips"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke-linejoin="round"/></svg>Every call handled</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M3 12l4-4 4 3 3-2 7 5" stroke-linecap="round" stroke-linejoin="round"/></svg>Negotiation</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M4 21h16M7.5 21V4.4a1 1 0 01.82-.98l7-1.3a1 1 0 011.18.98V21" stroke-linejoin="round"/></svg>Showings</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4" stroke-linecap="round"/></svg>Weekly report</li></ul></article></div>
+    <div class="btns rv" style="margin-top:40px;justify-content:center"><a href="services.html" class="btn btn--secondary">See how each one works</a></div>
   </div>
 </section>
 
-<section class="band band--dark section" id="commission">
+<section class="band section cm" id="commission">
+  <div class="container">
+    <div class="shead rv" style="text-align:center;margin-inline:auto">
+      <span class="eyebrow">Keep the 2%</span>
+      <h2 class="tt"><span>An agent takes a percentage.</span><span>We charge one flat fee.</span></h2>
+    </div>
+    <div class="cm-card rv">
+      <div class="cm-price">
+        <span class="cm-lab">Your property price</span>
+        <div class="cm-val num" id="calcVal">₪3,000,000</div>
+        <input type="range" id="calcSlider" min="800000" max="15000000" step="50000" value="3000000" aria-label="Property price in shekels">
+        <div class="calc__ends"><span>₪800K</span><span>₪15M</span></div>
+      </div>
+      <div class="cm-bars">
+        <div class="cm-bar cm-bar--agent"><span class="cm-bar__lab">Agent, 2% plus VAT</span><div class="cm-bar__track"><div class="cm-bar__fill" id="barAgent" style="width:100%"><span class="num" id="outAgent">₪70,800</span></div></div></div>
+        <div class="cm-bar cm-bar--mojo"><span class="cm-bar__lab">Mojo, flat fee</span><div class="cm-bar__track"><div class="cm-bar__fill" id="barMojo" style="width:17%"></div><span class="num cm-bar__out">₪12,000</span></div></div>
+      </div>
+      <div class="cm-keep"><span>You keep</span><strong class="num" id="outKept">₪58,800</strong></div>
+    </div>
+    <div class="cm-vs rv">
+      <div class="cm-col"><h3>With an agent</h3><ul>
+        <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#f6d9d3" stroke="#1b2622" stroke-width="1.6"/><path d="M7 7l6 6M13 7l-6 6" stroke="#c0432f" stroke-width="2" stroke-linecap="round"/></svg>A percentage of your price</li><li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#f6d9d3" stroke="#1b2622" stroke-width="1.6"/><path d="M7 7l6 6M13 7l-6 6" stroke="#c0432f" stroke-width="2" stroke-linecap="round"/></svg>You find out the cost when you sell</li><li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#f6d9d3" stroke="#1b2622" stroke-width="1.6"/><path d="M7 7l6 6M13 7l-6 6" stroke="#c0432f" stroke-width="2" stroke-linecap="round"/></svg>Usually an exclusive contract</li></ul></div>
+      <div class="cm-col cm-col--mojo"><h3>With Mojo</h3><ul>
+        <li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#d7efe6" stroke="#1b2622" stroke-width="1.6"/><path d="M6 10.3l2.6 2.6L14 7.6" stroke="#356b5e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>One flat fee, same at any price</li><li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#d7efe6" stroke="#1b2622" stroke-width="1.6"/><path d="M6 10.3l2.6 2.6L14 7.6" stroke="#356b5e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>You know the cost on day one</li><li><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="9" fill="#d7efe6" stroke="#1b2622" stroke-width="1.6"/><path d="M6 10.3l2.6 2.6L14 7.6" stroke="#356b5e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>No exclusive contract</li></ul></div>
+    </div>
+    <p class="cm-note rv">₪12,000 when it sells. If it has not sold after six months, ₪2,000 and nothing more. <a href="pricing.html">See pricing</a></p>
+  </div>
+</section>
+
+<section class="band section" id="featured">
   <div class="container">
     <div class="shead rv">
-      <span class="eyebrow">The commission problem</span>
-      <h2 class="tt"><span>You are buying the whole bundle</span><span>when you only need the marketing.</span></h2>
-      <p class="lead">An agent sells showings, negotiation, paperwork and marketing together, for a percentage. The bundle cannot be broken up.</p>
+      <span class="eyebrow">Featured properties</span>
+      <h2 class="tt"><span>Real campaigns,</span><span>running now.</span></h2>
+      <p class="lead">Every property we take on gets the same work: photography, video, every channel, and one person on every enquiry. This is what it looks like.</p>
     </div>
-    <div class="vs rv">
-      <div class="vs__col vs__col--now">
-        <div class="vs__head">What happens now</div>
-        <div class="vs__fig num">₪70,800</div>
-        <p class="vs__cap">Example: a 3,000,000&nbsp;₪ sale, at 2% plus VAT</p>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="rgba(244,242,237,.45)" stroke-width="1.4"/><path d="M7.2 7.2l6.6 6.6M13.8 7.2l-6.6 6.6" stroke="rgba(244,242,237,.75)" stroke-width="1.9" stroke-linecap="round"/></svg><p>Showings, negotiation, paperwork and marketing, sold together</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="rgba(244,242,237,.45)" stroke-width="1.4"/><path d="M7.2 7.2l6.6 6.6M13.8 7.2l-6.6 6.6" stroke="rgba(244,242,237,.75)" stroke-width="1.9" stroke-linecap="round"/></svg><p>Priced as a percentage, so it rises with your sale price</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="rgba(244,242,237,.45)" stroke-width="1.4"/><path d="M7.2 7.2l6.6 6.6M13.8 7.2l-6.6 6.6" stroke="rgba(244,242,237,.75)" stroke-width="1.9" stroke-linecap="round"/></svg><p>The final figure is unknown until the day you sell</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="rgba(244,242,237,.45)" stroke-width="1.4"/><path d="M7.2 7.2l6.6 6.6M13.8 7.2l-6.6 6.6" stroke="rgba(244,242,237,.75)" stroke-width="1.9" stroke-linecap="round"/></svg><p>Marketing is one responsibility among several</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="rgba(244,242,237,.45)" stroke-width="1.4"/><path d="M7.2 7.2l6.6 6.6M13.8 7.2l-6.6 6.6" stroke="rgba(244,242,237,.75)" stroke-width="1.9" stroke-linecap="round"/></svg><p>Usually requires an exclusive agreement</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="rgba(244,242,237,.45)" stroke-width="1.4"/><path d="M7.2 7.2l6.6 6.6M13.8 7.2l-6.6 6.6" stroke="rgba(244,242,237,.75)" stroke-width="1.9" stroke-linecap="round"/></svg><p>You see the enquiries your agent passes on</p></div>
-      </div>
-      <div class="vs__col vs__col--mojo">
-        <div class="vs__head">With Mojo</div>
-        <div class="vs__fig num">₪12,000</div>
-        <p class="vs__cap">Only once it sells. The same at any sale price.</p>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="#7fc4b1" stroke-width="1.4"/><path d="M6.6 10.8l2.6 2.6L14.4 8" stroke="#7fc4b1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Marketing only. You keep the negotiation and the sale</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="#7fc4b1" stroke-width="1.4"/><path d="M6.6 10.8l2.6 2.6L14.4 8" stroke="#7fc4b1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>A flat fee, agreed before we start</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="#7fc4b1" stroke-width="1.4"/><path d="M6.6 10.8l2.6 2.6L14.4 8" stroke="#7fc4b1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>You know the full cost on day one</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="#7fc4b1" stroke-width="1.4"/><path d="M6.6 10.8l2.6 2.6L14.4 8" stroke="#7fc4b1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Marketing is the only thing we do</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="#7fc4b1" stroke-width="1.4"/><path d="M6.6 10.8l2.6 2.6L14.4 8" stroke="#7fc4b1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>No exclusive agreement, ever</p></div>
-        <div class="vs__row"><svg class="vs__mark" viewBox="0 0 21 21" fill="none"><circle cx="10.5" cy="10.5" r="9.5" stroke="#7fc4b1" stroke-width="1.4"/><path d="M6.6 10.8l2.6 2.6L14.4 8" stroke="#7fc4b1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><p>Every enquiry forwarded in full, serious or not</p></div>
-        <div class="vs__extra"><p>Your position intact when you reach the negotiation.</p></div>
-      </div>
-    </div>
-    <div style="margin-top:64px"><div class="calc rv">
-      <span class="eyebrow" style="color:var(--paper-soft)">Work it out</span>
-      <h3>What would a commission cost on your property?</h3>
-      <div class="calc__val num" id="calcVal">₪2,000,000</div>
-      <input type="range" id="calcSlider" min="800000" max="15000000" step="50000" value="2000000" aria-label="Property value in shekels">
-      <div class="calc__ends"><span>₪800,000</span><span>₪15,000,000</span></div>
-      <div class="calc__out">
-        <div class="calc__cell"><span class="lab">Agent commission</span><div class="calc-fig num" id="outAgent">₪47,200</div><p class="calc__note">2% plus 18% VAT — climbs with your price</p></div>
-        <div class="calc__cell"><span class="lab">Mojo, all in</span><div class="calc-fig num">₪12,000</div><p class="calc__note">Only once it sells — never changes</p></div>
-        <div class="calc__cell calc__cell--kept"><span class="lab">You keep</span><div class="calc-fig num" id="outKept">₪35,200</div><p class="calc__note">The difference, at this price</p></div>
-      </div>
-      <div class="presets">
-        <button class="preset" data-v="3590000" type="button">Baka, 3.59M</button>
-        <button class="preset" data-v="3150000" type="button">Beit Shemesh, 3.15M</button>
-        <button class="preset" data-v="2930000" type="button">Modiin, 2.93M</button>
-      </div>
-    </div></div>
-
-    <div class="concession rv" style="max-width:800px;margin-top:72px">
-      <p class="said">If you want someone to run your whole sale — the showings, the negotiation, the paperwork — an agent is the right choice, and a good one earns their fee.</p>
-      <p class="answer">If what you actually need is the marketing done properly, you should not have to buy the rest of it, and you should not have to pay a percentage for it.</p>
-    </div>
-  </div>
-</section>
-
-<section class="band band--dark section">
-  <div class="container">
-    <div class="shead rv">
-      <span class="eyebrow">Case results</span>
-      <h2 class="tt"><span>Three sales.</span><span>What the owners kept.</span></h2>
-      <p class="lead">The figure on each card is the commission that was never paid — money that stayed with the owner.</p>
-    </div>
-    <div class="cases"><article class="case rv">
-        <span class="case__saved">Kept by the owner</span>
-        <div class="case-fig">₪84,724</div>
-        <p class="case__sub">in commission never paid</p>
-        <p class="case__kept">Sold without an agent. We ran the marketing and took the enquiries; the owner kept control of the sale.</p>
-        <p class="case__loc">Baka, Jerusalem · sold at 3.59M</p>
-      </article>
-<article class="case rv">
-        <span class="case__saved">Kept by the owner</span>
-        <div class="case-fig">₪74,340</div>
-        <p class="case__sub">in commission never paid</p>
-        <p class="case__kept">No exclusive agreement and no percentage. Marketing and lead handling only, on a flat fee.</p>
-        <p class="case__loc">Beit Shemesh · sold at 3.15M</p>
-      </article>
-<article class="case rv">
-        <span class="case__saved">Kept by the owner</span>
-        <div class="case-fig">₪69,148</div>
-        <p class="case__sub">in commission never paid</p>
-        <p class="case__kept">The owner wanted it marketed properly without handing over a share of the eventual sale.</p>
-        <p class="case__loc">Modiin · sold at 2.93M</p>
-      </article></div>
-  </div>
-</section>
-
-<section class="band band--paper section">
-  <div class="container">
-    <div class="shead rv"><span class="eyebrow">In their words</span><h2 class="tt"><span>What owners say</span><span>once it is done.</span></h2></div>
-    <div class="quotes"><blockquote class="quote quote--feature rv">
-      <svg class="quote__mark" viewBox="0 0 26 20" fill="currentColor"><path d="M0 20V11C0 4.9 3.4.9 9.6 0l.9 3.3C7 4.2 5.3 6.1 5.2 9h4.3v11zm15.5 0V11c0-6.1 3.4-10.1 9.6-11l.9 3.3c-3.5.9-5.2 2.8-5.3 5.7H25v11z"/></svg>
-      <p>What was amazing was that Mojo let us handle the showings ourselves while they took care of the marketing and enquiries. It gave us the best of both worlds, and everything worked so smoothly.</p>
-      <footer class="quote__by"><span class="quote__av">R</span><span><cite>Rebecca T.</cite><em>Overseas Property Owner</em></span></footer>
-    </blockquote>
-<blockquote class="quote rv">
-      <svg class="quote__mark" viewBox="0 0 26 20" fill="currentColor"><path d="M0 20V11C0 4.9 3.4.9 9.6 0l.9 3.3C7 4.2 5.3 6.1 5.2 9h4.3v11zm15.5 0V11c0-6.1 3.4-10.1 9.6-11l.9 3.3c-3.5.9-5.2 2.8-5.3 5.7H25v11z"/></svg>
-      <p>The comparative market analysis was honestly one of my favorite parts. They showed us so much about our property and the market around it, including things we had no idea about.</p>
-      <footer class="quote__by"><span class="quote__av">D</span><span><cite>David R.</cite><em>Property Owner</em></span></footer>
-    </blockquote>
-<blockquote class="quote rv">
-      <svg class="quote__mark" viewBox="0 0 26 20" fill="currentColor"><path d="M0 20V11C0 4.9 3.4.9 9.6 0l.9 3.3C7 4.2 5.3 6.1 5.2 9h4.3v11zm15.5 0V11c0-6.1 3.4-10.1 9.6-11l.9 3.3c-3.5.9-5.2 2.8-5.3 5.7H25v11z"/></svg>
-      <p>We were living abroad, and Mojo handled everything on the ground for us. They kept us updated throughout and made the whole process incredibly easy from a distance.</p>
-      <footer class="quote__by"><span class="quote__av">M</span><span><cite>Michael S.</cite><em>Overseas Property Owner</em></span></footer>
-    </blockquote>
-<blockquote class="quote rv">
-      <svg class="quote__mark" viewBox="0 0 26 20" fill="currentColor"><path d="M0 20V11C0 4.9 3.4.9 9.6 0l.9 3.3C7 4.2 5.3 6.1 5.2 9h4.3v11zm15.5 0V11c0-6.1 3.4-10.1 9.6-11l.9 3.3c-3.5.9-5.2 2.8-5.3 5.7H25v11z"/></svg>
-      <p>They actually came all the way to our house, for free, just to sit down with us and explain the whole process. We never felt like we were being pushed into anything.</p>
-      <footer class="quote__by"><span class="quote__av">J</span><span><cite>Jonathan M.</cite><em>Property Owner</em></span></footer>
-    </blockquote>
-<blockquote class="quote rv">
-      <svg class="quote__mark" viewBox="0 0 26 20" fill="currentColor"><path d="M0 20V11C0 4.9 3.4.9 9.6 0l.9 3.3C7 4.2 5.3 6.1 5.2 9h4.3v11zm15.5 0V11c0-6.1 3.4-10.1 9.6-11l.9 3.3c-3.5.9-5.2 2.8-5.3 5.7H25v11z"/></svg>
-      <p>We honestly did not think we would be able to sell the property that quickly. Mojo got it in front of the right people almost immediately.</p>
-      <footer class="quote__by"><span class="quote__av">D</span><span><cite>Daniel B.</cite><em>Property Owner</em></span></footer>
-    </blockquote></div>
+    <div class="fstrip"><a class="fstrip__item fstrip__item--lead rv" href="featured.html#even-yisrael"><img src="assets/campaigns/even-yisrael.jpg" alt="3 rooms · 60 m², Even Yisrael, Jerusalem" loading="lazy" decoding="async"><span class="fstrip__tag">For sale</span><span class="fstrip__txt"><strong>Even Yisrael, Jerusalem</strong><span>3 rooms · 60 m²</span><span class="num">₪3,600,000</span></span></a><a class="fstrip__item rv" href="featured.html#givat-sharet"><img src="assets/campaigns/givat-sharet.jpg" alt="5 rooms · 130 m², Givat Sharet, Beit Shemesh" loading="lazy" decoding="async"><span class="fstrip__tag">For sale</span><span class="fstrip__txt"><strong>Givat Sharet, Beit Shemesh</strong><span>5 rooms · 130 m²</span><span class="num">₪2,790,000</span></span></a><a class="fstrip__item rv" href="featured.html#abu-tor"><img src="assets/campaigns/abu-tor.jpg" alt="Penthouse · 6 rooms · 150 m², Abu Tor, Jerusalem" loading="lazy" decoding="async"><span class="fstrip__tag">For rent</span><span class="fstrip__txt"><strong>Abu Tor, Jerusalem</strong><span>Penthouse · 6 rooms · 150 m²</span><span class="num">₪20,000 / month</span></span></a><a class="fstrip__item rv" href="featured.html#king-george"><img src="assets/campaigns/king-george-kitchen.jpg" alt="3 rooms · 90 m², King George, Jerusalem" loading="lazy" decoding="async"><span class="fstrip__tag">For rent</span><span class="fstrip__txt"><strong>King George, Jerusalem</strong><span>3 rooms · 90 m²</span><span class="num">₪9,800 / month</span></span></a></div>
+    <div class="btns rv" style="margin-top:36px"><a href="featured.html" class="btn btn--secondary">See featured properties</a></div>
   </div>
 </section>
 
@@ -345,11 +273,11 @@
           <input type="hidden" name="redirect" value="https://themojomarketing.com/thank-you.html">
           <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
 
-          <div class="field field--full"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Your name"></div>
-          <div class="field field--full"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" required autocomplete="tel" placeholder="The best number to reach you on"></div>
-          <div class="field field--full"><label for="f-email">Email <span class="opt">optional</span></label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@example.com"></div>
-          <div class="field field--full"><label for="f-note">Anything else <span class="opt">optional</span></label><textarea id="f-note" name="message" rows="3" placeholder="Where the property is, whether you are selling or renting, anything you want us to know."></textarea></div>
-          <div class="field field--full"><button class="btn btn--primary" type="submit" style="width:100%">Book A Free Consultation</button></div>
+          <div class="field field--full"><label for="f-name">Full name</label><input id="f-name" name="name" type="text" required maxlength="120" autocomplete="name" placeholder="Your name"></div>
+          <div class="field field--full"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" required maxlength="40" autocomplete="tel" placeholder="The best number to reach you on"></div>
+          <div class="field field--full"><label for="f-email">Email <span class="opt">optional</span></label><input id="f-email" name="email" type="email" maxlength="160" autocomplete="email" placeholder="you@example.com"></div>
+          <div class="field field--full"><label for="f-note">Anything else <span class="opt">optional</span></label><textarea id="f-note" name="message" rows="3" maxlength="2000" placeholder="Where the property is, whether you are selling or renting, anything you want us to know."></textarea></div>
+          <div class="field field--full"><button class="btn btn--primary" type="submit" style="width:100%">Book a free consultation</button></div>
           <p class="small field--full" style="margin:0;color:var(--ink-soft)">Your name and number come to us as an email, and go no further. Nothing is sold or shared. <a href="privacy.html">How we handle your details</a>.</p>
         </form></div>
     </div>
@@ -381,6 +309,7 @@
     </div>
     <div><h4>Company</h4><ul>
       <li><a href="services.html">What we do</a></li>
+      <li><a href="featured.html">Featured properties</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="about.html">About us</a></li>
     </ul></div>
@@ -405,5 +334,5 @@
 <a class="wa" href="https://wa.me/972506875631" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.43 1.32 4.92L2 22l5.37-1.4a9.8 9.8 0 004.67 1.19h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.47 2 12.04 2zm5.75 14.05c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.5-.75-2.94-1.22-4.83-4.2-4.98-4.4-.14-.2-1.19-1.58-1.19-3.02s.75-2.14 1.02-2.44c.27-.3.59-.37.78-.37l.56.01c.18 0 .42-.07.66.5.24.58.83 2.02.9 2.17.07.15.12.32.02.52-.1.2-.15.32-.3.5l-.44.51c-.15.15-.3.32-.13.62.17.3.75 1.24 1.62 2.01 1.11 1 2.05 1.3 2.34 1.45.3.15.47.13.64-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.7.8 1.99.95.3.15.49.22.56.35.07.12.07.72-.17 1.4z"/></svg></a>
 <div class="stickybar" id="stickybar"><a href="index.html#book" class="btn btn--primary">Book a free consultation</a></div>
 <div class="mscroll" id="mscroll" aria-hidden="true"><img src="assets/logo/monogram-teal.png" alt="" id="mimg"></div>
-<script src="js/site.js?v=aab55509" defer></script>
+<script src="js/site.js?v=20261121c" defer></script>
 </body></html>

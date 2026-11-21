@@ -6,33 +6,39 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com; img-src 'self' data: https://*.googletagmanager.com https://*.google-analytics.com; media-src 'self'; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://api.web3forms.com; form-action 'self' https://api.web3forms.com; frame-src 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC"></script>
 <script>
+  /* Google Analytics loads only after the visitor accepts cookies (see the banner in js/site.js). */
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-9Y913H0LKC');
+  window.mjLoadGA = function () {
+    if (window.__mjGA) return; window.__mjGA = 1;
+    var s = document.createElement('script'); s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=G-9Y913H0LKC';
+    document.head.appendChild(s);
+    gtag('js', new Date()); gtag('config', 'G-9Y913H0LKC');
+  };
+  try { if (localStorage.getItem('mj_consent') === 'yes') window.mjLoadGA(); } catch (e) {}
 </script>
 
 <title>What we do — Mojo Marketing</title>
 <link rel="canonical" href="https://themojomarketing.com/services">
-<meta name="description" content="Ten things, all included in one flat fee: CMA, photography, walkthrough video, advertising, network distribution, lead handling, showings, position protection, weekly reporting.">
+<meta name="description" content="Twelve things in one flat fee: CMA, photography, video, a floor plan, premium listings, an exclusive network, a sign, active buyer search, lead handling, negotiation, showings and one person start to finish.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mojo Marketing">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://themojomarketing.com/services">
 <meta property="og:title" content="What we do — Mojo Marketing">
-<meta property="og:description" content="Ten things, all included in one flat fee: CMA, photography, walkthrough video, advertising, network distribution, lead handling, showings, position protection, weekly reporting.">
+<meta property="og:description" content="Twelve things in one flat fee: CMA, photography, video, a floor plan, premium listings, an exclusive network, a sign, active buyer search, lead handling, negotiation, showings and one person start to finish.">
 <meta property="og:image" content="https://themojomarketing.com/assets/hero-poster.jpg">
 <meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
 <meta property="og:image:alt" content="Mojo Marketing &mdash; property marketing across Israel">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="What we do — Mojo Marketing">
-<meta name="twitter:description" content="Ten things, all included in one flat fee. CMA, photography, video, advertising, lead handling, and more.">
+<meta name="twitter:description" content="Twelve things, all included in one flat fee. No percentage, ever.">
 <meta name="twitter:image" content="https://themojomarketing.com/assets/hero-poster.jpg">
 <link rel="icon" href="assets/logo/monogram-teal.png">
-<link rel="stylesheet" href="css/site.css?v=1a3717b2">
+<link rel="stylesheet" href="css/site.css?v=20261121c">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body><header class="header" id="header">
@@ -43,6 +49,7 @@
     <nav class="nav" id="nav">
       <a href="index.html">Home</a>
       <a href="services.html" aria-current="page">What We Do</a>
+      <a href="featured.html">Featured Properties</a>
       <a href="pricing.html">Pricing</a>
       <a href="about.html">About</a>
       <div class="drop" id="drop">
@@ -58,10 +65,10 @@
           <a href="faq.html" role="menuitem">FAQ</a>
         </div>
       </div>
-      <a href="index.html#book" class="btn btn--primary nav__cta">Book A Free Consultation</a>
+      <a href="index.html#book" class="btn btn--primary nav__cta">Book a free consultation</a>
     </nav>
     <div class="header__actions">
-      <a href="index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book A Free Consultation</a>
+      <a href="index.html#book" class="btn btn--primary" style="padding:12px 24px;font-size:15px">Book a free consultation</a>
       <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18" stroke-linecap="round"/></svg>
       </button>
@@ -69,77 +76,365 @@
   </div>
 </header>
 <main>
-<section class="band band--dark" style="padding-block:96px 84px">
+<section class="band band--dark phero" style="padding-block:112px 100px">
+  <img class="phero__img phero__img--svc" src="assets/heroes/hero-services.jpg" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+  <div class="hero__scrim" aria-hidden="true"></div>
   <div class="container">
     <span class="eyebrow">What we do</span>
-    <h1 class="tt" style="max-width:16ch"><span>Ten things, all included,</span><span class="teal">for one fixed price.</span></h1>
-    <p class="lead" style="max-width:56ch;margin-top:20px">No tiers, no upsells. Every campaign gets all of it, and you pay nothing until it sells.</p>
+    <h1 class="tt" style="max-width:16ch"><span>Twelve things, all included,</span><span class="teal">for one flat fee.</span></h1>
+    <p class="lead" style="max-width:56ch;margin-top:20px">No tiers. Every campaign gets all of it, for up to six months, with one person running it and a report every week. No percentage. Ever.</p>
   </div>
 </section>
 
 <section class="band section">
-  <div class="container"><div class="srows"><article class="srow rv" id="s1">
-      <div class="srow__mark">
-        <span class="srow__ghost">01</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16M7 19V9M12 19V5M17 19v-8" stroke-linecap="round"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>A full CMA, before anything else</h3><p>We find what your property is really worth — what sold nearby, what is sitting unsold and why. Price it wrong and nothing after that can fix it.</p></div>
-    </article><article class="srow rv" id="s2">
-      <div class="srow__mark">
-        <span class="srow__ghost">02</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="3.2"/><path d="M8 7l1.4-2h5.2L16 7"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>Professional photography</h3><p>Buyers decide in about three seconds, on a phone. That decision is made almost entirely on the first photo.</p></div>
-    </article><article class="srow rv" id="s3">
-      <div class="srow__mark">
-        <span class="srow__ghost">03</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3z" stroke-linejoin="round"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>A walkthrough video</h3><p>Where we started, and still where we are strongest. Buyers who show up have already decided they like it.</p></div>
-    </article><article class="srow rv" id="s4">
-      <div class="srow__mark">
-        <span class="srow__ghost">04</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>Advertising where your buyer is</h3><p>Yad2, Madlan, Facebook, Instagram — and the neighborhood WhatsApp group with four hundred members that has rules about how listings get posted.</p></div>
-    </article><article class="srow rv" id="s5">
-      <div class="srow__mark">
-        <span class="srow__ghost">05</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17" r="2.6"/><path d="M7.6 8.9l3 5.4M16.4 8.9l-3 5.4M8.6 7h6.8"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>A network you cannot build alone</h3><p>Closed, moderated community groups that take years to get into. Plus agents who bring us buyers — and never take a shekel of commission from you.</p></div>
-    </article><article class="srow rv" id="s6">
-      <div class="srow__mark">
-        <span class="srow__ghost">06</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 5h18l-7 8v6l-4 2v-8z" stroke-linejoin="round"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>Every lead handled and reported</h3><p>Enquiries come to us, not you. You still see all of them, forwarded the moment they arrive, with our read on who is serious.</p></div>
-    </article><article class="srow rv" id="s7">
-      <div class="srow__mark">
-        <span class="srow__ghost">07</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 21h16M7.5 21V4.4a1 1 0 01.82-.98l7-1.3a1 1 0 011.18.98V21" stroke-linejoin="round"/><circle cx="13.6" cy="12.4" r=".95" fill="currentColor" stroke="none"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>Showings, if you want them</h3><p>Run your own, or hand them to us. Included either way, and the negotiation stays yours.</p></div>
-    </article><article class="srow rv" id="s8">
-      <div class="srow__mark">
-        <span class="srow__ghost">08</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 4.2-2.9 7.6-7 9-4.1-1.4-7-4.8-7-9V6z" stroke-linejoin="round"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>Your position protected</h3><p>Sellers lose money on the first phone call, not at the table. We know which questions to answer and which to leave alone.</p></div>
-    </article><article class="srow rv" id="s9">
-      <div class="srow__mark">
-        <span class="srow__ghost">09</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5" stroke-linecap="round"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>A weekly report with a recommendation</h3><p>Reach, enquiries, offers, and what we would do next. Not a dashboard to interpret yourself.</p></div>
-    </article><article class="srow rv" id="s10">
-      <div class="srow__mark">
-        <span class="srow__ghost">10</span>
-        <span class="srow__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/></svg></span>
-      </div>
-      <div class="srow__b"><h3>The buyer you actually want</h3><p>Highest price, fastest close, or a family rather than an investor. Tell us, and the channels and filtering change to match.</p></div>
-    </article></div>
+  <div class="container"><div class="scrolly" id="scrolly">
+      <div class="scrolly__stage" aria-hidden="true"><div class="stage" id="stage"><svg class="stage__svg" viewBox="0 0 600 600" role="img" aria-label="Illustration of the current step"><defs><symbol id="mj-guy" viewBox="0 0 60 150" overflow="visible">
+  <ellipse cx="30" cy="147.5" rx="26" ry="4.5" fill="#1b2622" opacity=".18"/>
+  <path d="M18 96 L17.5 141 h10.5 L29 96z" fill="#26342f" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M31 96 L32 141 h10.5 L42 96z" fill="#26342f" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M10 146.5c0-4.5 3-6.5 8-6.5h10v8H12c-1.3 0-2-.6-2-1.5z" fill="#1b2622"/>
+  <path d="M31 140h10c5 0 8 2 8 6.5 0 .9-.7 1.5-2 1.5H31z" fill="#1b2622"/>
+  <path d="M37 142.5h6" stroke="#fffdf8" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+  <g style="transform-box:fill-box;transform-origin:50% 100%;animation:mj-breathe 3.4s ease-in-out infinite">
+   <path d="M10.5 100C8.5 74 15 52 30 49.5 45 52 51.5 74 49.5 100z" fill="#356b5e" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+   <path d="M38 54c7 7 11 22 10.5 44H39c1.5-15 1.5-30-1-44z" fill="#28564b"/>
+   <path d="M24 50.5l6 9 6-9" fill="#fffdf8" stroke="#1b2622" stroke-width="1.8" stroke-linejoin="round"/>
+   <path d="M16 74c3-8 6-13 10-15" stroke="#fffdf8" stroke-width="2" stroke-linecap="round" opacity=".28" fill="none"/>
+   <rect x="36" y="66" width="7" height="2.6" rx="1.3" fill="#fffdf8" opacity=".9"/>
+  </g>
+  <path d="M25 40h10v11c-3 2-7 2-10 0z" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <circle cx="30" cy="26" r="16.5" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M45 22c3 11-3 20-13 20.5 8-3.5 12-11 13-20.5z" fill="#e0ad86"/>
+  <ellipse cx="14.2" cy="28.5" rx="3.2" ry="4.4" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M13.5 25c-2.5-12 6-20 17-20 11 0 18 7 16.5 18-3-4-8-6-13-6-1 3-6 5-11 4 .5-1.5.5-3 0-4-4 1-7 4-9.5 8z" fill="#2b211c" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/><path d="M20 9.5c4-4 14-4 18 0z" fill="#356b5e" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M33.5 19.5q3.5-2.2 7.5-.2M22.5 19.8q2.6-1.6 5 0" stroke="#1b2622" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <g style="transform-box:fill-box;transform-origin:center;animation:mj-eye 4.6s infinite">
+   <ellipse cx="37" cy="25" rx="3.6" ry="4.3" fill="#fff" stroke="#1b2622" stroke-width="1.5"/>
+   <ellipse cx="25.5" cy="25.3" rx="3.1" ry="3.9" fill="#fff" stroke="#1b2622" stroke-width="1.5"/>
+   <circle cx="37.8" cy="25.8" r="2.1" fill="#1b2622"/><circle cx="26.3" cy="26" r="1.9" fill="#1b2622"/>
+   <circle cx="38.6" cy="24.8" r=".75" fill="#fff"/><circle cx="27" cy="25" r=".7" fill="#fff"/>
+  </g>
+  <path d="M32.5 28.5q-1.5 3.5 1.8 4.4" stroke="#1b2622" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <path d="M28 35.5q4.5 3.6 9 0" stroke="#1b2622" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+  <ellipse cx="42.5" cy="32" rx="3.4" ry="2" fill="#e8907c" opacity=".55"/>
+</symbol><symbol id="mj-buyer" viewBox="0 0 60 150" overflow="visible"><g transform="matrix(-1 0 0 1 60 0)">
+  <ellipse cx="30" cy="147.5" rx="26" ry="4.5" fill="#1b2622" opacity=".18"/>
+  <path d="M18 96 L17.5 141 h10.5 L29 96z" fill="#3a4a5a" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M31 96 L32 141 h10.5 L42 96z" fill="#3a4a5a" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M10 146.5c0-4.5 3-6.5 8-6.5h10v8H12c-1.3 0-2-.6-2-1.5z" fill="#1b2622"/>
+  <path d="M31 140h10c5 0 8 2 8 6.5 0 .9-.7 1.5-2 1.5H31z" fill="#1b2622"/>
+  <path d="M37 142.5h6" stroke="#fffdf8" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+  <g style="transform-box:fill-box;transform-origin:50% 100%;animation:mj-breathe 3.4s ease-in-out infinite">
+   <path d="M10.5 100C8.5 74 15 52 30 49.5 45 52 51.5 74 49.5 100z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+   <path d="M38 54c7 7 11 22 10.5 44H39c1.5-15 1.5-30-1-44z" fill="#c98f30"/>
+   <path d="M24 50.5l6 9 6-9" fill="#fffdf8" stroke="#1b2622" stroke-width="1.8" stroke-linejoin="round"/>
+   <path d="M16 74c3-8 6-13 10-15" stroke="#fffdf8" stroke-width="2" stroke-linecap="round" opacity=".28" fill="none"/>
+   
+  </g>
+  <path d="M25 40h10v11c-3 2-7 2-10 0z" fill="#c99470" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <circle cx="30" cy="26" r="16.5" fill="#c99470" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M45 22c3 11-3 20-13 20.5 8-3.5 12-11 13-20.5z" fill="#b07c58"/>
+  <ellipse cx="14.2" cy="28.5" rx="3.2" ry="4.4" fill="#c99470" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <circle cx="16" cy="18" r="6" fill="#3a2418" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/><circle cx="22" cy="11" r="6.5" fill="#3a2418" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/><circle cx="30" cy="8" r="7" fill="#3a2418" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/><circle cx="38" cy="10" r="6.5" fill="#3a2418" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/><circle cx="44" cy="16" r="6" fill="#3a2418" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/><circle cx="15" cy="26" r="4.5" fill="#3a2418" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M33.5 19.5q3.5-2.2 7.5-.2M22.5 19.8q2.6-1.6 5 0" stroke="#1b2622" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <g style="transform-box:fill-box;transform-origin:center;animation:mj-eye 4.6s infinite">
+   <ellipse cx="37" cy="25" rx="3.6" ry="4.3" fill="#fff" stroke="#1b2622" stroke-width="1.5"/>
+   <ellipse cx="25.5" cy="25.3" rx="3.1" ry="3.9" fill="#fff" stroke="#1b2622" stroke-width="1.5"/>
+   <circle cx="37.8" cy="25.8" r="2.1" fill="#1b2622"/><circle cx="26.3" cy="26" r="1.9" fill="#1b2622"/>
+   <circle cx="38.6" cy="24.8" r=".75" fill="#fff"/><circle cx="27" cy="25" r=".7" fill="#fff"/>
+  </g>
+  <path d="M32.5 28.5q-1.5 3.5 1.8 4.4" stroke="#1b2622" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <path d="M28 35.5q4.5 3.6 9 0" stroke="#1b2622" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+  <ellipse cx="42.5" cy="32" rx="3.4" ry="2" fill="#e8907c" opacity=".55"/>
+</g></symbol><symbol id="mj-buyer2" viewBox="0 0 60 150" overflow="visible"><g transform="matrix(-1 0 0 1 60 0)">
+  <ellipse cx="30" cy="147.5" rx="26" ry="4.5" fill="#1b2622" opacity=".18"/>
+  <path d="M18 96 L17.5 141 h10.5 L29 96z" fill="#2c3a35" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M31 96 L32 141 h10.5 L42 96z" fill="#2c3a35" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M10 146.5c0-4.5 3-6.5 8-6.5h10v8H12c-1.3 0-2-.6-2-1.5z" fill="#1b2622"/>
+  <path d="M31 140h10c5 0 8 2 8 6.5 0 .9-.7 1.5-2 1.5H31z" fill="#1b2622"/>
+  <path d="M37 142.5h6" stroke="#fffdf8" stroke-width="1.6" stroke-linecap="round" opacity=".55"/>
+  <g style="transform-box:fill-box;transform-origin:50% 100%;animation:mj-breathe 3.4s ease-in-out infinite">
+   <path d="M10.5 100C8.5 74 15 52 30 49.5 45 52 51.5 74 49.5 100z" fill="#7fc4b1" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+   <path d="M38 54c7 7 11 22 10.5 44H39c1.5-15 1.5-30-1-44z" fill="#5ea893"/>
+   <path d="M24 50.5l6 9 6-9" fill="#fffdf8" stroke="#1b2622" stroke-width="1.8" stroke-linejoin="round"/>
+   <path d="M16 74c3-8 6-13 10-15" stroke="#fffdf8" stroke-width="2" stroke-linecap="round" opacity=".28" fill="none"/>
+   
+  </g>
+  <path d="M25 40h10v11c-3 2-7 2-10 0z" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <circle cx="30" cy="26" r="16.5" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M45 22c3 11-3 20-13 20.5 8-3.5 12-11 13-20.5z" fill="#e0ad86"/>
+  <ellipse cx="14.2" cy="28.5" rx="3.2" ry="4.4" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M12 44c-3-14-2-36 18-38 18-1 22 16 18 38-2-8-3-16-6-20-6 3-15 3-22-2-3 6-4 14-8 22z" fill="#7a4b2a" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/>
+  <path d="M33.5 19.5q3.5-2.2 7.5-.2M22.5 19.8q2.6-1.6 5 0" stroke="#1b2622" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <g style="transform-box:fill-box;transform-origin:center;animation:mj-eye 4.6s infinite">
+   <ellipse cx="37" cy="25" rx="3.6" ry="4.3" fill="#fff" stroke="#1b2622" stroke-width="1.5"/>
+   <ellipse cx="25.5" cy="25.3" rx="3.1" ry="3.9" fill="#fff" stroke="#1b2622" stroke-width="1.5"/>
+   <circle cx="37.8" cy="25.8" r="2.1" fill="#1b2622"/><circle cx="26.3" cy="26" r="1.9" fill="#1b2622"/>
+   <circle cx="38.6" cy="24.8" r=".75" fill="#fff"/><circle cx="27" cy="25" r=".7" fill="#fff"/>
+  </g>
+  <path d="M32.5 28.5q-1.5 3.5 1.8 4.4" stroke="#1b2622" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <path d="M28 35.5q4.5 3.6 9 0" stroke="#1b2622" stroke-width="1.9" fill="none" stroke-linecap="round"/>
+  <ellipse cx="42.5" cy="32" rx="3.4" ry="2" fill="#e8907c" opacity=".55"/>
+</g></symbol>
+<linearGradient id="mj-g-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f2ea"/><stop offset="1" stop-color="#ebe3d4"/></linearGradient>
+<linearGradient id="mj-g-floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3d6c0"/><stop offset="1" stop-color="#d6c6aa"/></linearGradient>
+<linearGradient id="mj-g-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe0d7"/><stop offset="1" stop-color="#e6f2ee"/></linearGradient>
+<radialGradient id="mj-g-bg" cx=".7" cy=".25" r=".9"><stop offset="0" stop-color="#fbf8f2"/><stop offset="1" stop-color="#efe9dd"/></radialGradient>
+<radialGradient id="mj-g-sun" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#fff3c9"/><stop offset=".55" stop-color="#f4cf7a"/><stop offset="1" stop-color="#f4cf7a" stop-opacity="0"/></radialGradient>
+<radialGradient id="mj-g-light" cx=".3" cy=".1" r=".9"><stop offset="0" stop-color="#fff8e4" stop-opacity=".75"/><stop offset="1" stop-color="#fff8e4" stop-opacity="0"/></radialGradient>
+<linearGradient id="mj-g-screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#f1f4f2"/></linearGradient>
+<filter id="mj-boil" x="-2%" y="-2%" width="104%" height="104%"><feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="2" seed="2"><animate attributeName="seed" values="2;5;9" dur=".42s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="2.4" xChannelSelector="R" yChannelSelector="G"/></filter>
+<filter id="mj-grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 .35  0 0 0 0 .3  0 0 0 0 .22  0 0 0 .55 0"/></filter>
+<pattern id="mj-grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0v24" fill="none" stroke="#e9ece8" stroke-width="1"/></pattern>
+<pattern id="mj-stone" width="40" height="22" patternUnits="userSpaceOnUse"><path d="M0 21.5h40M20 0v11M0 11h40M0 0v11M40 11v11" fill="none" stroke="#d1c09d" stroke-width="1.2" opacity=".55"/></pattern><clipPath id="mj-clip"><rect width="600" height="600" rx="28"/></clipPath></defs><g clip-path="url(#mj-clip)"><rect width="600" height="600" class="f-bg"/><g class="boil"><g class="sc is-on" data-s="1">
+<rect width="600" height="470" fill="url(#mj-g-light)"/>
+<rect x="0" y="470" width="600" height="130" class="f-floor"/><path d="M0 470h600" class="s-line" stroke-width="2"/>
+<g class="s-tl" stroke-width="2" fill="none" stroke-dasharray="3 7"><path class="draw" style="--t:.18;--len:260" d="M108 162C130 220 250 230 320 250"/><path class="draw" style="--t:.24;--len:260" d="M250 136C270 190 330 200 380 240"/><path class="draw" style="--t:.3;--len:200" d="M392 172C420 200 430 210 440 240"/></g>
+<g class="pop" style="--t:0.015"><rect x="44" y="70" width="128" height="92" rx="14" class="f-c sh"/>
+  <path d="M70 128v-22l22-16 22 16v22z" class="f-s"/><path d="M66 108l26-20 26 20" class="s-td" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="86" y="114" width="12" height="14" rx="2" class="f-td"/>
+  <rect x="124" y="98" width="38" height="16" rx="8" class="f-gl"/><text x="143" y="110" class="tx tx-s" text-anchor="middle">3.1M</text><text x="58" y="150" class="tx tx-xs">Sold, 2 streets away</text></g>
+<g class="pop" style="--t:0.06"><rect x="186" y="44" width="128" height="92" rx="14" class="f-c sh"/>
+  <path d="M212 102v-22l22-16 22 16v22z" class="f-s"/><path d="M208 82l26-20 26 20" class="s-td" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="228" y="88" width="12" height="14" rx="2" class="f-td"/>
+  <rect x="266" y="72" width="38" height="16" rx="8" class="f-gl"/><text x="285" y="84" class="tx tx-s" text-anchor="middle">3.4M</text><text x="200" y="124" class="tx tx-xs">Unsold, 140 days</text></g>
+<g class="pop" style="--t:0.105"><rect x="328" y="80" width="128" height="92" rx="14" class="f-c sh"/>
+  <path d="M354 138v-22l22-16 22 16v22z" class="f-s"/><path d="M350 118l26-20 26 20" class="s-td" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="370" y="124" width="12" height="14" rx="2" class="f-td"/>
+  <rect x="408" y="108" width="38" height="16" rx="8" class="f-gl"/><text x="427" y="120" class="tx tx-s" text-anchor="middle">2.9M</text><text x="342" y="160" class="tx tx-xs">Sold, same block</text></g>
+<rect x="230" y="398" width="340" height="14" rx="5" class="f-wood"/><rect x="250" y="412" width="10" height="58" class="f-wood2"/><rect x="540" y="412" width="10" height="58" class="f-wood2"/>
+<rect x="290" y="232" width="236" height="156" rx="12" class="f-k"/><rect x="300" y="242" width="216" height="134" rx="6" class="f-c"/>
+<rect x="378" y="388" width="60" height="10" rx="3" class="f-k"/>
+<g class="bars"><rect x="322" y="300" width="22" height="60" rx="4" class="f-gl grow" style="--t:0.12"/><rect x="354" y="282" width="22" height="78" rx="4" class="f-gl grow" style="--t:0.15"/><rect x="386" y="290" width="22" height="70" rx="4" class="f-gl grow" style="--t:0.18"/><rect x="418" y="270" width="22" height="90" rx="4" class="f-t grow" style="--t:0.225"/><rect x="450" y="296" width="22" height="64" rx="4" class="f-gl grow" style="--t:0.255"/><rect x="482" y="286" width="22" height="74" rx="4" class="f-gl grow" style="--t:0.285"/></g>
+<path d="M314 266h196" class="s-t dash pop" stroke-width="2" style="--t:0.33"/>
+<circle cx="441" cy="266" r="10" class="f-tl pulse"/><g class="pop" style="--t:0.375"><rect x="396" y="249" width="90" height="22" rx="11" class="f-t"/><text x="441" y="264" class="tx tx-s tx-w" text-anchor="middle">Your price</text></g>
+<use href="#mj-guy" x="140" y="320" width="60" height="150"/>
+<path d="M188 380l34-14 38 0" stroke="#1b2622" stroke-width="13.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M188 380l34-14 38 0" stroke="#356b5e" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="262" cy="366" r="6.1" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.2"/>
+<g class="sway"><circle cx="270" cy="352" r="16" class="s-k" stroke-width="5" fill="rgba(255,255,255,.35)"/><path d="M259 363l-12 12" class="s-k" stroke-width="7" stroke-linecap="round"/></g>
+<g class="pop twinkle" style="--t:0.42"><path d="M492 228C494.16 237.84 494.16 237.84 504 240C494.16 242.16 494.16 242.16 492 252C489.84 242.16 489.84 242.16 480 240C489.84 237.84 489.84 237.84 492 228z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g><g class="pop twinkle" style="--t:0.46"><path d="M520 259C521.26 264.74 521.26 264.74 527 266C521.26 267.26 521.26 267.26 520 273C518.74 267.26 518.74 267.26 513 266C518.74 264.74 518.74 264.74 520 259z" fill="#7fc4b1" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g>
+</g><g class="sc" data-s="2">
+<rect x="0" y="0" width="600" height="470" class="f-wall"/>
+<rect x="0" y="470" width="600" height="130" class="f-floor"/><path d="M0 470h600" class="s-line" stroke-width="2"/>
+<g class="par-b"><rect x="70" y="80" width="170" height="200" rx="6" class="f-c"/><rect x="80" y="90" width="150" height="180" rx="3" class="f-sky"/><path d="M80 230l40-30 30 20 40-40 40 30v60H80z" class="f-hill"/><path d="M155 90v180M80 180h150" class="s-c" stroke-width="6"/></g><path d="M80 270L240 270L420 470L150 470z" fill="#fff4cf" opacity=".35" class="beam"/><g class="motes"><circle cx="184" cy="236" r="2.6" fill="#fff6dc" opacity=".8" class="mote" style="--md:0.29s;--mx:1px;--my:-21px"/><circle cx="123" cy="322" r="1.3" fill="#fff6dc" opacity=".8" class="mote" style="--md:1.73s;--mx:-13px;--my:-13px"/><circle cx="208" cy="398" r="1.5" fill="#fff6dc" opacity=".8" class="mote" style="--md:0.89s;--mx:4px;--my:-38px"/><circle cx="243" cy="295" r="3.3" fill="#fff6dc" opacity=".8" class="mote" style="--md:0.19s;--mx:11px;--my:-19px"/><circle cx="143" cy="228" r="1.9" fill="#fff6dc" opacity=".8" class="mote" style="--md:3.26s;--mx:-10px;--my:-27px"/><circle cx="257" cy="289" r="2.4" fill="#fff6dc" opacity=".8" class="mote" style="--md:0.25s;--mx:-13px;--my:-16px"/><circle cx="266" cy="303" r="1.9" fill="#fff6dc" opacity=".8" class="mote" style="--md:2.34s;--mx:-1px;--my:-19px"/><circle cx="293" cy="368" r="1.7" fill="#fff6dc" opacity=".8" class="mote" style="--md:2.30s;--mx:1px;--my:-36px"/><circle cx="278" cy="269" r="3.4" fill="#fff6dc" opacity=".8" class="mote" style="--md:0.47s;--mx:-2px;--my:-33px"/></g>
+<rect x="60" y="360" width="250" height="70" rx="22" class="f-t"/><rect x="74" y="330" width="222" height="56" rx="20" class="f-td"/><rect x="70" y="384" width="230" height="40" rx="14" class="f-t"/><rect x="80" y="424" width="12" height="46" class="f-k"/><rect x="278" y="424" width="12" height="46" class="f-k"/>
+<rect x="104" y="342" width="52" height="40" rx="12" class="f-a"/><rect x="214" y="342" width="56" height="40" rx="12" class="f-tl"/>
+<g class="par-f"><path d="M338 470v-58M330 412h16l-4 58h-8z" class="f-k"/><ellipse cx="338" cy="404" rx="26" ry="16" class="f-pot"/><path d="M338 404c-30-40-10-90 0-104 12 18 28 62 0 104zM338 404c-36-12-52-48-48-66 18 4 44 26 48 66zM338 404c34-16 48-44 44-62-18 6-42 26-44 62z" class="f-leaf"/></g>
+<ellipse cx="452" cy="472" rx="46" ry="6" fill="#16211d" opacity=".14"/>
+<g transform="translate(452 0)"><path d="M0 330L-34 470M0 330l0 140M0 330L34 470" class="s-k" stroke-width="5" stroke-linecap="round"/>
+  <rect x="-44" y="282" width="88" height="56" rx="10" class="f-k"/><rect x="-22" y="270" width="26" height="16" rx="4" class="f-k"/><circle cx="-4" cy="310" r="20" class="f-ink2"/><circle cx="-4" cy="310" r="12" class="f-lens"/><circle cx="-8" cy="305" r="4" class="f-c" opacity=".8"/><circle cx="-4" cy="310" r="12" class="f-k shutter"/><rect x="22" y="290" width="14" height="8" rx="3" class="f-a"/></g>
+<g class="flash"><circle cx="448" cy="310" r="70" class="f-flash"/></g>
+<g class="fly" style="--t:0.15;--x:-160px;--y:-214px;--r:-8deg"><rect x="420" y="290" width="84" height="70" rx="4" class="f-c sh"/><rect x="427" y="297" width="70" height="46" class="f-sky"/><rect x="433" y="322" width="40" height="16" rx="5" class="f-t"/><rect x="480" y="306" width="12" height="32" class="f-hill"/></g>
+<g class="fly" style="--t:0.285;--x:-58px;--y:-236px;--r:5deg"><rect x="420" y="290" width="84" height="70" rx="4" class="f-c sh"/><rect x="427" y="297" width="70" height="46" class="f-wall2"/><rect x="438" y="312" width="22" height="31" class="f-a"/><circle cx="478" cy="320" r="10" class="f-tl"/></g>
+<g class="fly" style="--t:0.42;--x:36px;--y:-198px;--r:-4deg"><rect x="420" y="290" width="84" height="70" rx="4" class="f-c sh"/><rect x="427" y="297" width="70" height="46" class="f-sky"/><path d="M427 343l20-16 16 10 18-18 16 12v12z" class="f-hill"/></g>
+<g class="pop twinkle" style="--t:0.3"><path d="M380 80C382.16 89.84 382.16 89.84 392 92C382.16 94.16 382.16 94.16 380 104C377.84 94.16 377.84 94.16 368 92C377.84 89.84 377.84 89.84 380 80z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g><g class="pop twinkle" style="--t:0.45"><path d="M560 112C561.44 118.56 561.44 118.56 568 120C561.44 121.44 561.44 121.44 560 128C558.56 121.44 558.56 121.44 552 120C558.56 118.56 558.56 118.56 560 112z" fill="#7fc4b1" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g>
+</g><g class="sc" data-s="3">
+<g class="dolly">
+<rect x="0" y="0" width="600" height="600" class="f-wall"/>
+<path d="M0 0l210 170h180L600 0z" class="f-ceil"/><path d="M0 600l210-170h180l190 170z" class="f-floor"/>
+<path d="M0 0l210 170v260L0 600z" class="f-wall2"/><path d="M600 0L390 170v260l210 170z" class="f-wall2"/>
+<rect x="210" y="170" width="180" height="260" class="f-c"/><rect x="262" y="236" width="76" height="194" rx="4" class="f-s"/><rect x="270" y="244" width="60" height="186" rx="2" class="f-sky2"/>
+<path d="M60 160l90 46v150l-90-30z" class="f-a" opacity=".9"/><path d="M540 160l-90 46v150l90-30z" class="f-tl" opacity=".9"/>
+<path d="M210 430L0 600M390 430l210 170M210 170L0 0M390 170L600 0" class="s-line" stroke-width="2"/>
+</g><g class="motes"><circle cx="196" cy="327" r="1.3" fill="#fff6dc" opacity=".8" class="mote" style="--md:2.67s;--mx:8px;--my:-27px"/><circle cx="413" cy="282" r="2.7" fill="#fff6dc" opacity=".8" class="mote" style="--md:2.38s;--mx:2px;--my:-24px"/><circle cx="402" cy="446" r="2.2" fill="#fff6dc" opacity=".8" class="mote" style="--md:2.66s;--mx:-13px;--my:-31px"/><circle cx="344" cy="458" r="3.0" fill="#fff6dc" opacity=".8" class="mote" style="--md:1.14s;--mx:-3px;--my:-30px"/><circle cx="157" cy="320" r="1.6" fill="#fff6dc" opacity=".8" class="mote" style="--md:0.47s;--mx:-13px;--my:-33px"/><circle cx="189" cy="264" r="2.1" fill="#fff6dc" opacity=".8" class="mote" style="--md:3.49s;--mx:-13px;--my:-23px"/><circle cx="315" cy="430" r="3.0" fill="#fff6dc" opacity=".8" class="mote" style="--md:3.46s;--mx:-7px;--my:-22px"/><circle cx="258" cy="430" r="3.3" fill="#fff6dc" opacity=".8" class="mote" style="--md:0.60s;--mx:-10px;--my:-17px"/></g>
+<g class="walk"><use href="#mj-guy" x="250" y="330" width="78" height="195"/>
+  <path d="M300 418l26-6 18-30" stroke="#1b2622" stroke-width="13.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M300 418l26-6 18-30" stroke="#356b5e" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="346" cy="378" r="6.1" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.2"/>
+  <path d="M346 376v-30" class="s-k" stroke-width="5" stroke-linecap="round"/><path d="M338 346h22" class="s-k" stroke-width="5" stroke-linecap="round"/><rect x="352" y="318" width="40" height="26" rx="5" class="f-k"/><rect x="356" y="322" width="32" height="18" rx="3" class="f-lens"/></g>
+<g><rect x="28" y="28" width="120" height="40" rx="20" class="f-k" opacity=".85"/><circle cx="54" cy="48" r="8" class="f-r blink"/><text x="70" y="54" class="tx tx-m tx-w">REC</text></g>
+<g><rect x="452" y="28" width="120" height="40" rx="20" class="f-k" opacity=".85"/><text x="512" y="54" class="tx tx-m tx-w tc" text-anchor="middle">00:42</text></g>
+<path d="M28 520v40h40M572 520v40h-40M28 120V80M572 120V80" class="s-c" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9"/><path d="M200 0v600M400 0v600M0 200h600M0 400h600" stroke="#fffdf8" stroke-width="1" opacity=".22"/>
+<g class="pop speed" style="--t:0.1"><path d="M262 420h-26" stroke="#1b2622" stroke-width="3" stroke-linecap="round" opacity=".55"/><path d="M262 432h-20" stroke="#1b2622" stroke-width="3" stroke-linecap="round" opacity=".55"/><path d="M262 444h-14" stroke="#1b2622" stroke-width="3" stroke-linecap="round" opacity=".55"/></g>
+</g><g class="sc" data-s="4">
+<path d="M603 300Q603 300 536 385Q469 469 385 489Q300 509 189 515Q79 521 87 411Q95 300 111 213Q127 127 213 63Q300 0 366 84Q432 168 518 234z" fill="#e4efe9" class="blob"/><g opacity=".35"><circle cx="64" cy="470" r="2.4" fill="#e7ad4b"/><circle cx="80" cy="470" r="2.4" fill="#e7ad4b"/><circle cx="96" cy="470" r="2.4" fill="#e7ad4b"/><circle cx="112" cy="470" r="2.4" fill="#e7ad4b"/><circle cx="64" cy="486" r="2.4" fill="#e7ad4b"/><circle cx="80" cy="486" r="2.4" fill="#e7ad4b"/><circle cx="96" cy="486" r="2.4" fill="#e7ad4b"/><circle cx="112" cy="486" r="2.4" fill="#e7ad4b"/><circle cx="64" cy="502" r="2.4" fill="#e7ad4b"/><circle cx="80" cy="502" r="2.4" fill="#e7ad4b"/><circle cx="96" cy="502" r="2.4" fill="#e7ad4b"/><circle cx="112" cy="502" r="2.4" fill="#e7ad4b"/><circle cx="64" cy="518" r="2.4" fill="#e7ad4b"/><circle cx="80" cy="518" r="2.4" fill="#e7ad4b"/><circle cx="96" cy="518" r="2.4" fill="#e7ad4b"/><circle cx="112" cy="518" r="2.4" fill="#e7ad4b"/></g>
+<rect x="40" y="40" width="520" height="520" rx="22" class="f-plan"/>
+<rect x="40" y="40" width="520" height="520" rx="22" fill="url(#mj-grid)"/>
+<g class="s-plan" stroke-width="9" fill="none" stroke-linecap="square">
+ <path class="draw" style="--t:0.03;--len:1600" d="M110 110h380v380H110z"/>
+ <path class="draw" style="--t:0.15;--len:400" d="M300 110v120M300 280v90"/>
+ <path class="draw" style="--t:0.21;--len:400" d="M110 300h110M260 300h40"/>
+ <path class="draw" style="--t:0.27;--len:400" d="M300 370h80M420 370h70"/>
+ <path class="draw" style="--t:0.315;--len:300" d="M390 110v70M400 370v120"/>
+</g>
+<g class="s-plan2" stroke-width="3" fill="none">
+ <path class="draw" style="--t:0.36;--len:120" d="M220 300a40 40 0 0 1 40-40"/>
+ <path class="draw" style="--t:0.375;--len:120" d="M300 230a50 50 0 0 1 50 50"/>
+ <path class="draw" style="--t:0.39;--len:120" d="M380 370a40 40 0 0 0 40 40"/>
+</g>
+<g class="pencil"><path d="M0 0l10-4 44-44 6 6-44 44z" fill="#e7ad4b"/><path d="M0 0l10-4-6-6z" fill="#16211d"/><path d="M48 -48l6 6 6-6-6-6z" fill="#d6533f"/></g>
+<g class="pop" style="--t:0.42"><text x="200" y="210" class="tx tx-l" text-anchor="middle">Living</text><text x="200" y="232" class="tx tx-s tx-mut" text-anchor="middle">5.2 × 4.8</text></g>
+<g class="pop" style="--t:0.45"><text x="405" y="262" class="tx tx-l" text-anchor="middle">Bedroom</text><text x="405" y="284" class="tx tx-s tx-mut" text-anchor="middle">3.6 × 3.4</text></g>
+<g class="pop" style="--t:0.48"><text x="200" y="400" class="tx tx-l" text-anchor="middle">Kitchen</text></g>
+<g class="pop" style="--t:0.51"><text x="350" y="436" class="tx tx-s" text-anchor="middle">Safe room</text><text x="445" y="436" class="tx tx-s" text-anchor="middle">Bath</text></g>
+<g class="pop" style="--t:0.54"><path d="M110 520h380M110 512v16M490 512v16" class="s-t" stroke-width="2"/><rect x="262" y="508" width="76" height="24" rx="12" class="f-plan"/><text x="300" y="525" class="tx tx-s" text-anchor="middle">11.6 m</text></g>
+<g class="pop" style="--t:0.57"><circle cx="520" cy="80" r="18" class="f-c"/><path d="M520 66l6 18h-12z" class="f-t"/><text x="520" y="104" class="tx tx-xs" text-anchor="middle">N</text></g>
+<g class="pop twinkle" style="--t:0.62"><path d="M500 128C502.16 137.84 502.16 137.84 512 140C502.16 142.16 502.16 142.16 500 152C497.84 142.16 497.84 142.16 488 140C497.84 137.84 497.84 137.84 500 128z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g>
+</g><g class="sc" data-s="5">
+<path d="M565 300Q565 300 491 358Q416 416 358 474Q300 532 214 502Q128 472 134 386Q139 300 128 208Q117 117 208 103Q300 90 363 132Q426 174 495 237z" fill="#e4efe9" class="blob"/><path d="M532 470Q532 470 529 497Q525 525 497 543Q470 562 450 536Q429 511 405 490Q381 470 397 441Q412 412 441 411Q470 410 504 406Q538 402 535 436z" fill="#f6e3bb" class="blob"/><g opacity=".35"><circle cx="470" cy="70" r="2.4" fill="#356b5e"/><circle cx="486" cy="70" r="2.4" fill="#356b5e"/><circle cx="502" cy="70" r="2.4" fill="#356b5e"/><circle cx="518" cy="70" r="2.4" fill="#356b5e"/><circle cx="534" cy="70" r="2.4" fill="#356b5e"/><circle cx="470" cy="86" r="2.4" fill="#356b5e"/><circle cx="486" cy="86" r="2.4" fill="#356b5e"/><circle cx="502" cy="86" r="2.4" fill="#356b5e"/><circle cx="518" cy="86" r="2.4" fill="#356b5e"/><circle cx="534" cy="86" r="2.4" fill="#356b5e"/><circle cx="470" cy="102" r="2.4" fill="#356b5e"/><circle cx="486" cy="102" r="2.4" fill="#356b5e"/><circle cx="502" cy="102" r="2.4" fill="#356b5e"/><circle cx="518" cy="102" r="2.4" fill="#356b5e"/><circle cx="534" cy="102" r="2.4" fill="#356b5e"/></g>
+<g class="s-tl" stroke-width="3" fill="none" stroke-dasharray="2 9" stroke-linecap="round">
+ <path class="flow" d="M300 300L120 130"/><path class="flow" d="M300 300L480 130"/><path class="flow" d="M300 300L110 450"/><path class="flow" d="M300 300L490 450"/></g>
+<g class="pop" style="--t:0.09"><rect x="54" y="98" width="132" height="60" rx="18" class="f-c sh"/><circle cx="84" cy="128" r="14" class="f-a"/><text x="106" y="134" class="tx tx-m">Listings</text></g>
+<g class="pop" style="--t:0.135"><rect x="414" y="98" width="140" height="60" rx="18" class="f-c sh"/><circle cx="444" cy="128" r="14" class="f-t"/><text x="466" y="134" class="tx tx-m">Search</text></g>
+<g class="pop" style="--t:0.18"><rect x="36" y="420" width="156" height="60" rx="18" class="f-c sh"/><circle cx="66" cy="450" r="14" class="f-blue"/><text x="88" y="456" class="tx tx-m">Social</text></g>
+<g class="pop" style="--t:0.225"><rect x="408" y="420" width="160" height="60" rx="18" class="f-c sh"/><circle cx="438" cy="450" r="14" class="f-pink"/><text x="460" y="456" class="tx tx-m">Video</text></g>
+<g class="float"><rect x="214" y="120" width="172" height="350" rx="30" class="f-k"/><rect x="224" y="130" width="152" height="330" rx="22" class="f-c"/><rect x="276" y="138" width="48" height="10" rx="5" class="f-k"/>
+ <rect x="236" y="160" width="128" height="104" rx="10" class="f-sky"/><path d="M236 264v-30l30-22 30 18 26-20 42 30v24z" class="f-hill"/><rect x="246" y="212" width="40" height="34" class="f-s"/><path d="M242 216l24-18 24 18" class="s-td" stroke-width="4" fill="none"/>
+ <rect x="244" y="168" width="70" height="20" rx="10" class="f-a"/><text x="279" y="182" class="tx tx-xs" text-anchor="middle">Premium</text>
+ <text x="236" y="288" class="tx tx-s">4 rooms, Baka</text><text x="236" y="306" class="tx tx-xs tx-mut">Garden · Shabbat elevator</text><text x="236" y="322" class="tx tx-s tx-teal">₪3,400,000</text>
+ <rect x="236" y="334" width="56" height="22" rx="11" class="f-gl"/><text x="264" y="349" class="tx tx-xs" text-anchor="middle">120 m²</text><rect x="298" y="334" width="48" height="22" rx="11" class="f-gl"/><text x="322" y="349" class="tx tx-xs" text-anchor="middle">Floor 2</text>
+ <rect x="236" y="368" width="128" height="8" rx="4" class="f-gl"/><rect x="236" y="368" width="128" height="8" rx="4" class="f-a grow-x" style="--t:.3"/><text x="236" y="392" class="tx tx-xs tx-mut">Views this week</text><rect x="236" y="400" width="128" height="40" rx="20" class="f-t"/><text x="300" y="425" class="tx tx-s tx-w" text-anchor="middle">Book a viewing</text>
+ <circle cx="372" cy="150" r="16" class="f-r pulse"/><g class="pop" style="--t:0.3"><circle cx="372" cy="150" r="18" class="f-r"/><text x="372" y="156" class="tx tx-s tx-w" text-anchor="middle">24</text></g></g>
+<g class="pop twinkle" style="--t:0.32"><path d="M196 242C197.8 250.2 197.8 250.2 206 252C197.8 253.8 197.8 253.8 196 262C194.2 253.8 194.2 253.8 186 252C194.2 250.2 194.2 250.2 196 242z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g><g class="pop twinkle" style="--t:0.38"><path d="M402 323C403.26 328.74 403.26 328.74 409 330C403.26 331.26 403.26 331.26 402 337C400.74 331.26 400.74 331.26 395 330C400.74 328.74 400.74 328.74 402 323z" fill="#7fc4b1" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g>
+</g><g class="sc" data-s="6">
+<path d="M217 140Q217 140 192 169Q167 197 139 233Q110 269 78 237Q46 204 31 172Q16 140 18 95Q20 50 65 55Q110 60 149 61Q188 62 202 101z" fill="#f6e3bb" class="blob"/><path d="M611 470Q611 470 617 522Q624 574 572 579Q520 585 484 563Q448 542 409 506Q369 470 410 435Q450 400 485 376Q520 351 571 360Q622 368 616 419z" fill="#e4efe9" class="blob"/>
+<rect x="110" y="40" width="380" height="520" rx="28" class="f-c sh"/>
+<path d="M110 68a28 28 0 0 1 28-28h324a28 28 0 0 1 28 28v52H110z" class="f-td"/>
+<circle cx="152" cy="80" r="20" class="f-tl"/><path d="M142 86l10-12 10 12z" class="f-td"/>
+<text x="184" y="76" class="tx tx-m tx-w">Neighborhood group</text><text x="184" y="98" class="tx tx-xs tx-w2">Members only · approved posts</text>
+<g class="pop" style="--t:0.06"><rect x="132" y="140" width="210" height="46" rx="16" class="f-gl"/><text x="146" y="159" class="tx tx-xs tx-teal">Shira</text><text x="146" y="176" class="tx tx-xs">Anyone selling a 4-room?</text></g>
+<g class="pop" style="--t:0.135"><rect x="132" y="198" width="170" height="38" rx="16" class="f-gl"/><text x="146" y="222" class="tx tx-xs">Looking near the park</text></g>
+<g class="pop" style="--t:0.24"><rect x="230" y="252" width="240" height="196" rx="18" class="f-bub"/>
+ <rect x="244" y="266" width="212" height="110" rx="10" class="f-sky"/><path d="M244 376v-34l40-26 36 22 40-28 96 50v16z" class="f-hill"/><rect x="262" y="318" width="50" height="40" class="f-s"/><path d="M256 322l31-22 31 22" class="s-td" stroke-width="4" fill="none"/>
+ <text x="244" y="398" class="tx tx-s">Just listed</text><text x="244" y="416" class="tx tx-xs">4 rooms, garden, quiet street</text><text x="244" y="432" class="tx tx-xs tx-teal">Message for a viewing</text>
+ <text x="458" y="440" class="tx tx-xs tx-mut" text-anchor="end">Mojo</text></g>
+<g class="pop" style="--t:0.375"><rect x="132" y="464" width="74" height="36" rx="16" class="f-gl"/><g class="type"><g class="dot"><circle cx="152" cy="482" r="5" class="f-g"/></g><g class="dot"><circle cx="169" cy="482" r="5" class="f-g"/></g><g class="dot"><circle cx="186" cy="482" r="5" class="f-g"/></g></g></g>
+<g class="pop" style="--t:0.45"><rect x="390" y="434" width="64" height="30" rx="15" class="f-c sh"/><path d="M406 449l5 5 9-10" class="s-t" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/><text x="430" y="455" class="tx tx-xs">12</text></g>
+<g class="pop" style="--t:0.51"><rect x="300" y="514" width="168" height="30" rx="15" class="f-c sh"/><text x="384" y="534" class="tx tx-xs tx-mut" text-anchor="middle">3 people asked to view</text></g>
+</g><g class="sc" data-s="7">
+<rect x="0" y="0" width="600" height="470" class="f-sky"/>
+<circle cx="510" cy="96" r="80" fill="url(#mj-g-sun)" opacity=".7"/><g class="cloud" style="--cx:120px"><g transform="translate(120 90) scale(1)"><ellipse cx="0" cy="0" rx="44" ry="18" fill="#fff" opacity=".9"/><ellipse cx="-22" cy="-10" rx="22" ry="16" fill="#fff" opacity=".9"/><ellipse cx="18" cy="-14" rx="26" ry="20" fill="#fff" opacity=".9"/></g></g><g class="cloud cloud--slow" style="--cx:330px"><g transform="translate(330 60) scale(0.7)"><ellipse cx="0" cy="0" rx="44" ry="18" fill="#fff" opacity=".9"/><ellipse cx="-22" cy="-10" rx="22" ry="16" fill="#fff" opacity=".9"/><ellipse cx="18" cy="-14" rx="26" ry="20" fill="#fff" opacity=".9"/></g></g><g class="spin"><circle cx="510" cy="96" r="34" class="f-sun"/><path d="M510 46v-14M510 160v-14M460 96h-14M574 96h-14M475 61l-10-10M555 141l-10-10M545 61l10-10M465 141l10-10" class="s-a" stroke-width="5" stroke-linecap="round" opacity=".7"/></g>
+<g class="par-b"><path d="M0 300c80-30 160-26 230-6v176H0z" class="f-hill" opacity=".6"/></g>
+<rect x="210" y="70" width="300" height="400" class="f-s"/><rect x="210" y="70" width="300" height="400" fill="url(#mj-stone)"/>
+<path d="M200 70h320" class="s-sd" stroke-width="10"/>
+<g class="f-win"><rect x="240" y="110" width="60" height="70" rx="4"/><rect x="330" y="110" width="60" height="70"/><rect x="420" y="110" width="60" height="70"/>
+<rect x="240" y="220" width="60" height="70"/><rect x="420" y="220" width="60" height="70"/>
+<rect x="240" y="330" width="60" height="70"/><rect x="420" y="330" width="60" height="70"/></g>
+<path d="M240 110v-2a30 30 0 0 1 60 0v2" class="f-win"/>
+<rect x="320" y="372" width="80" height="98" rx="4" class="f-td"/><path d="M320 412a40 40 0 0 1 80 0v58h-80z" class="f-td"/>
+<path d="M236 292h68M416 292h68" class="s-k" stroke-width="5"/>
+<g class="swing"><path d="M338 218v-6M382 218v-6" class="s-k" stroke-width="3"/>
+ <rect x="300" y="210" width="120" height="96" rx="8" class="f-t sh"/><rect x="308" y="218" width="104" height="80" rx="4" fill="none" class="s-tl" stroke-width="2"/>
+ <text x="360" y="252" class="tx tx-xl tx-w" text-anchor="middle">FOR</text><text x="360" y="284" class="tx tx-xl tx-w" text-anchor="middle">SALE</text></g>
+<rect x="0" y="470" width="600" height="130" class="f-floor"/><path d="M0 470h600" class="s-line" stroke-width="2"/><rect x="0" y="500" width="600" height="10" class="f-g" opacity=".5"/>
+<g class="stroll"><use href="#mj-buyer" x="60" y="330" width="60" height="150"/>
+ <path d="M94 386l16-30" stroke="#1b2622" stroke-width="13.6" stroke-linecap="round"/><path d="M94 386l16-30" stroke="#e7ad4b" stroke-width="9" stroke-linecap="round"/><circle cx="112" cy="352" r="6" fill="#c99470" stroke="#1b2622" stroke-width="2.2"/>
+ <g class="pop" style="--t:0.33"><circle cx="140" cy="300" r="18" class="f-c sh"/><text x="140" y="308" class="tx tx-l" text-anchor="middle">!</text></g></g>
+<g class="par-f"><ellipse cx="548" cy="472" rx="30" ry="5" fill="#16211d" opacity=".15"/><path d="M548 470v-90" class="s-k" stroke-width="5"/><circle cx="548" cy="370" r="34" class="f-leaf"/><circle cx="530" cy="392" r="22" class="f-leaf2"/><circle cx="566" cy="356" r="16" class="f-leaf2"/></g>
+<g class="pop speed" style="--t:0.05"><path d="M56 420h-26" stroke="#1b2622" stroke-width="3" stroke-linecap="round" opacity=".55"/><path d="M56 432h-20" stroke="#1b2622" stroke-width="3" stroke-linecap="round" opacity=".55"/><path d="M56 444h-14" stroke="#1b2622" stroke-width="3" stroke-linecap="round" opacity=".55"/></g><g class="pop twinkle" style="--t:0.42"><path d="M452 204C453.8 212.2 453.8 212.2 462 214C453.8 215.8 453.8 215.8 452 224C450.2 215.8 450.2 215.8 442 214C450.2 212.2 450.2 212.2 452 204z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g>
+</g><g class="sc" data-s="8">
+<path d="M374 260Q374 260 368 346Q362 432 276 422Q190 411 114 411Q38 412 3 336Q-32 260 26 208Q85 155 137 88Q190 21 258 73Q326 124 350 192z" fill="#e4efe9" class="blob"/><g opacity=".35"><circle cx="470" cy="90" r="2.4" fill="#e7ad4b"/><circle cx="486" cy="90" r="2.4" fill="#e7ad4b"/><circle cx="502" cy="90" r="2.4" fill="#e7ad4b"/><circle cx="518" cy="90" r="2.4" fill="#e7ad4b"/><circle cx="470" cy="106" r="2.4" fill="#e7ad4b"/><circle cx="486" cy="106" r="2.4" fill="#e7ad4b"/><circle cx="502" cy="106" r="2.4" fill="#e7ad4b"/><circle cx="518" cy="106" r="2.4" fill="#e7ad4b"/><circle cx="470" cy="122" r="2.4" fill="#e7ad4b"/><circle cx="486" cy="122" r="2.4" fill="#e7ad4b"/><circle cx="502" cy="122" r="2.4" fill="#e7ad4b"/><circle cx="518" cy="122" r="2.4" fill="#e7ad4b"/><circle cx="470" cy="138" r="2.4" fill="#e7ad4b"/><circle cx="486" cy="138" r="2.4" fill="#e7ad4b"/><circle cx="502" cy="138" r="2.4" fill="#e7ad4b"/><circle cx="518" cy="138" r="2.4" fill="#e7ad4b"/></g>
+<rect x="40" y="40" width="300" height="400" rx="26" class="f-gl"/>
+<g class="dim" style="--t:0.050"><circle cx="110" cy="110" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M95 131c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2"/><circle cx="110" cy="105" r="10" fill="#f0c9a4" stroke="#1b2622" stroke-width="2"/><path d="M100 104c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#7a4b2a"/><circle cx="106.5" cy="106" r="1.4" fill="#1b2622"/><circle cx="113.5" cy="106" r="1.4" fill="#1b2622"/><path d="M107 111q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="dim" style="--t:0.062"><circle cx="190" cy="100" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M175 121c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#4c76c9" stroke="#1b2622" stroke-width="2"/><circle cx="190" cy="95" r="10" fill="#c99470" stroke="#1b2622" stroke-width="2"/><path d="M180 94c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#3a2418"/><circle cx="186.5" cy="96" r="1.4" fill="#1b2622"/><circle cx="193.5" cy="96" r="1.4" fill="#1b2622"/><path d="M187 101q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="dim" style="--t:0.074"><circle cx="270" cy="120" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M255 141c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#7fc4b1" stroke="#1b2622" stroke-width="2"/><circle cx="270" cy="115" r="10" fill="#e8b48e" stroke="#1b2622" stroke-width="2"/><path d="M260 114c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#2b211c"/><circle cx="266.5" cy="116" r="1.4" fill="#1b2622"/><circle cx="273.5" cy="116" r="1.4" fill="#1b2622"/><path d="M267 121q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="dim" style="--t:0.086"><circle cx="110" cy="200" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M95 221c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#b98d64" stroke="#1b2622" stroke-width="2"/><circle cx="110" cy="195" r="10" fill="#a8714f" stroke="#1b2622" stroke-width="2"/><path d="M100 194c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#c98f30"/><circle cx="106.5" cy="196" r="1.4" fill="#1b2622"/><circle cx="113.5" cy="196" r="1.4" fill="#1b2622"/><path d="M107 201q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="match" style="--t:0.098"><circle cx="200" cy="190" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M185 211c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#356b5e" stroke="#1b2622" stroke-width="2"/><circle cx="200" cy="185" r="10" fill="#f3d2b3" stroke="#1b2622" stroke-width="2"/><path d="M190 184c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#5a5a5a"/><circle cx="196.5" cy="186" r="1.4" fill="#1b2622"/><circle cx="203.5" cy="186" r="1.4" fill="#1b2622"/><path d="M197 191q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="dim" style="--t:0.110"><circle cx="280" cy="210" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M265 231c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2"/><circle cx="280" cy="205" r="10" fill="#f0c9a4" stroke="#1b2622" stroke-width="2"/><path d="M270 204c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#7a4b2a"/><circle cx="276.5" cy="206" r="1.4" fill="#1b2622"/><circle cx="283.5" cy="206" r="1.4" fill="#1b2622"/><path d="M277 211q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="dim" style="--t:0.122"><circle cx="120" cy="290" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M105 311c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#4c76c9" stroke="#1b2622" stroke-width="2"/><circle cx="120" cy="285" r="10" fill="#c99470" stroke="#1b2622" stroke-width="2"/><path d="M110 284c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#3a2418"/><circle cx="116.5" cy="286" r="1.4" fill="#1b2622"/><circle cx="123.5" cy="286" r="1.4" fill="#1b2622"/><path d="M117 291q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="dim" style="--t:0.134"><circle cx="210" cy="280" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M195 301c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#7fc4b1" stroke="#1b2622" stroke-width="2"/><circle cx="210" cy="275" r="10" fill="#e8b48e" stroke="#1b2622" stroke-width="2"/><path d="M200 274c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#2b211c"/><circle cx="206.5" cy="276" r="1.4" fill="#1b2622"/><circle cx="213.5" cy="276" r="1.4" fill="#1b2622"/><path d="M207 281q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="match" style="--t:0.146"><circle cx="290" cy="300" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M275 321c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#356b5e" stroke="#1b2622" stroke-width="2"/><circle cx="290" cy="295" r="10" fill="#a8714f" stroke="#1b2622" stroke-width="2"/><path d="M280 294c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#c98f30"/><circle cx="286.5" cy="296" r="1.4" fill="#1b2622"/><circle cx="293.5" cy="296" r="1.4" fill="#1b2622"/><path d="M287 301q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="dim" style="--t:0.158"><circle cx="150" cy="370" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M135 391c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#d6533f" stroke="#1b2622" stroke-width="2"/><circle cx="150" cy="365" r="10" fill="#f3d2b3" stroke="#1b2622" stroke-width="2"/><path d="M140 364c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#5a5a5a"/><circle cx="146.5" cy="366" r="1.4" fill="#1b2622"/><circle cx="153.5" cy="366" r="1.4" fill="#1b2622"/><path d="M147 371q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g><g class="dim" style="--t:0.170"><circle cx="240" cy="370" r="26" fill="#fffdf8" stroke="#1b2622" stroke-width="2.4"/><path d="M225 391c2-9 8-13 15-13s13 4 15 13c-9 7-21 7-30 0z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2"/><circle cx="240" cy="365" r="10" fill="#f0c9a4" stroke="#1b2622" stroke-width="2"/><path d="M230 364c0-8 4-12 10-12s10 4 10 12c-3-3-6-4-10-4s-7 1-10 4z" fill="#7a4b2a"/><circle cx="236.5" cy="366" r="1.4" fill="#1b2622"/><circle cx="243.5" cy="366" r="1.4" fill="#1b2622"/><path d="M237 371q3 2.4 6 0" stroke="#1b2622" stroke-width="1.3" fill="none" stroke-linecap="round"/></g>
+<circle cx="200" cy="190" r="34" fill="none" stroke="#356b5e" stroke-width="3" class="radar" style="--t:.5"/><circle cx="290" cy="300" r="34" fill="none" stroke="#356b5e" stroke-width="3" class="radar" style="--t:.55"/><g class="scan"><circle cx="0" cy="0" r="46" class="s-k" stroke-width="8" fill="rgba(255,255,255,.4)"/><path d="M33 33l40 40" class="s-k" stroke-width="13" stroke-linecap="round"/></g>
+<path class="draw s-t" style="--t:0.45;--len:320" d="M226 190C330 190 360 280 440 300" fill="none" stroke-width="3"/>
+<path class="draw s-t" style="--t:0.48;--len:320" d="M316 300C360 300 380 310 440 320" fill="none" stroke-width="3"/>
+<g class="pop" style="--t:0.36"><rect x="410" y="230" width="150" height="170" rx="22" class="f-c sh"/><path d="M440 360v-56l45-34 45 34v56z" class="f-s"/><path d="M432 310l53-40 53 40" class="s-td" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><rect x="474" y="326" width="22" height="34" rx="3" class="f-td"/><text x="485" y="386" class="tx tx-s" text-anchor="middle">Your property</text></g>
+<g class="pop bob" style="--t:0.57"><rect x="404" y="430" width="164" height="54" rx="27" class="f-t"/><path d="M430 449c0 10 9 19 19 19l4-5-6-4-3 3c-4-2-6-4-8-8l3-3-4-6z" class="f-c"/><text x="466" y="463" class="tx tx-m tx-w">2 matches</text></g>
+<g class="pop twinkle" style="--t:0.5"><path d="M232 151C233.62 158.38 233.62 158.38 241 160C233.62 161.62 233.62 161.62 232 169C230.38 161.62 230.38 161.62 223 160C230.38 158.38 230.38 158.38 232 151z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g><g class="pop twinkle" style="--t:0.55"><path d="M322 259C323.62 266.38 323.62 266.38 331 268C323.62 269.62 323.62 269.62 322 277C320.38 269.62 320.38 269.62 313 268C320.38 266.38 320.38 266.38 322 259z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g>
+</g><g class="sc" data-s="9">
+<path d="M571 300Q571 300 520 385Q469 469 385 476Q300 483 198 494Q95 505 95 403Q96 300 123 225Q150 150 225 81Q300 13 363 93Q427 173 499 237z" fill="#e4efe9" class="blob"/>
+<rect x="0" y="508" width="600" height="92" class="f-floor"/><path d="M0 508h600" class="s-line" stroke-width="2"/>
+<text x="115" y="104" class="tx tx-s tx-mut" text-anchor="middle">Calls in</text>
+<g class="pop" style="--t:0.05"><rect x="30" y="118" width="170" height="58" rx="16" class="f-c sh"/><circle cx="58" cy="147" r="15" fill="#fffdf8" stroke="#1b2622" stroke-width="2"/><path d="M49 159c1-5 5-8 9-8s8 3 9 8c-5 4-13 4-18 0z" fill="#7fc4b1" stroke="#1b2622" stroke-width="1.6"/><circle cx="58" cy="144" r="6" fill="#f0c9a4" stroke="#1b2622" stroke-width="1.6"/><path d="M52 143c0-5 3-7 6-7s6 2 6 7c-2-2-4-2.5-6-2.5s-4 .5-6 2.5z" fill="#7a4b2a"/><text x="82" y="143" class="tx tx-s">Dana R.</text><text x="82" y="161" class="tx tx-xs tx-mut">Pre-approved, 4 rooms</text><g class="ring"><path d="M164 156c0 6 5 11 11 11l2.6-3-3.6-2.6-2 2c-2.6-1.4-3.8-2.6-5-5l2-2-2.6-3.6z" fill="#356b5e"/></g></g><g class="pop" style="--t:0.34"><circle cx="186" cy="130" r="13" fill="#356b5e" stroke="#1b2622" stroke-width="2.2"/><path d="M180 130l4 4 8-8" stroke="#fffdf8" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g class="pop" style="--t:0.13"><rect x="30" y="190" width="170" height="58" rx="16" class="f-c sh"/><circle cx="58" cy="219" r="15" fill="#fffdf8" stroke="#1b2622" stroke-width="2"/><path d="M49 231c1-5 5-8 9-8s8 3 9 8c-5 4-13 4-18 0z" fill="#b98d64" stroke="#1b2622" stroke-width="1.6"/><circle cx="58" cy="216" r="6" fill="#e8b48e" stroke="#1b2622" stroke-width="1.6"/><path d="M52 215c0-5 3-7 6-7s6 2 6 7c-2-2-4-2.5-6-2.5s-4 .5-6 2.5z" fill="#5a5a5a"/><text x="82" y="215" class="tx tx-s">Unknown</text><text x="82" y="233" class="tx tx-xs tx-mut">Just curious</text><g class="ring"><path d="M164 228c0 6 5 11 11 11l2.6-3-3.6-2.6-2 2c-2.6-1.4-3.8-2.6-5-5l2-2-2.6-3.6z" fill="#356b5e"/></g></g><g class="pop" style="--t:0.4"><circle cx="186" cy="202" r="13" fill="#d6533f" stroke="#1b2622" stroke-width="2.2"/><path d="M181 197l10 10M191 197l-10 10" stroke="#fffdf8" stroke-width="2.8" stroke-linecap="round"/></g>
+<g class="pop" style="--t:0.21"><rect x="30" y="262" width="170" height="58" rx="16" class="f-c sh"/><circle cx="58" cy="291" r="15" fill="#fffdf8" stroke="#1b2622" stroke-width="2"/><path d="M49 303c1-5 5-8 9-8s8 3 9 8c-5 4-13 4-18 0z" fill="#e7ad4b" stroke="#1b2622" stroke-width="1.6"/><circle cx="58" cy="288" r="6" fill="#c99470" stroke="#1b2622" stroke-width="1.6"/><path d="M52 287c0-5 3-7 6-7s6 2 6 7c-2-2-4-2.5-6-2.5s-4 .5-6 2.5z" fill="#2b211c"/><text x="82" y="287" class="tx tx-s">Avi &amp; Noa</text><text x="82" y="305" class="tx tx-xs tx-mut">Ready to view</text><g class="ring"><path d="M164 300c0 6 5 11 11 11l2.6-3-3.6-2.6-2 2c-2.6-1.4-3.8-2.6-5-5l2-2-2.6-3.6z" fill="#356b5e"/></g></g><g class="pop" style="--t:0.46"><circle cx="186" cy="274" r="13" fill="#356b5e" stroke="#1b2622" stroke-width="2.2"/><path d="M180 274l4 4 8-8" stroke="#fffdf8" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M206 176C236 220 236 300 250 340M206 320C226 330 236 340 250 352" stroke="#356b5e" stroke-width="2.6" stroke-dasharray="3 8" fill="none" stroke-linecap="round" class="pop" style="--t:.28"/>
+<use href="#mj-guy" x="248" y="304" width="82" height="205"/>
+<path d="M268 402l-6 34 22 10" stroke="#1b2622" stroke-width="13.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M268 402l-6 34 22 10" stroke="#356b5e" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="287" cy="447" r="6.1" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.2"/>
+<path d="M267 342a24 24 0 0 1 48 0" stroke="#1b2622" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+<rect x="261" y="336" width="11" height="18" rx="5" fill="#356b5e" stroke="#1b2622" stroke-width="2.2"/>
+<path d="M266 352c2 10 10 14 22 13" stroke="#1b2622" stroke-width="2.6" fill="none" stroke-linecap="round"/><circle cx="289" cy="365" r="3.6" fill="#1b2622"/>
+<g class="pop bob" style="--t:.18"><path d="M330 300h148a14 14 0 0 1 14 14v26a14 14 0 0 1-14 14h-126l-16 14 4-14h-10a14 14 0 0 1-14-14v-26a14 14 0 0 1 14-14z" class="f-c sh"/><text x="405" y="324" class="tx tx-s" text-anchor="middle">When can you view?</text><text x="405" y="343" class="tx tx-xs tx-mut" text-anchor="middle">Mortgage in place?</text></g>
+<text x="490" y="104" class="tx tx-s tx-mut" text-anchor="middle">To you</text>
+<g class="pop" style="--t:.38"><rect x="420" y="116" width="140" height="160" rx="22" fill="#1b2622"/><rect x="428" y="124" width="124" height="144" rx="16" class="f-c"/>
+ <g class="pop" style="--t:.5"><rect x="436" y="136" width="108" height="50" rx="12" class="f-bub"/><circle cx="456" cy="161" r="12" fill="#fffdf8" stroke="#1b2622" stroke-width="2"/><path d="M447 173c1-5 5-8 9-8s8 3 9 8c-5 4-13 4-18 0z" fill="#7fc4b1" stroke="#1b2622" stroke-width="1.6"/><circle cx="456" cy="158" r="6" fill="#f0c9a4" stroke="#1b2622" stroke-width="1.6"/><path d="M450 157c0-5 3-7 6-7s6 2 6 7c-2-2-4-2.5-6-2.5s-4 .5-6 2.5z" fill="#7a4b2a"/><text x="474" y="157" class="tx tx-xs">Dana R.</text><text x="474" y="173" class="tx tx-xs tx-teal">Serious</text></g>
+ <g class="pop" style="--t:.58"><rect x="436" y="196" width="108" height="50" rx="12" class="f-bub"/><circle cx="456" cy="221" r="12" fill="#fffdf8" stroke="#1b2622" stroke-width="2"/><path d="M447 233c1-5 5-8 9-8s8 3 9 8c-5 4-13 4-18 0z" fill="#e7ad4b" stroke="#1b2622" stroke-width="1.6"/><circle cx="456" cy="218" r="6" fill="#c99470" stroke="#1b2622" stroke-width="1.6"/><path d="M450 217c0-5 3-7 6-7s6 2 6 7c-2-2-4-2.5-6-2.5s-4 .5-6 2.5z" fill="#2b211c"/><text x="474" y="217" class="tx tx-xs">Avi &amp; Noa</text><text x="474" y="233" class="tx tx-xs tx-teal">Serious</text></g></g>
+<path d="M330 292C360 250 396 222 418 204" stroke="#356b5e" stroke-width="3" fill="none" stroke-linecap="round" class="draw" style="--t:.42;--len:160"/>
+<g class="pop" style="--t:.66"><rect x="360" y="410" width="214" height="66" rx="18" class="f-td sh"/><path d="M388 428l13 5.5v11c0 7-5.5 12.5-13 15-7.5-2.5-13-8-13-15v-11z" class="f-tl"/><text x="412" y="438" class="tx tx-s tx-w">Not said on the call:</text><text x="412" y="458" class="tx tx-xs tx-w2">your deadline, your floor</text></g>
+</g><g class="sc" data-s="10">
+<path d="M479 300Q479 300 408 359Q337 417 279 463Q220 508 134 491Q47 473 57 386Q66 300 59 216Q51 131 136 108Q220 84 277 135Q334 186 406 243z" fill="#f6e3bb" class="blob"/><g opacity=".35"><circle cx="470" cy="500" r="2.4" fill="#356b5e"/><circle cx="486" cy="500" r="2.4" fill="#356b5e"/><circle cx="502" cy="500" r="2.4" fill="#356b5e"/><circle cx="518" cy="500" r="2.4" fill="#356b5e"/><circle cx="534" cy="500" r="2.4" fill="#356b5e"/><circle cx="470" cy="516" r="2.4" fill="#356b5e"/><circle cx="486" cy="516" r="2.4" fill="#356b5e"/><circle cx="502" cy="516" r="2.4" fill="#356b5e"/><circle cx="518" cy="516" r="2.4" fill="#356b5e"/><circle cx="534" cy="516" r="2.4" fill="#356b5e"/><circle cx="470" cy="532" r="2.4" fill="#356b5e"/><circle cx="486" cy="532" r="2.4" fill="#356b5e"/><circle cx="502" cy="532" r="2.4" fill="#356b5e"/><circle cx="518" cy="532" r="2.4" fill="#356b5e"/><circle cx="534" cy="532" r="2.4" fill="#356b5e"/></g>
+<rect x="70" y="150" width="280" height="280" rx="18" class="f-wood"/>
+<rect x="90" y="170" width="60" height="60" class="f-sq1"/><rect x="150" y="170" width="60" height="60" class="f-sq2"/><rect x="210" y="170" width="60" height="60" class="f-sq1"/><rect x="270" y="170" width="60" height="60" class="f-sq2"/><rect x="90" y="230" width="60" height="60" class="f-sq2"/><rect x="150" y="230" width="60" height="60" class="f-sq1"/><rect x="210" y="230" width="60" height="60" class="f-sq2"/><rect x="270" y="230" width="60" height="60" class="f-sq1"/><rect x="90" y="290" width="60" height="60" class="f-sq1"/><rect x="150" y="290" width="60" height="60" class="f-sq2"/><rect x="210" y="290" width="60" height="60" class="f-sq1"/><rect x="270" y="290" width="60" height="60" class="f-sq2"/><rect x="90" y="350" width="60" height="60" class="f-sq2"/><rect x="150" y="350" width="60" height="60" class="f-sq1"/><rect x="210" y="350" width="60" height="60" class="f-sq2"/><rect x="270" y="350" width="60" height="60" class="f-sq1"/>
+<path class="s-a dash2 pop" style="--t:0.18" d="M150 380v-120h60" fill="none" stroke-width="5" stroke-linecap="round"/>
+<g class="hop"><path d="M128 410h44v-10h-6c0-14-2-24-6-32 8-2 12-10 10-18-4-12-16-20-30-18l-4-8-6 10c-8 6-12 16-10 26l8 4-4 10 10 0c-4 10-6 18-6 26h-6z" class="f-k"/><circle cx="150" cy="356" r="2.5" class="f-c"/></g>
+<g class="pop" style="--t:0.27"><circle cx="210" cy="260" r="14" class="f-a" opacity=".9"/></g>
+<g class="pop" style="--t:0.09"><rect x="380" y="120" width="180" height="120" rx="20" class="f-c sh"/><text x="404" y="156" class="tx tx-s tx-mut">Offer received</text><text x="404" y="190" class="tx tx-l">₪3,250,000</text><path d="M404 212h96" class="s-r" stroke-width="5" stroke-linecap="round"/><path d="M500 212l-10-8M500 212l-10 8" class="s-r" stroke-width="5" stroke-linecap="round"/></g>
+<g class="pop" style="--t:0.36"><rect x="380" y="262" width="180" height="200" rx="20" class="f-td sh"/><text x="404" y="298" class="tx tx-s tx-w2">Your plan</text>
+ <g class="tick" style="--t:0.45"><circle cx="414" cy="330" r="10" class="f-tl"/><path d="M409 330l4 4 7-7" class="s-td" stroke-width="2.5" fill="none" stroke-linecap="round"/><text x="432" y="334" class="tx tx-xs tx-w">Hold on price</text></g>
+ <g class="tick" style="--t:0.525"><circle cx="414" cy="370" r="10" class="f-tl"/><path d="M409 370l4 4 7-7" class="s-td" stroke-width="2.5" fill="none" stroke-linecap="round"/><text x="432" y="374" class="tx tx-xs tx-w">Flexible on date</text></g>
+ <g class="tick" style="--t:0.6"><circle cx="414" cy="410" r="10" class="f-tl"/><path d="M409 410l4 4 7-7" class="s-td" stroke-width="2.5" fill="none" stroke-linecap="round"/><text x="432" y="414" class="tx tx-xs tx-w">Counter at 3.38M</text></g></g>
+<text x="210" y="490" class="tx tx-s tx-mut" text-anchor="middle">The decision stays yours</text>
+<g class="pop twinkle" style="--t:0.3"><path d="M232 226C233.8 234.2 233.8 234.2 242 236C233.8 237.8 233.8 237.8 232 246C230.2 237.8 230.2 237.8 222 236C230.2 234.2 230.2 234.2 232 226z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g>
+</g><g class="sc" data-s="11">
+<rect x="0" y="0" width="600" height="470" class="f-wall"/>
+<rect x="0" y="470" width="600" height="130" class="f-floor"/><path d="M0 470h600" class="s-line" stroke-width="2"/>
+<path class="spill" d="M230 470l-120 130h360L370 470z" opacity=".0"/>
+<g class="motes"><circle cx="270" cy="382" r="2.5" fill="#fff6dc" opacity=".8" class="mote" style="--md:1.05s;--mx:-15px;--my:-23px"/><circle cx="288" cy="396" r="3.3" fill="#fff6dc" opacity=".8" class="mote" style="--md:2.76s;--mx:0px;--my:-29px"/><circle cx="328" cy="309" r="3.2" fill="#fff6dc" opacity=".8" class="mote" style="--md:3.12s;--mx:11px;--my:-34px"/><circle cx="291" cy="368" r="1.4" fill="#fff6dc" opacity=".8" class="mote" style="--md:2.54s;--mx:-13px;--my:-12px"/><circle cx="267" cy="328" r="1.9" fill="#fff6dc" opacity=".8" class="mote" style="--md:0.21s;--mx:-15px;--my:-15px"/><circle cx="253" cy="362" r="1.3" fill="#fff6dc" opacity=".8" class="mote" style="--md:3.50s;--mx:3px;--my:-14px"/><circle cx="273" cy="359" r="2.0" fill="#fff6dc" opacity=".8" class="mote" style="--md:0.49s;--mx:10px;--my:-40px"/></g><rect x="222" y="132" width="156" height="338" rx="8" class="f-wood2"/>
+<rect x="232" y="142" width="136" height="328" class="f-warm"/>
+<g class="door"><rect x="232" y="142" width="136" height="328" class="f-td"/><rect x="246" y="160" width="108" height="130" rx="4" fill="none" class="s-t" stroke-width="4"/><rect x="246" y="306" width="108" height="146" rx="4" fill="none" class="s-t" stroke-width="4"/><circle cx="352" cy="310" r="7" class="f-a"/></g>
+<rect x="388" y="250" width="36" height="46" rx="6" class="f-c sh"/><text x="406" y="280" class="tx tx-m" text-anchor="middle">4</text>
+<g class="enter" style="--t:0.27"><use href="#mj-buyer" x="430" y="320" width="60" height="150"/></g>
+<g class="enter" style="--t:0.33"><use href="#mj-buyer2" x="490" y="336" width="54" height="135"/></g>
+<use href="#mj-guy" x="100" y="320" width="60" height="150"/>
+<path d="M148 380l30-10 10-22" stroke="#1b2622" stroke-width="13.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M148 380l30-10 10-22" stroke="#356b5e" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="190" cy="346" r="6.1" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.2"/>
+<g class="jingle"><circle cx="196" cy="332" r="9" fill="none" class="s-a" stroke-width="4"/><path d="M203 326l14-14M212 317l5 5M215 314l4 4" class="s-a" stroke-width="4" stroke-linecap="round"/></g>
+<g class="pop bob" style="--t:0.45"><rect x="40" y="200" width="150" height="50" rx="25" class="f-c sh"/><text x="115" y="231" class="tx tx-s" text-anchor="middle">Showing, 18:30</text></g>
+<g class="pop speed" style="--t:0.4"><path d="M560 400h-26" stroke="#1b2622" stroke-width="3" stroke-linecap="round" opacity=".55"/><path d="M560 412h-20" stroke="#1b2622" stroke-width="3" stroke-linecap="round" opacity=".55"/><path d="M560 424h-14" stroke="#1b2622" stroke-width="3" stroke-linecap="round" opacity=".55"/></g><g class="pop twinkle" style="--t:0.5"><path d="M400 110C401.8 118.2 401.8 118.2 410 120C401.8 121.8 401.8 121.8 400 130C398.2 121.8 398.2 121.8 390 120C398.2 118.2 398.2 118.2 400 110z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g>
+</g><g class="sc" data-s="12">
+<path d="M351 200Q351 200 304 244Q257 287 214 343Q170 399 115 355Q60 310 46 255Q32 200 28 128Q25 55 97 61Q170 67 227 76Q285 85 318 143z" fill="#e4efe9" class="blob"/><path d="M615 120Q615 120 589 141Q562 162 541 183Q520 204 489 193Q458 182 460 151Q462 120 458 87Q454 54 487 49Q520 44 543 60Q565 75 590 97z" fill="#f6e3bb" class="blob"/>
+<rect x="40" y="198" width="230" height="182" rx="22" class="f-c sh"/><rect x="40" y="198" width="230" height="30" rx="15" class="f-td"/><text x="60" y="219" class="tx tx-s tx-w">Weekly report</text>
+<g class="tick" style="--t:0.100"><rect x="60" y="238" width="54" height="54" rx="12" class="f-gl"/><text x="87" y="258" class="tx tx-xs tx-mut" text-anchor="middle">W1</text><path d="M77 272l7 7 12-13" class="s-t" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g class="tick" style="--t:0.160"><rect x="126" y="238" width="54" height="54" rx="12" class="f-gl"/><text x="153" y="258" class="tx tx-xs tx-mut" text-anchor="middle">W2</text><path d="M143 272l7 7 12-13" class="s-t" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g class="tick" style="--t:0.220"><rect x="192" y="238" width="54" height="54" rx="12" class="f-gl"/><text x="219" y="258" class="tx tx-xs tx-mut" text-anchor="middle">W3</text><path d="M209 272l7 7 12-13" class="s-t" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g class="tick" style="--t:0.280"><rect x="60" y="304" width="54" height="54" rx="12" class="f-gl"/><text x="87" y="324" class="tx tx-xs tx-mut" text-anchor="middle">W4</text><path d="M77 338l7 7 12-13" class="s-t" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g class="tick" style="--t:0.340"><rect x="126" y="304" width="54" height="54" rx="12" class="f-gl"/><text x="153" y="324" class="tx tx-xs tx-mut" text-anchor="middle">W5</text><path d="M143 338l7 7 12-13" class="s-t" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g class="tick" style="--t:0.400"><rect x="192" y="304" width="54" height="54" rx="12" class="f-gl"/><text x="219" y="324" class="tx tx-xs tx-mut" text-anchor="middle">W6</text><path d="M209 338l7 7 12-13" class="s-t" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M40 520C140 520 140 420 240 420S360 360 420 320 500 250 560 250" class="s-road" stroke-width="34" fill="none" stroke-linecap="round"/>
+<path class="s-c dash3" d="M40 520C140 520 140 420 240 420S360 360 420 320 500 250 560 250" stroke-width="3" fill="none"/>
+<g><path d="M60 520v-70" class="s-k" stroke-width="4"/><path d="M60 452h44l-10 12 10 12H60z" class="f-tl"/><text x="40" y="560" class="tx tx-s">First call</text></g>
+<g class="pop" style="--t:0.48"><path d="M540 250v-74" class="s-k" stroke-width="4"/><rect x="496" y="150" width="88" height="40" rx="8" class="f-t"/><text x="540" y="176" class="tx tx-m tx-w" text-anchor="middle">SOLD</text></g>
+<rect x="536" y="167" width="8" height="5" rx="1.5" fill="#e7ad4b" class="fly" style="--t:0.69;--x:93px;--y:-40px;--r:-213deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#7fc4b1" class="fly" style="--t:0.70;--x:65px;--y:-13px;--r:-29deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#356b5e" class="fly" style="--t:0.70;--x:66px;--y:26px;--r:228deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#d6533f" class="fly" style="--t:0.72;--x:24px;--y:17px;--r:240deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#f4cf7a" class="fly" style="--t:0.70;--x:0px;--y:45px;--r:-273deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#e7ad4b" class="fly" style="--t:0.68;--x:-43px;--y:64px;--r:-207deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#7fc4b1" class="fly" style="--t:0.68;--x:-77px;--y:37px;--r:75deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#356b5e" class="fly" style="--t:0.68;--x:-114px;--y:7px;--r:-72deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#d6533f" class="fly" style="--t:0.71;--x:-97px;--y:-40px;--r:37deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#f4cf7a" class="fly" style="--t:0.70;--x:-97px;--y:-80px;--r:-101deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#e7ad4b" class="fly" style="--t:0.71;--x:-82px;--y:-122px;--r:-68deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#7fc4b1" class="fly" style="--t:0.69;--x:-28px;--y:-108px;--r:-271deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#356b5e" class="fly" style="--t:0.71;--x:-0px;--y:-169px;--r:183deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#d6533f" class="fly" style="--t:0.70;--x:30px;--y:-112px;--r:52deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#f4cf7a" class="fly" style="--t:0.72;--x:65px;--y:-105px;--r:57deg"/><rect x="536" y="167" width="8" height="5" rx="1.5" fill="#e7ad4b" class="fly" style="--t:0.68;--x:117px;--y:-89px;--r:-75deg"/>
+<g class="journey"><use href="#mj-guy" x="0" y="0" width="44" height="110"/></g>
+<g class="pop" style="--t:0.09"><rect x="40" y="70" width="250" height="110" rx="22" class="f-td sh"/><circle cx="90" cy="125" r="30" fill="#f0c9a4" stroke="#1b2622" stroke-width="2.6"/><path d="M61 120c-3-18 10-30 29-30 19 0 31 12 28 29-5-7-13-10-22-10-2 5-10 8-18 7 1-2 1-5 0-6-7 1-13 5-17 10z" fill="#2b211c" stroke="#1b2622" stroke-width="2.4" stroke-linejoin="round"/><path d="M76 93c7-6 21-6 28 0z" fill="#356b5e" stroke="#1b2622" stroke-width="2"/><ellipse cx="80" cy="124" rx="4.6" ry="5.4" fill="#fff" stroke="#1b2622" stroke-width="1.6"/><ellipse cx="100" cy="124" rx="4.6" ry="5.4" fill="#fff" stroke="#1b2622" stroke-width="1.6"/><circle cx="81" cy="125" r="2.6" fill="#1b2622"/><circle cx="101" cy="125" r="2.6" fill="#1b2622"/><path d="M80 138q10 7 20 0" stroke="#1b2622" stroke-width="2.4" fill="none" stroke-linecap="round"/><ellipse cx="72" cy="134" rx="4" ry="2.4" fill="#e8907c" opacity=".55"/><ellipse cx="108" cy="134" rx="4" ry="2.4" fill="#e8907c" opacity=".55"/><text x="136" y="116" class="tx tx-m tx-w">Your person</text><text x="136" y="140" class="tx tx-s tx-w2">Direct number</text></g>
+<g class="pop twinkle" style="--t:0.7"><path d="M500 128C502.16 137.84 502.16 137.84 512 140C502.16 142.16 502.16 142.16 500 152C497.84 142.16 497.84 142.16 488 140C497.84 137.84 497.84 137.84 500 128z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g><g class="pop twinkle" style="--t:0.72"><path d="M580 192C581.44 198.56 581.44 198.56 588 200C581.44 201.44 581.44 201.44 580 208C578.56 201.44 578.56 201.44 572 200C578.56 198.56 578.56 198.56 580 192z" fill="#7fc4b1" stroke="#1b2622" stroke-width="2" stroke-linejoin="round"/></g>
+</g></g></g></svg></div><div class="stage__bar" id="stageBar"><i class="is-on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+      <div class="ssteps"><p class="sgrp">We prepare it</p><article class="sstep" data-step="1" id="s1"><span class="sstep__n">01</span><h3>A full CMA, before anything else</h3><p>We find what your property is really worth: what sold nearby, what is sitting unsold and why. Price it wrong and nothing after that can fix it.</p></article><article class="sstep" data-step="2" id="s2"><span class="sstep__n">02</span><h3>Professional photography</h3><p>Buyers decide in about three seconds, on a phone. That decision is made almost entirely on the first photo.</p></article><article class="sstep" data-step="3" id="s3"><span class="sstep__n">03</span><h3>A walkthrough video</h3><p>Where we started, and still where we are strongest. Buyers who show up have already decided they like it.</p></article><article class="sstep" data-step="4" id="s4"><span class="sstep__n">04</span><h3>A floor plan</h3><p>Buyers want to know whether their life fits before they book a viewing. Every listing gets a clear floor plan.</p></article><p class="sgrp">We find your buyer</p><article class="sstep" data-step="5" id="s5"><span class="sstep__n">05</span><h3>Every channel, on paid packages</h3><p>The main property sites and social media. We pay for premium placement on the property sites, so your listing sits above the free private ones without you paying for it.</p></article><article class="sstep" data-step="6" id="s6"><span class="sstep__n">06</span><h3>Our exclusive network</h3><p>An exclusive network of community WhatsApp groups and contacts across the neighborhoods we work in, where a lot of the demand moves before it ever reaches a listing site.</p></article><article class="sstep" data-step="7" id="s7"><span class="sstep__n">07</span><h3>A sign at the property</h3><p>A large, weatherproof sign on the building. Plenty of buyers start by walking the streets they want to live on.</p></article><article class="sstep" data-step="8" id="s8"><span class="sstep__n">08</span><h3>We go looking for buyers</h3><p>We do not only wait for calls. We scan social media, listing sites and the groups for people looking for what you are selling, check them against our own buyers list, and call them.</p></article><p class="sgrp">We see it through</p><article class="sstep" data-step="9" id="s9"><span class="sstep__n">09</span><h3>Every enquiry handled, your position protected</h3><p>Enquiries come to us, and you still see all of them. Sellers lose money on the first phone call, not at the table, so we know which questions to answer and which to leave alone.</p></article><article class="sstep" data-step="10" id="s10"><span class="sstep__n">10</span><h3>Negotiation</h3><p>When offers arrive, we negotiate with you: what to hold, what to give, and when, and we can handle the back-and-forth with the buyer. The final decision is always yours, and the contract is drawn up by your lawyer, as with any sale.</p></article><article class="sstep" data-step="11" id="s11"><span class="sstep__n">11</span><h3>Showings, if you want them</h3><p>Run your own, or hand them to us. Included either way.</p></article><article class="sstep" data-step="12" id="s12"><span class="sstep__n">12</span><h3>One person, start to finish</h3><p>One named person from the first call to the sale, with a direct number, and a weekly report on reach, enquiries, offers and what we would do next. For up to six months, you watch us work.</p></article></div>
+    </div>
+    <div class="glance rv" id="at-a-glance">
+      <div class="shead" style="margin-bottom:28px"><span class="eyebrow">At a glance</span><h2 class="tt"><span>All twelve,</span><span>in one list.</span></h2></div>
+      <div class="glance__cols"><div class="glance__col"><h3>We prepare it</h3><ol start="1"><li><span class="glance__n">01</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 19h16M7 19V9M12 19V5M17 19v-8" stroke-linecap="round"/></svg><span class="glance__t">A full CMA, before anything else</span></li><li><span class="glance__n">02</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="3.2"/><path d="M8 7l1.4-2h5.2L16 7"/></svg><span class="glance__t">Professional photography</span></li><li><span class="glance__n">03</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10.5l5-3v9l-5-3z" stroke-linejoin="round"/></svg><span class="glance__t">A walkthrough video</span></li><li><span class="glance__n">04</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="1.5"/><path d="M3.5 11h7v9.5M10.5 3.5V8M14 11h6.5M14 11v4" stroke-linecap="round"/></svg><span class="glance__t">A floor plan</span></li></ol></div><div class="glance__col"><h3>We find your buyer</h3><ol start="5"><li><span class="glance__n">05</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.6 2.6 2.6 14.4 0 17M12 3.5c-2.6 2.6-2.6 14.4 0 17"/></svg><span class="glance__t">Every channel, on paid packages</span></li><li><span class="glance__n">06</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17" r="2.6"/><path d="M7.6 8.9l3 5.4M16.4 8.9l-3 5.4M8.6 7h6.8"/></svg><span class="glance__t">Our exclusive network</span></li><li><span class="glance__n">07</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 21V3M5 5h13v8H5" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.5 9h6" stroke-linecap="round"/></svg><span class="glance__t">A sign at the property</span></li><li><span class="glance__n">08</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21" stroke-linecap="round"/><path d="M8 10.5h5M10.5 8v5" stroke-linecap="round"/></svg><span class="glance__t">We go looking for buyers</span></li></ol></div><div class="glance__col"><h3>We see it through</h3><ol start="9"><li><span class="glance__n">09</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z" stroke-linejoin="round"/></svg><span class="glance__t">Every enquiry handled, your position protected</span></li><li><span class="glance__n">10</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 12l4-4 4 3 3-2 7 5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 8l-2 9M17 9l2 8" stroke-linecap="round"/></svg><span class="glance__t">Negotiation</span></li><li><span class="glance__n">11</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 21h16M7.5 21V4.4a1 1 0 01.82-.98l7-1.3a1 1 0 011.18.98V21" stroke-linejoin="round"/><circle cx="13.6" cy="12.4" r=".95" fill="currentColor" stroke="none"/></svg><span class="glance__t">Showings, if you want them</span></li><li><span class="glance__n">12</span><svg class="glance__i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20.5c1.2-3.8 4.1-5.6 7.5-5.6s6.3 1.8 7.5 5.6" stroke-linecap="round"/></svg><span class="glance__t">One person, start to finish</span></li></ol></div></div>
+    </div>
     <p class="rv" style="margin-top:48px;padding-top:26px;border-top:1px solid var(--grey-light);font-size:var(--t-body);color:var(--ink)">Rentals run the same way, on a shorter campaign and a lower fee. <a href="pricing.html">See pricing.</a></p>
+    <div class="addons rv" id="add-ons"><div class="addons__head"><span class="eyebrow">Add-ons</span><h2 class="tt"><span>When you want</span><span>a little more.</span></h2><p>Not part of the flat fee. Priced when we quote, so you only pay for what you choose.</p><a href="index.html#book" class="btn btn--onDark" style="margin-top:22px">Ask about add-ons</a></div><ul class="ao-grid"><li class="ao ao--wide"><div class="ao__art"><svg viewBox="0 0 220 150" aria-hidden="true">
+ <circle cx="150" cy="70" r="58" fill="#e4efe9"/>
+ <rect x="74" y="14" width="72" height="128" rx="14" fill="#1b2622"/><rect x="80" y="20" width="60" height="116" rx="10" fill="#fffdf8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <rect x="86" y="30" width="48" height="36" rx="5" fill="#cfe5df" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M86 66l14-12 10 7 10-9 14 14z" fill="#9fcbb9"/>
+ <rect x="86" y="72" width="34" height="5" rx="2.5" fill="#1b2622"/><rect x="86" y="81" width="44" height="4" rx="2" fill="#c9d0cc"/>
+ <rect x="86" y="92" width="48" height="13" rx="6.5" fill="#356b5e" stroke="#1b2622" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+ <rect x="96" y="112" width="28" height="5" rx="2.5" fill="#e7ad4b"/><text x="110" y="128" font-size="8" font-weight="600" fill="#1b2622" text-anchor="middle" font-family="var(--font)">Sponsored</text>
+ <g transform="translate(150 78) rotate(-12)"><path d="M0 -14l38 -18v58l-38 -18z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="-14" y="-14" width="16" height="22" rx="4" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M-6 8l4 16h8l-2-16" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></g>
+ <path d="M196 50l10-6M200 72h12M196 94l10 6" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+ <g><circle cx="40" cy="40" r="15" fill="#4c76c9" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M42 33h-3a3 3 0 0 0-3 3v3h-3v4h3v10h4V43h3l1-4h-4v-2a1 1 0 0 1 1-1h2z" fill="#fff"/></g>
+ <g><circle cx="44" cy="100" r="15" fill="#d65b8f" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="37" y="93" width="14" height="14" rx="4" fill="none" stroke="#fff" stroke-width="2"/><circle cx="44" cy="100" r="3.2" fill="none" stroke="#fff" stroke-width="2"/></g>
+</svg></div><div class="ao__txt"><span class="ao__tag">+ Add-on</span><h3>Paid social ad campaigns</h3><p>Targeted social media ads, built and managed by us. You set the daily ad budget and pay it directly.</p></div></li><li class="ao "><div class="ao__art"><svg viewBox="0 0 220 150" aria-hidden="true">
+ <circle cx="110" cy="78" r="60" fill="#e4efe9"/>
+ <path d="M40 140c30-26 60-30 86-22 22 6 40 4 60-8v40H40z" fill="#9fcbb9" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <path d="M70 140v-30l22-16 22 16v30z" fill="#eadfc8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M64 112l28-22 28 22" fill="none" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="86" y="120" width="12" height="20" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <g class="ao-hover"><path d="M110 58l-22 30h44z" fill="#fff6d8" opacity=".9"/>
+ <rect x="88" y="34" width="44" height="18" rx="8" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="110" cy="56" r="7" fill="#1b2622"/><circle cx="110" cy="56" r="3" fill="#4c76c9"/>
+ <path d="M88 40H62M132 40h26" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" fill="none"/><path d="M62 40v-8M158 40v-8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+ <ellipse cx="62" cy="30" rx="20" ry="4" fill="#fffdf8" stroke="#1b2622" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="158" cy="30" rx="20" ry="4" fill="#fffdf8" stroke="#1b2622" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/></g>
+</svg></div><div class="ao__txt"><span class="ao__tag">+ Add-on</span><h3>Drone footage</h3><p>Aerial video and stills, for views, gardens, roof terraces and where the property sits.</p></div></li><li class="ao "><div class="ao__art"><svg viewBox="0 0 220 150" aria-hidden="true">
+ <circle cx="110" cy="76" r="60" fill="#f6e3bb"/>
+ <rect x="56" y="90" width="108" height="22" rx="8" fill="#fffdf8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="56" y="118" width="108" height="22" rx="8" fill="#fffdf8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <rect x="66" y="98" width="50" height="6" rx="3" fill="#c9d0cc"/><rect x="66" y="126" width="40" height="6" rx="3" fill="#c9d0cc"/>
+ <g class="ao-hover"><rect x="46" y="44" width="128" height="40" rx="10" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <rect x="54" y="52" width="34" height="24" rx="4" fill="#cfe5df" stroke="#1b2622" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><rect x="96" y="54" width="48" height="7" rx="3.5" fill="#fffdf8"/><rect x="96" y="66" width="34" height="6" rx="3" fill="#7fc4b1"/>
+ <path d="M160 26l5 10 11 1-8 8 2 11-10-5-10 5 2-11-8-8 11-1z" fill="#e7ad4b" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></g>
+ <path d="M188 92v-34M180 66l8-8 8 8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" fill="none"/>
+</svg></div><div class="ao__txt"><span class="ao__tag">+ Add-on</span><h3>Top-tier listing placement</h3><p>Already on paid packages. Want the very top? We upgrade it, at the site’s own price.</p></div></li><li class="ao "><div class="ao__art"><svg viewBox="0 0 220 150" aria-hidden="true">
+ <circle cx="110" cy="80" r="60" fill="#e4efe9"/>
+ <rect x="70" y="30" width="80" height="112" rx="6" fill="#a77e58" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><rect x="78" y="38" width="64" height="104" fill="#f7d48d" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <path d="M78 38l-22 8v104l22-8z" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="64" cy="94" r="3.5" fill="#e7ad4b"/>
+ <g class="ao-hover"><path d="M158 120c-6-20-4-48 6-66" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" fill="none"/><ellipse cx="166" cy="44" rx="13" ry="16" fill="#d6533f" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+ <path d="M172 120c2-22 8-40 18-52" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round" fill="none"/><ellipse cx="192" cy="58" rx="12" ry="15" fill="#e7ad4b" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/></g>
+ <rect x="18" y="98" width="44" height="30" rx="5" fill="#fffdf8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><path d="M40 128v14" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><text x="40" y="110" font-size="8.5" font-weight="700" fill="#1b2622" text-anchor="middle" font-family="var(--font)">OPEN</text><text x="40" y="121" font-size="8.5" font-weight="700" fill="#1b2622" text-anchor="middle" font-family="var(--font)">HOUSE</text>
+</svg></div><div class="ao__txt"><span class="ao__tag">+ Add-on</span><h3>Open house day</h3><p>One day, advertised in advance, with us running it at the property.</p></div></li><li class="ao "><div class="ao__art"><svg viewBox="0 0 220 150" aria-hidden="true">
+ <circle cx="110" cy="76" r="60" fill="#f6e3bb"/>
+ <path d="M30 30h88a12 12 0 0 1 12 12v24a12 12 0 0 1-12 12H58l-14 12 3-12H30a12 12 0 0 1-12-12V42a12 12 0 0 1 12-12z" fill="#fffdf8" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><text x="74" y="60" font-size="15" font-weight="600" fill="#1b2622" text-anchor="middle" font-family="var(--font)">Bonjour</text>
+ <g class="ao-hover"><path d="M190 70h-80a12 12 0 0 0-12 12v24a12 12 0 0 0 12 12h56l14 12-3-12h13a12 12 0 0 0 12-12V82a12 12 0 0 0-12-12z" fill="#356b5e" stroke="#1b2622" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/><text x="150" y="100" font-size="15" font-weight="600" fill="#fffdf8" text-anchor="middle" font-family="var(--font)">Привет</text></g>
+ <path d="M40 112h40M40 124h28" stroke="#356b5e" stroke-width="5" stroke-linecap="round"/>
+</svg></div><div class="ao__txt"><span class="ao__tag">+ Add-on</span><h3>More languages</h3><p>Listings written for French and Russian speakers, alongside Hebrew and English.</p></div></li></ul></div>
   </div>
 </section>
 
@@ -148,7 +443,7 @@
     <div class="shead rv">
       <span class="eyebrow">How it runs</span>
       <h2 class="tt"><span>From the first call</span><span>to sold.</span></h2>
-      <p class="lead">Five stages. You know what is happening at every one of them.</p>
+      <p class="lead">Five stages, one person through all of them. You know what is happening at every one.</p>
     </div>
 
     <div class="tl" id="tl">
@@ -165,7 +460,7 @@
             <span class="tl__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5h16v11H9l-5 4z" stroke-linejoin="round"/><path d="M8 10h8M8 13h5" stroke-linecap="round"/></svg></span>
             <span class="tl__when">Day 1</span>
             <h3>Free consultation</h3>
-            <p>We come to the property, at no cost, and tell you what we would do.</p>
+            <p>We come to the property, at no cost, tell you what we would do, and you meet the person who will run it.</p>
           </div>
         </div>
         <div class="tl__cell tl__cell--r3 rv" style="grid-column:2">
@@ -173,7 +468,7 @@
             <span class="tl__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="12" rx="2"/><circle cx="12" cy="13" r="3.2"/><path d="M8 7l1.4-2h5.2L16 7"/></svg></span>
             <span class="tl__when">Week 1</span>
             <h3>Shoot day</h3>
-            <p>Photography, walkthrough video, and the listing copy written in both languages.</p>
+            <p>The CMA, photography, walkthrough video, floor plan, and the listing copy in both languages.</p>
           </div>
         </div>
         <div class="tl__cell tl__cell--r1 rv" style="grid-column:3">
@@ -181,15 +476,15 @@
             <span class="tl__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 2.5 14.4 0 17M12 3.5c-2.5 2.6-2.5 14.4 0 17"/></svg></span>
             <span class="tl__when">Week 2</span>
             <h3>Live everywhere</h3>
-            <p>Yad2, Madlan, Facebook, Instagram, and the community groups you cannot reach.</p>
+            <p>The main property sites, social media, our exclusive network of groups and contacts, and a sign at the property.</p>
           </div>
         </div>
         <div class="tl__cell tl__cell--r3 rv" style="grid-column:4">
           <div class="tl__card">
             <span class="tl__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 4h4l1.6 4-2.2 1.6a12 12 0 006 6L16 13.4 20 15v4a1.6 1.6 0 01-1.8 1.6A16.4 16.4 0 013.4 5.8 1.6 1.6 0 015 4z" stroke-linejoin="round"/></svg></span>
-            <span class="tl__when">Weeks 3–8</span>
-            <h3>We field the calls</h3>
-            <p>Every enquiry handled and forwarded, with our read on who is serious. Weekly report.</p>
+            <span class="tl__when">Up to six months</span>
+            <h3>We find and field buyers</h3>
+            <p>Every enquiry handled and forwarded, buyers sought out and called, and a report every week.</p>
           </div>
         </div>
         <div class="tl__cell tl__cell--r1 rv" style="grid-column:5">
@@ -197,7 +492,7 @@
             <span class="tl__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 11l6 6L20 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
             <span class="tl__when">The finish</span>
             <h3>Sold</h3>
-            <p>You pay the marketing fee now, and not before.</p>
+            <p>The marketing fee is due on the sale. Not sold after six months? ₪2,000, and nothing more.</p>
           </div>
         </div>
       </div>
@@ -231,6 +526,7 @@
     </div>
     <div><h4>Company</h4><ul>
       <li><a href="services.html">What we do</a></li>
+      <li><a href="featured.html">Featured properties</a></li>
       <li><a href="pricing.html">Pricing</a></li>
       <li><a href="about.html">About us</a></li>
     </ul></div>
@@ -255,5 +551,39 @@
 <a class="wa" href="https://wa.me/972506875631" aria-label="Message us on WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.6 2 2.2 6.4 2.2 11.84c0 1.74.46 3.43 1.32 4.92L2 22l5.37-1.4a9.8 9.8 0 004.67 1.19h.01c5.43 0 9.84-4.4 9.84-9.84C21.89 6.4 17.47 2 12.04 2zm5.75 14.05c-.24.68-1.2 1.25-1.96 1.41-.52.11-1.2.2-3.5-.75-2.94-1.22-4.83-4.2-4.98-4.4-.14-.2-1.19-1.58-1.19-3.02s.75-2.14 1.02-2.44c.27-.3.59-.37.78-.37l.56.01c.18 0 .42-.07.66.5.24.58.83 2.02.9 2.17.07.15.12.32.02.52-.1.2-.15.32-.3.5l-.44.51c-.15.15-.3.32-.13.62.17.3.75 1.24 1.62 2.01 1.11 1 2.05 1.3 2.34 1.45.3.15.47.13.64-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.7.8 1.99.95.3.15.49.22.56.35.07.12.07.72-.17 1.4z"/></svg></a>
 <div class="stickybar" id="stickybar"><a href="index.html#book" class="btn btn--primary">Book a free consultation</a></div>
 <div class="mscroll" id="mscroll" aria-hidden="true"><img src="assets/logo/monogram-teal.png" alt="" id="mimg"></div>
-<script src="js/site.js?v=aab55509" defer></script>
+<script>
+{
+  const stage = document.getElementById('stage');
+  const scenes = stage ? [...stage.querySelectorAll('.sc')] : [];
+  const ticks = [...document.querySelectorAll('#stageBar i')];
+  const steps = [...document.querySelectorAll('.sstep')];
+  const mq = matchMedia('(max-width: 900px)');
+  let cur = 0, raf = 0;
+  const set = n => {
+    if (n === cur) return; cur = n;
+    scenes.forEach(g => { const k = +g.dataset.s; g.classList.toggle('is-on', k === n); g.classList.toggle('is-past', k < n); });
+    steps.forEach(st => st.classList.toggle('is-on', +st.dataset.step === n));
+    ticks.forEach((t, i) => { t.classList.toggle('is-on', i + 1 === n); t.classList.toggle('is-done', i + 1 < n); });
+  };
+  /* The highlighted step is the one under the reading line; the picture follows it, and builds as you read */
+  const update = () => {
+    raf = 0;
+    const line = innerHeight * (mq.matches ? 0.68 : 0.5);
+    let best = steps[0], bestD = Infinity, p = 0;
+    for (const st of steps) {
+      const r = st.getBoundingClientRect();
+      const d = line < r.top ? r.top - line : line > r.bottom ? line - r.bottom : 0;
+      if (d < bestD) { bestD = d; best = st; p = (line - r.top) / r.height; }
+    }
+    set(+best.dataset.step);
+    stage.style.setProperty('--p', Math.max(0, Math.min(1, p * 1.25)).toFixed(3));
+  };
+  if (stage && steps.length) {
+    addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  }
+}
+</script>
+<script src="js/site.js?v=20261121c" defer></script>
 </body></html>
