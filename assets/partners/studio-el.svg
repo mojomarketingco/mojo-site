@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="306 186 590 590" role="img" aria-label="Studio EL">
+  <rect x="306" y="186" width="590" height="590" fill="#9B4A2C"/>
+  <rect x="395" y="274" width="411" height="413" rx="52" fill="none" stroke="#F7F1E8" stroke-width="16"/>
+  <g fill="#F7F1E8">
+    <path d="M488 352H620V382H502V465H580V495H502V578H620V608H472V367H488Z"/>
+    <path d="M668 367H697V578H734V608H668Z"/>
+  </g>
+  <path d="M622 475V470A46 47 0 0 1 668 423H682" fill="none" stroke="#F0D3B8" stroke-width="16"/>
+</svg>
