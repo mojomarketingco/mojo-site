@@ -5,6 +5,14 @@
    ========================================================== */
 (function () {
   'use strict';
+  /* Keep the address bar clean: /services.html shows as /services,
+     /index.html as /. Old links and bookmarks still open. */
+  (function () {
+    var p = location.pathname, c = p.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '');
+    if (c !== p && window.history && history.replaceState) {
+      try { history.replaceState(null, '', c + location.search + location.hash); } catch (e) {}
+    }
+  })();
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var EASE = 'cubic-bezier(0.16,1,0.3,1)';
   var $  = function (s, c) { return (c || document).querySelector(s); };
@@ -293,7 +301,7 @@
          .pages.dev address as well as the live domain. --- */
   if (location.protocol === 'http:' || location.protocol === 'https:') {
     $$('input[name="redirect"]').forEach(function (el) {
-      el.value = location.origin + '/thank-you.html';
+      el.value = location.origin + '/thank-you';
     });
   }
 
@@ -305,7 +313,7 @@
   var KEY = 'mj_consent';
   function get() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
   function set(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
-  var priv = location.pathname.indexOf('/communities/') > -1 ? '../privacy.html' : 'privacy.html';
+  var priv = '/privacy';
   var box;
   function close() { if (box) { box.classList.remove('is-on'); setTimeout(function () { if (box) { box.remove(); box = null; } }, 300); } }
   function open() {
