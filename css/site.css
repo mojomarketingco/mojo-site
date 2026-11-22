@@ -1346,3 +1346,10 @@ p a:not(.btn), li a:not(.btn), .small a, .cm-note a, .legal a, .ans a, .lead a{ 
 
 /* What We Do header: keep the camera in frame on narrow screens */
 .phero__img--svc{ object-position:15% 50%; }
+
+/* Partner credit (Studio EL on the floor plan add-on) */
+.sstep__credit{ display:flex; align-items:center; gap:14px; margin-top:22px; }
+.sstep__credit img{ width:64px; height:64px; border-radius:16px; flex:none; display:block; box-shadow:0 1px 2px rgba(10,21,18,.08), 0 6px 16px -6px rgba(155,74,44,.35); }
+.sstep__credit span{ display:flex; flex-direction:column; font-size:14px; line-height:1.35; color:var(--ink-soft); }
+.sstep__credit strong{ font-weight:600; color:var(--ink); font-size:15px; }
+.ao--plan .sstep__credit{ margin-top:18px; }
